@@ -1,0 +1,27 @@
+﻿@{
+    Layout = null;
+}
+
+@model Esunco.Models.PaymentResultModel
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>پرداخت</title>
+</head>
+<body>
+    <script type="text/javascript">
+        window.onload = function () {
+            function submitform() {
+                document.forms["form"].submit();
+            }
+            setTimeout(submitform, 500);
+        }
+    </script>
+    <form action="@Model.PaymentUrl"  method="post" name="form" id="form">
+        @Html.Hidden("RefId",Model.PaymentID);
+        <h1>در حال اتصال به درگاه بانک</h1>
+    </form>
+    
+</body>
+</html>

@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>اِلِ سیم</title>
+    <link href="~/Content/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/css/bootstrap-rtl.css" rel="stylesheet" />
+    <link href="~/Content/css/Site.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="rtl container">
+        <div class="receipt">
+            <div class="row header">
+                <div class="col-xs-6 padding-10">
+                    <img src="~/Content/images/ic_logo_hamrah.png"  class="img-responsive center-block"/>
+                </div>
+                <div class="col-xs-6 padding-10">
+                    <img src="~/Content/images/ic_logo_main.png"  class="img-responsive center-block"/>
+                </div>
+            </div>
+            @RenderBody()
+            <div class="row">
+               <div class="col-md-12">
+                   <p class="bs-callout bs-callout-warning">
+                       با مدرک شناسایی جهت جلوگیری از سوء استفاده سریعا با در دست داشتن مدرک شناسایی خود به نزدیک ترین دفتر خدمات مشترکین جهت فعال سازی مراجعه نمایید.
+                   </p>
+               </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <p  class="bs-callout bs-callout-warning" >
+                        در حفظ و نگهداری رسید خود کوشا باشید در صورت مفقود شدن شرکت فروش تعهدی نسبت به سوء استفاده احتمالی نخواهد داشت.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

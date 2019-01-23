@@ -1,0 +1,421 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:tns="http://sms.tsms.ir/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:encoding="http://schemas.xmlsoap.org/soap/encoding/" xmlns="http://schemas.xmlsoap.org/wsdl/" name="SMSService" targetNamespace="http://sms.tsms.ir/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xs:schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://sms.tsms.ir/">
+      <xs:import namespace="http://schemas.xmlsoap.org/soap/encoding/" />
+      <xs:complexType name="ArrayOfString">
+        <xs:complexContent mixed="false">
+          <xs:restriction base="encoding:Array">
+            <xs:attribute wsdl:arrayType="xs:string[]" ref="encoding:arrayType" />
+          </xs:restriction>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="ArrayOfInt">
+        <xs:complexContent mixed="false">
+          <xs:restriction base="encoding:Array">
+            <xs:attribute wsdl:arrayType="xs:int[]" ref="encoding:arrayType" />
+          </xs:restriction>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="object1">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="status" type="xs:int" />
+          <xs:element minOccurs="0" maxOccurs="1" name="phone" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="trycount" type="xs:int" />
+          <xs:element minOccurs="0" maxOccurs="1" name="duration" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ArrayOfObject">
+        <xs:complexContent mixed="false">
+          <xs:restriction base="encoding:Array">
+            <xs:attribute wsdl:arrayType="tns:object1[]" ref="encoding:arrayType" />
+          </xs:restriction>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="object2">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="status" type="xs:int" />
+          <xs:element minOccurs="0" maxOccurs="1" name="phone" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ArrayOfObjectSMS">
+        <xs:complexContent mixed="false">
+          <xs:restriction base="encoding:Array">
+            <xs:attribute wsdl:arrayType="tns:object2[]" ref="encoding:arrayType" />
+          </xs:restriction>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="object3">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="status" type="xs:int" />
+          <xs:element minOccurs="0" maxOccurs="1" name="id" type="xs:int" />
+          <xs:element minOccurs="0" maxOccurs="1" name="phone" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="sms_number" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="msg" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="date" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ArrayOfObjectR">
+        <xs:complexContent mixed="false">
+          <xs:restriction base="encoding:Array">
+            <xs:attribute wsdl:arrayType="tns:object3[]" ref="encoding:arrayType" />
+          </xs:restriction>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="ArrayOfObjectInfo">
+        <xs:complexContent mixed="false">
+          <xs:restriction base="encoding:Array">
+            <xs:attribute wsdl:arrayType="tns:objectInfo[]" ref="encoding:arrayType" />
+          </xs:restriction>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="objectInfo">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="credit" type="xs:int" />
+          <xs:element minOccurs="0" maxOccurs="1" name="sms_numebrs" type="tns:ArrayOfString" />
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="sendSmsRequest">
+    <wsdl:part name="username" type="xs:string" />
+    <wsdl:part name="password" type="xs:string" />
+    <wsdl:part name="sms_number" type="tns:ArrayOfString" />
+    <wsdl:part name="mobile" type="tns:ArrayOfString" />
+    <wsdl:part name="msg" type="tns:ArrayOfString" />
+    <wsdl:part name="mclass" type="tns:ArrayOfString" />
+    <wsdl:part name="messageid" type="xs:string" />
+  </wsdl:message>
+  <wsdl:message name="sendSmsResponse">
+    <wsdl:part name="sendSmsResult" type="tns:ArrayOfInt" />
+  </wsdl:message>
+  <wsdl:message name="sendSmsExtRequest">
+    <wsdl:part name="username" type="xs:string" />
+    <wsdl:part name="password" type="xs:string" />
+    <wsdl:part name="sms_number" type="tns:ArrayOfString" />
+    <wsdl:part name="mobile" type="tns:ArrayOfString" />
+    <wsdl:part name="msg" type="tns:ArrayOfString" />
+    <wsdl:part name="mclass" type="tns:ArrayOfString" />
+    <wsdl:part name="messageid" type="xs:string" />
+    <wsdl:part name="send_dates" type="tns:ArrayOfInt" />
+  </wsdl:message>
+  <wsdl:message name="sendSmsExtResponse">
+    <wsdl:part name="sendSmsExtResult" type="tns:ArrayOfInt" />
+  </wsdl:message>
+  <wsdl:message name="sendSmsGroupRequest">
+    <wsdl:part name="username" type="xs:string" />
+    <wsdl:part name="password" type="xs:string" />
+    <wsdl:part name="sms_number" type="xs:string" />
+    <wsdl:part name="mobile" type="xs:string" />
+    <wsdl:part name="msg" type="xs:string" />
+    <wsdl:part name="mclass" type="xs:int" />
+    <wsdl:part name="messageid" type="xs:string" />
+  </wsdl:message>
+  <wsdl:message name="sendSmsGroupResponse">
+    <wsdl:part name="sendSmsResult" type="tns:ArrayOfInt" />
+  </wsdl:message>
+  <wsdl:message name="GetSmsReceivedRequest">
+    <wsdl:part name="username" type="xs:string" />
+    <wsdl:part name="password" type="xs:string" />
+  </wsdl:message>
+  <wsdl:message name="GetSmsReceivedResponse">
+    <wsdl:part name="GetSmsReceivedResponse" type="tns:ArrayOfObjectR" />
+  </wsdl:message>
+  <wsdl:message name="GetSmsReceivedIdRequest">
+    <wsdl:part name="username" type="xs:string" />
+    <wsdl:part name="password" type="xs:string" />
+    <wsdl:part name="id" type="xs:int" />
+  </wsdl:message>
+  <wsdl:message name="GetSmsReceivedIdResponse">
+    <wsdl:part name="GetSmsReceivedIdResponse" type="tns:ArrayOfObjectR" />
+  </wsdl:message>
+  <wsdl:message name="GetDeliverySmsRequest">
+    <wsdl:part name="username" type="xs:string" />
+    <wsdl:part name="password" type="xs:string" />
+    <wsdl:part name="recipientIds" type="tns:ArrayOfInt" />
+  </wsdl:message>
+  <wsdl:message name="GetDeliverySmsResponse">
+    <wsdl:part name="GetDeliverySmsResult" type="tns:ArrayOfInt" />
+  </wsdl:message>
+  <wsdl:message name="WsdlCheckSendRequest">
+    <wsdl:part name="username" type="xs:string" />
+    <wsdl:part name="password" type="xs:string" />
+    <wsdl:part name="messageid" type="xs:string" />
+  </wsdl:message>
+  <wsdl:message name="WsdlCheckSendResponse">
+    <wsdl:part name="WsdlCheckSendResult" type="tns:ArrayOfInt" />
+  </wsdl:message>
+  <wsdl:message name="sendSoundOfTextRequest">
+    <wsdl:part name="username" type="xs:string" />
+    <wsdl:part name="password" type="xs:string" />
+    <wsdl:part name="phones" type="xs:string" />
+    <wsdl:part name="msg" type="xs:string" />
+    <wsdl:part name="speaker" type="xs:string" />
+    <wsdl:part name="gainLevel" type="xs:int" />
+    <wsdl:part name="pitchLevel" type="xs:int" />
+    <wsdl:part name="punctuationLevel" type="xs:int" />
+    <wsdl:part name="speechSpeedLevel" type="xs:int" />
+    <wsdl:part name="toneLevel" type="xs:int" />
+    <wsdl:part name="tryCount" type="xs:int" />
+    <wsdl:part name="MinuteBetweenTry" type="xs:int" />
+    <wsdl:part name="messageid" type="xs:string" />
+  </wsdl:message>
+  <wsdl:message name="sendSoundOfTextResponse">
+    <wsdl:part name="sendSoundOfTextResult" type="tns:ArrayOfInt" />
+  </wsdl:message>
+  <wsdl:message name="sendSoundRequest">
+    <wsdl:part name="username" type="xs:string" />
+    <wsdl:part name="password" type="xs:string" />
+    <wsdl:part name="phones" type="xs:string" />
+    <wsdl:part name="title" type="xs:string" />
+    <wsdl:part name="soundid" type="xs:int" />
+    <wsdl:part name="soundIdType" type="xs:int" />
+    <wsdl:part name="tryCount" type="xs:int" />
+    <wsdl:part name="MinuteBetweenTry" type="xs:int" />
+    <wsdl:part name="messageid" type="xs:string" />
+  </wsdl:message>
+  <wsdl:message name="sendSoundResponse">
+    <wsdl:part name="sendSoundResult" type="tns:ArrayOfInt" />
+  </wsdl:message>
+  <wsdl:message name="uploadRequest">
+    <wsdl:part name="username" type="xs:string" />
+    <wsdl:part name="password" type="xs:string" />
+    <wsdl:part name="title" type="xs:string" />
+    <wsdl:part name="binaryfile" type="xs:base64Binary" />
+  </wsdl:message>
+  <wsdl:message name="uploadResponse">
+    <wsdl:part name="uploadResponse" type="tns:ArrayOfInt" />
+  </wsdl:message>
+  <wsdl:message name="GetDeliverySoundRequest">
+    <wsdl:part name="username" type="xs:string" />
+    <wsdl:part name="password" type="xs:string" />
+    <wsdl:part name="phones" type="xs:string" />
+    <wsdl:part name="idsendsound" type="xs:int" />
+  </wsdl:message>
+  <wsdl:message name="GetDeliverySoundResponse">
+    <wsdl:part name="GetDeliverySoundResponse" type="tns:ArrayOfObject" />
+  </wsdl:message>
+  <wsdl:message name="GetDeliverySmsGroupRequest">
+    <wsdl:part name="username" type="xs:string" />
+    <wsdl:part name="password" type="xs:string" />
+    <wsdl:part name="phones" type="xs:string" />
+    <wsdl:part name="idsendsms" type="xs:int" />
+  </wsdl:message>
+  <wsdl:message name="GetDeliverySmsGroupResponse">
+    <wsdl:part name="GetDeliverySmsGroupResponse" type="tns:ArrayOfObjectSMS" />
+  </wsdl:message>
+  <wsdl:message name="sendSoundOfPatternRequest">
+    <wsdl:part name="username" type="xs:string" />
+    <wsdl:part name="password" type="xs:string" />
+    <wsdl:part name="phone" type="xs:string" />
+    <wsdl:part name="title" type="xs:string" />
+    <wsdl:part name="patternid" type="xs:int" />
+    <wsdl:part name="patternVariables" type="tns:ArrayOfString" />
+    <wsdl:part name="tryCount" type="xs:int" />
+    <wsdl:part name="MinuteBetweenTry" type="xs:int" />
+    <wsdl:part name="messageid" type="xs:string" />
+  </wsdl:message>
+  <wsdl:message name="sendSoundOfPatternResponse">
+    <wsdl:part name="sendSoundOfPatternResponse" type="tns:ArrayOfInt" />
+  </wsdl:message>
+  <wsdl:message name="UserInfoRequest">
+    <wsdl:part name="username" type="xs:string" />
+    <wsdl:part name="password" type="xs:string" />
+  </wsdl:message>
+  <wsdl:message name="UserInfoResponse">
+    <wsdl:part name="UserInfoResponse" type="tns:ArrayOfObjectInfo" />
+  </wsdl:message>
+  <wsdl:portType name="tsmsService">
+    <wsdl:operation name="sendSms" parameterOrder="username password sms_number mobile msg mclass messageid">
+      <wsdl:input message="tns:sendSmsRequest" />
+      <wsdl:output message="tns:sendSmsResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="sendSmsExt" parameterOrder="username password sms_number mobile msg mclass messageid send_dates">
+      <wsdl:input message="tns:sendSmsExtRequest" />
+      <wsdl:output message="tns:sendSmsExtResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="sendSmsGroup" parameterOrder="username password sms_number mobile msg mclass messageid">
+      <wsdl:input message="tns:sendSmsGroupRequest" />
+      <wsdl:output message="tns:sendSmsGroupResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDeliverySms" parameterOrder="username password recipientIds">
+      <wsdl:input message="tns:GetDeliverySmsRequest" />
+      <wsdl:output message="tns:GetDeliverySmsResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="WsdlCheckSend" parameterOrder="username password messageid">
+      <wsdl:input message="tns:WsdlCheckSendRequest" />
+      <wsdl:output message="tns:WsdlCheckSendResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="sendSoundOfText" parameterOrder="username password phones msg speaker gainLevel pitchLevel punctuationLevel speechSpeedLevel toneLevel tryCount MinuteBetweenTry messageid">
+      <wsdl:input message="tns:sendSoundOfTextRequest" />
+      <wsdl:output message="tns:sendSoundOfTextResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="sendSound" parameterOrder="username password phones title soundid soundIdType tryCount MinuteBetweenTry messageid">
+      <wsdl:input message="tns:sendSoundRequest" />
+      <wsdl:output message="tns:sendSoundResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="upload" parameterOrder="username password title binaryfile">
+      <wsdl:input message="tns:uploadRequest" />
+      <wsdl:output message="tns:uploadResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDeliverySound" parameterOrder="username password phones idsendsound">
+      <wsdl:input message="tns:GetDeliverySoundRequest" />
+      <wsdl:output message="tns:GetDeliverySoundResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDeliverySmsGroup" parameterOrder="username password phones idsendsms">
+      <wsdl:input message="tns:GetDeliverySmsGroupRequest" />
+      <wsdl:output message="tns:GetDeliverySmsGroupResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSmsReceived" parameterOrder="username password">
+      <wsdl:input message="tns:GetSmsReceivedRequest" />
+      <wsdl:output message="tns:GetSmsReceivedResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSmsReceivedId" parameterOrder="username password id">
+      <wsdl:input message="tns:GetSmsReceivedIdRequest" />
+      <wsdl:output message="tns:GetSmsReceivedIdResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="sendSoundOfPattern" parameterOrder="username password">
+      <wsdl:input message="tns:sendSoundOfPatternRequest" />
+      <wsdl:output message="tns:sendSoundOfPatternResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="UserInfo" parameterOrder="username password">
+      <wsdl:input message="tns:UserInfoRequest" />
+      <wsdl:output message="tns:UserInfoResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="tsms_Binding" type="tns:tsmsService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc" />
+    <wsdl:operation name="sendSoundOfText">
+      <soap:operation soapAction="" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://sms.tsms.ir/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://sms.tsms.ir/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sendSound">
+      <soap:operation soapAction="" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://sms.tsms.ir/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://sms.tsms.ir/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSmsReceived">
+      <soap:operation soapAction="" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://sms.tsms.ir/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://sms.tsms.ir/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSmsReceivedId">
+      <soap:operation soapAction="" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://sms.tsms.ir/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://sms.tsms.ir/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="upload">
+      <soap:operation soapAction="" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://sms.tsms.ir/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://sms.tsms.ir/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDeliverySmsGroup">
+      <soap:operation soapAction="" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://sms.tsms.ir/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://sms.tsms.ir/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDeliverySound">
+      <soap:operation soapAction="" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://sms.tsms.ir/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://sms.tsms.ir/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sendSms">
+      <soap:operation soapAction="" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://sms.tsms.ir/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://sms.tsms.ir/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sendSmsExt">
+      <soap:operation soapAction="" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://sms.tsms.ir/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://sms.tsms.ir/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sendSmsGroup">
+      <soap:operation soapAction="" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://sms.tsms.ir/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://sms.tsms.ir/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDeliverySms">
+      <soap:operation soapAction="" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://sms.tsms.ir/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://sms.tsms.ir/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WsdlCheckSend">
+      <soap:operation soapAction="" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://sms.tsms.ir/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://sms.tsms.ir/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sendSoundOfPattern">
+      <soap:operation soapAction="" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://sms.tsms.ir/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://sms.tsms.ir/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UserInfo">
+      <soap:operation soapAction="" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://sms.tsms.ir/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://sms.tsms.ir/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="tsmsSoapService">
+    <documentation>WSDL File for tsms.ir Service</documentation>
+    <wsdl:port name="tsms_Port" binding="tns:tsms_Binding">
+      <soap:address location="http://www.tsms.ir/soapWSDL/" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

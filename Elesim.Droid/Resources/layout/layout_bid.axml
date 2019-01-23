@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="ارسال پیشنهاد"
+        android:textSize="16sp"
+        android:padding="10dp"
+        android:textColor="@color/colorSecondaryText" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorDivider" />
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="10dp">
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:id="@+id/tbxPrice"
+            android:background="@drawable/bg_input_border"
+            android:hint="مبلغ پیشنهادی خود را اینجا وارد کنید"
+            android:gravity="right"
+            android:inputType="number"
+            android:textColor="@color/colorPrimaryText"
+            android:padding="15dp" />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_green_button"
+            android:id="@+id/btnSubmit"
+            android:textColor="@color/white"
+            android:layout_margin="5dp"
+            android:text="ثیت پیشنهاد" />
+    </LinearLayout>
+</LinearLayout>

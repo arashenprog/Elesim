@@ -1,0 +1,92 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>اِلِ سـیم | ورود</title>
+    <link rel="stylesheet" href="./node_modules/bootstrap-v4-rtl/dist/css/bootstrap-rtl.min.css">
+    <link rel="stylesheet" href="./assets/styles/master.css">
+
+
+</head>
+
+<body class="rtl">
+    <div class="container-fluid full-page">
+        <div class="row">
+            <div class="col-lg-4 col-sm-12 pl0 pr0">
+                <div class="form-logo">
+                    <img src="./assets/images/logo.png">
+                    <h5>ساخت حساب کاربری</h5>
+                </div>
+                <div class="full-form">
+
+                    <div class="timer" style="display: none;">
+                        <span>کد ارسال شده را وارد کنید</span>
+                        <div class="counter">
+                            60
+                        </div>
+                        ثانیه
+
+                    </div>
+                    <form id="confirm-number-form" style="display: none;">
+                        <div class="input-group-lg">
+                            <label for="name">کد تایید ارسال شده</label>
+                            <input type="text" class="form-control " id="name">
+                        </div>
+                        <div class="mr-lg"></div>
+                        <button type="submit" class="btn btn-block btn-success btn-lg"> تایید ثبت نام </button>
+                    </form>
+                    <form id="register-form">
+                        <div class="input-group-lg">
+                            <label for="name">نام</label>
+                            <input type="text" class="form-control " id="name">
+                        </div>
+                        <div class="mr-sm"></div>
+
+                        <div class="input-group-lg">
+                            <label for="family">نام خانوادگی</label>
+                            <input type="text" class="form-control " id="family">
+                        </div>
+                        <div class="mr-sm"></div>
+
+                        <div class="input-group-lg">
+                            <label for="nationalCode">کد ملی</label>
+                            <input type="text" class="form-control ltr" id="nationalCode">
+                        </div>
+                        <div class="mr-sm"></div>
+
+                        <div class="input-group-lg">
+                            <label for="phoneNumber">شماره تلفن</label>
+                            <input type="text" class="form-control ltr " id="phoneNumber" aria-describedby="phoneHelp"
+                                placeholder="09 -- --- -- --">
+                            <small id="phoneHelp" class="form-text text-muted">
+                                شماره تلفن برای ورود به اِلِ سـیم الزامیست ، لطفا شماره معتبر وارد کنید
+                            </small>
+                        </div>
+
+                        <div class="mr-lg"></div>
+                        <button type="submit" class="btn btn-block btn-success btn-lg" onclick="onRegisterClick(event)">ثبت
+                            نام</button>
+                        <div class="mr-lg"></div>
+
+                        <button type="submit" class="btn btn-block btn-primary btn-lg">قبلا ثبت نام کرده ام</button>
+
+                    </form>
+
+                </div>
+            </div>
+            <div class="col-lg-8 col-sm-12 pl0 pr0">
+                <div class="full-background register-background">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="./node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="./node_modules/poper/dist/poper.js"></script>
+    <script src="./node_modules/bootstrap-v4-rtl/dist/js/bootstrap.min.js"></script>
+    <script src="./assets/js/theme.js"></script>
+</body>
+
+</html>

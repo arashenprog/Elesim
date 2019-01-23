@@ -1,0 +1,59 @@
+<resources>
+  <color name="colorPrimary">#0277BD</color>
+  <color name="colorPrimaryDark">#01579B</color>
+  <color name="colorPrimaryLight">#BBDEFB</color>
+  <color name="colorAccent">#FF8F00</color>
+  <color name="colorGreen">#7cb342</color>
+  <color name="colorOrange">#df9d3e</color>
+  <color name="colorRed">#de1a1e</color>
+  <color name="colorGray">#6d6d6d</color>
+  <color name="white">#FFFFFF</color>
+  <color name="colorHint">#5c5c5c</color>
+  <color name="colorPrimaryText">#222222</color>
+  <color name="colorSecondaryText">#757575</color>
+  <color name="colorIcons">#757575</color>
+  <color name="colorDivider">#DDDDDD</color>
+
+  <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <item name="colorPrimary">@color/colorPrimary</item>
+    <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+    <item name="colorAccent">@color/colorAccent</item>
+    <item name="android:typeface">serif</item>
+    <item name="android:textSize">13sp</item>
+    <item name="android:buttonStyle">@style/CKButton</item>
+    <item name="android:textColor">@color/colorSecondaryText</item>
+    <item name="android:textColorHint">@color/colorHint</item>
+    <item name="circularProgressBarStyle">@style/CircularProgressBarLight</item>
+  </style>
+
+
+  <style name="CKButton" parent="android:Widget.Button">
+    <item name="android:textSize">16sp</item>
+    <item name="android:padding">15dp</item>
+    <item name="android:textColor">@android:color/white</item>
+    <item name="android:typeface">serif</item>
+  </style>
+
+  <style name="AppTheme.NoActionBar" parent="AppTheme">
+    <item name="windowActionBar">false</item>
+    <item name="windowNoTitle">true</item>
+  </style>
+
+
+  <style name="SplashTheme" parent="AppTheme.NoActionBar">
+    <item name="android:windowBackground">@drawable/bg_splash</item>
+
+  </style>
+
+  <style name="LoginTheme" parent="AppTheme.NoActionBar">
+    <item name="android:windowBackground">@color/colorPrimary</item>
+
+  </style>
+
+  <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+  <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+
+
+</resources>

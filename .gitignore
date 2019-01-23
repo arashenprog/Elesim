@@ -3,9 +3,14 @@
 # dependencies
 *.suo
 *.user
+.vs
 
 bin
 obj
 packages
+/Components
+/AndroidUI
+/Esunco.Test
+/TestResults
 
 

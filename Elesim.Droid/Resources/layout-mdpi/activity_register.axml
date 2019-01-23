@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_login"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="7">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="7"
+        android:orientation="vertical"
+        android:padding="35dp">
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:id="@+id/tbxNationalCode"
+            android:background="@drawable/bg_input"
+            android:hint="کد ملی خود را اینجا وارد کنید"
+            android:gravity="right"
+            android:inputType="text"
+            android:textColor="@color/colorPrimaryText"
+            android:padding="12dp" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:id="@+id/tbxFirstName"
+            android:background="@drawable/bg_input"
+            android:hint="نام خود را اینجا وارد کنید"
+            android:gravity="right"
+            android:inputType="text"
+            android:textColor="@color/colorPrimaryText"
+            android:padding="12dp" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:id="@+id/tbxLastName"
+            android:background="@drawable/bg_input"
+            android:hint="نام خانوادگی خود را اینجا وارد کنید"
+            android:gravity="right"
+            android:inputType="text"
+            android:textColor="@color/colorPrimaryText"
+            android:padding="12dp" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:id="@+id/tbxNumber"
+            android:background="@drawable/bg_input"
+            android:hint="شماره تلفن همراه خود را اینجا وارد کنید"
+            android:gravity="right"
+            android:inputType="number"
+            android:textColor="@color/colorPrimaryText"
+            android:padding="12dp" />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_green_button"
+            android:padding="16dp"
+            android:id="@+id/btnLogin"
+            android:layout_margin="5dp"
+            android:text="ثبت نام" />
+    </LinearLayout>
+<!--<RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="16dp"
+                android:text="قوانین اِلِ سیم را مطالعه نموده و می پذیرم" />
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_bottom_button"
+                android:padding="16dp"
+                android:id="@+id/btnSignUp"
+                android:text="ورود به برنامه" />
+        </LinearLayout>
+    </RelativeLayout>-->
+</LinearLayout>

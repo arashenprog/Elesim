@@ -1,0 +1,454 @@
+<#+
+public class ClassGenerator : Telerik.OpenAccess.CodeGeneration.TelerikTextTransformationBase
+{
+	protected AttributesGenerator attributesGenerator;
+	protected DocumentationGenerator documentationGenerator;
+	protected PropertiesGenerator propertiesGenerator;
+	protected bool isAttributesMapping;
+	
+	public ClassGenerator(TextTransformation rootGenerator, AttributesGenerator attributesGenerator, 
+		DocumentationGenerator documentationGenerator, PropertiesGenerator propertiesGenerator, Telerik.OpenAccess.Metadata.MappingDefinitionType mappingType)
+		:base(rootGenerator)
+    {
+		this.attributesGenerator = attributesGenerator;
+		this.documentationGenerator = documentationGenerator;
+		this.propertiesGenerator = propertiesGenerator;
+		this.isAttributesMapping = mappingType == Telerik.OpenAccess.Metadata.MappingDefinitionType.Attributes;
+	}
+
+	/// <summary>
+	/// Generates a class.
+	/// </summary>
+	/// <param name="@class">The class model.</param>
+	public void GenerateClass(Telerik.OpenAccess.CodeGeneration.CodeClass @class)
+	{
+		this.documentationGenerator.GenerateComments(@class.Comments);	
+		this.documentationGenerator.GenerateSummary(@class.Summary);
+		this.attributesGenerator.GenerateAttributes(@class.Attributes);
+		this.GenerateClassSignature(@class);
+#>
+{
+<#+ 
+		this.PushIndent("\t");
+		this.propertiesGenerator.GenerateProperties(@class);
+        if (@class.ImplementIDataErrorInfo)
+        {
+			if(@class.BaseClass == null)
+            {
+				this.GenerateIDataErrorInfoMembers();
+            }
+			else
+            {
+				this.GenerateIDataErrorInfoInDerivedClass();
+			}
+        }
+
+        if (@class.ImplementINotifyPropertyChanging && @class.BaseClass == null)
+        {
+			this.GenerateINotifyPropertyChangingMembers();
+        }
+
+        if (@class.ImplementINotifyPropertyChanged && @class.BaseClass == null)
+        {
+			this.GenerateINotifyPropertyChangedMembers();
+        }
+
+        if (@class.ImplementISerializable)
+        {
+			this.StartRegion("ISerializable Implementation");
+            if (@class.BaseClass == null)
+            {
+				this.GenerateISerializationInterface(@class);		 
+            }
+			else
+			{
+				var isBaseClassISerializable = @class.BaseClass.Implements.Any(n => n.Name.Contains("ISerializable"));
+                if (isBaseClassISerializable)
+                {
+					this.GenerateISerializableOverridesForDerivedClass(@class);
+                }
+				else
+				{
+					this.GenerateISerializationInterface(@class);		 
+                }
+            }
+			this.GenerateSerializationPartialMethods();
+			this.EndRegion();
+        }
+
+		this.PopIndent();
+#>
+}
+<#+ 
+	}
+
+	protected void GenerateClassSignature(Telerik.OpenAccess.CodeGeneration.CodeClass codeClass)
+	{
+		LinkedList<string> implements = new LinkedList<string>(codeClass.Implements.Select(i => i.Name));
+		if (codeClass.BaseClass != null)
+		{
+			implements.AddFirst(codeClass.BaseClass.Name);
+		}
+		var interfaceString = string.Join(", ", implements);
+
+		if (string.IsNullOrWhiteSpace(interfaceString) == false)
+		{
+			 interfaceString = " : " + interfaceString;
+		}
+
+		if(!codeClass.Name.Contains("View"))
+		{
+		interfaceString = " : AcoreX.Data.Repository.IDataEntity";
+		}
+#>
+<#= codeClass.TypeAccessModifier.ToCode() #><#= codeClass.TypeInheritanceModifier.ToCode() #> partial class <#= codeClass.Name #><#= interfaceString #>
+<#+
+	}
+
+	protected void GenerateIDataErrorInfoMembers()
+    {
+#>
+#region IDataErrorInfo members
+
+<#+
+		if(this.isAttributesMapping)
+        {
+			this.attributesGenerator.GenerateTransientAttribute();
+		}
+#>
+private string error = string.Empty;
+<#+
+		if(this.isAttributesMapping)
+        {
+			this.attributesGenerator.GenerateTransientAttribute();
+		}
+#>
+public string Error
+{
+	get
+	{
+		return this.error;
+	}
+}
+
+<#+
+		if(this.isAttributesMapping)
+        {
+			this.attributesGenerator.GenerateTransientAttribute();
+		}
+#>
+public string this[string propertyName]
+{
+	get
+	{
+		this.ValidatePropertyInternal(propertyName, ref this.error);
+
+		return this.error;
+	}
+}
+
+protected virtual void ValidatePropertyInternal(string propertyName, ref string error)
+{
+    this.ValidateProperty(propertyName, ref error);
+}
+
+// Please implement this method in a partial class in order to provide the error message depending on each of the properties.
+partial void ValidateProperty(string propertyName, ref string error);
+
+#endregion
+
+<#+
+    }
+
+	protected void GenerateIDataErrorInfoInDerivedClass()
+    {
+#>
+#region IDataErrorInfo members
+
+protected override void ValidatePropertyInternal(string propertyName, ref string error)
+{
+    this.ValidateProperty(propertyName, ref error);
+}
+
+// Please implement this method in a partial class in order to provide the error message depending on each of the properties.
+partial void ValidateProperty(string propertyName, ref string error);
+
+#endregion
+
+<#+
+    }
+
+	protected void GenerateISerializationInterface(Telerik.OpenAccess.CodeGeneration.CodeClass @class)
+    {
+#>
+
+public <#= @class.Name #>()
+{
+}
+
+protected <#= @class.Name #>(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context)
+{
+<#+ 
+		this.PushIndent("\t");
+		foreach (var property in @class.Properties)
+        {
+			var isReferenceSide = property.IsNavigationProperty && !property.IsIEnumerable;
+			var isCollectionSide = property.IsNavigationProperty && property.IsIEnumerable;
+
+			if((@class.IgnoreReferenceSide == true && isReferenceSide == true) ||
+				(@class.IgnoreCollectionsSide == true && isCollectionSide == true))
+			{
+				continue;
+			}
+
+			var deserializationExpression = this.GetDeserializationToken(@class, property);
+						
+#>
+<#= deserializationExpression #>
+<#+
+        }
+		this.PopIndent();
+#>
+	CustomizeDeserializationProcess(info, context);
+}
+
+public virtual void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context)
+{
+<#+ 
+		this.PushIndent("\t");
+        foreach (var property in @class.Properties)
+        {
+			var isReferenceSide = property.IsNavigationProperty && !property.IsIEnumerable;
+			var isCollectionSide = property.IsNavigationProperty && property.IsIEnumerable;
+			if((@class.IgnoreReferenceSide == true && isReferenceSide == true) ||
+				(@class.IgnoreCollectionsSide == true && isCollectionSide == true))
+            {
+				continue;
+            }
+			var serializationExpression = GetSerializationToken(property);
+
+#>
+<#= serializationExpression #>
+<#+ 
+        }
+		this.PopIndent();
+#>
+	CustomizeSerializationProcess(info, context);
+}
+
+<#+ 
+    }
+
+	protected void GenerateISerializableOverridesForDerivedClass(Telerik.OpenAccess.CodeGeneration.CodeClass @class)
+    {
+#>
+public <#= @class.Name #>()
+{
+}
+
+protected  <#= @class.Name #>(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context)
+	:base(info, context)
+{
+<#+ 
+		this.PushIndent("\t");
+		foreach (var property in @class.Properties)
+        {
+			var isReferenceSide = property.IsNavigationProperty && !property.IsIEnumerable;
+			var isCollectionSide = property.IsNavigationProperty && property.IsIEnumerable;
+
+			if((@class.IgnoreReferenceSide == true && isReferenceSide == true) ||
+				(@class.IgnoreCollectionsSide == true && isCollectionSide == true))
+			{
+				continue;
+			}
+
+			var deserializationExpression = this.GetDeserializationToken(@class, property);
+#>
+<#= deserializationExpression #>
+<#+
+		}
+		this.PopIndent();
+#>
+	CustomizeDeserializationProcess(info, context);
+}
+
+public override void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context)
+{
+	base.GetObjectData(info, context);
+<#+ 
+		this.PushIndent("\t");
+		foreach (var property in @class.Properties)
+        {
+			var isReferenceSide = property.IsNavigationProperty && !property.IsIEnumerable;
+			var isCollectionSide = property.IsNavigationProperty && property.IsIEnumerable;
+			if((@class.IgnoreReferenceSide == true && isReferenceSide == true) ||
+				(@class.IgnoreCollectionsSide == true && isCollectionSide == true))
+            {
+				continue;
+            }
+			var serializationExpression = GetSerializationToken(property);
+#>
+<#= serializationExpression #>
+<#+ 
+        }
+		this.PopIndent();
+#>
+	CustomizeSerializationProcess(info, context);
+}
+<#+
+	}
+
+	protected void GenerateSerializationPartialMethods()
+    {
+#>
+partial void CustomizeSerializationProcess(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context);
+partial void CustomizeDeserializationProcess(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context);
+<#+
+    }
+
+	private string GetSerializationToken(Telerik.OpenAccess.CodeGeneration.CodeProperty property)
+    {
+		var type = Telerik.OpenAccess.CodeGeneration.CSharp.CSharpExtensions.ToTypeString(property);
+        var name = property.Name;
+		var fieldName = property.FieldName;
+		var hasGetter = property.HasGetter;
+		var serializationExpression = string.Empty;
+        if (hasGetter)
+        {
+			serializationExpression = string.Format("info.AddValue(\"{0}\", this.{1}, typeof({2}));", name, name, type);		 
+        }
+		//else
+		//{
+		//	serializationExpression = string.Format("info.AddValue(\"{0}\", this.{1}, typeof({2}));", name, fieldName, type);		 
+        //}
+
+		return serializationExpression;
+    }
+
+	private string GetDeserializationToken(Telerik.OpenAccess.CodeGeneration.CodeClass @class, Telerik.OpenAccess.CodeGeneration.CodeProperty property)
+    {
+		var isReadCollectionSide = property.IsNavigationProperty && property.IsIEnumerable;
+		var type = Telerik.OpenAccess.CodeGeneration.CSharp.CSharpExtensions.ToTypeString(property);
+        var propertyName = property.Name;
+		var fieldName = property.FieldName;
+        var deserializationExpression = string.Empty;
+		var hasSetter = property.HasSetter;
+		var setGetter = property.HasGetter; 
+        if (isReadCollectionSide)
+        {
+			deserializationExpression = GetCorrectGetValueMethod(type, fieldName, propertyName);
+		}
+        else
+        {
+            if (setGetter)
+            {
+				if (hasSetter)
+				{
+					deserializationExpression = GetCorrectGetValueMethod(type, propertyName);		 
+				}
+				else
+				{
+					deserializationExpression = GetCorrectGetValueMethod(type, fieldName, propertyName);
+				}
+            }
+        }
+
+		return deserializationExpression;
+    }
+
+	private System.Collections.Generic.Dictionary<string, string> typeToMethodTable = new System.Collections.Generic.Dictionary<string, string>()
+    {
+        {"bool","GetBoolean"}, 
+        {"byte","GetByte"}, 
+		{"char","GetChar"}, 
+		{"DataTime", "GetDateTime"}, 
+		{"decimal", "GetDecimal"}, 
+		{"double", "GetDouble"}, 
+		{"short", "GetInt16"}, 
+		{"int", "GetInt32"}, 
+		{"long", "GetInt64"}, 
+		{"sbyte", "GetSByte"}, 
+		{"float", "GetSingle"}, 
+		{"string", "GetString"}, 
+		{"ushort", "GetUInt16"}, 
+		{"uint", "GetUInt32"}, 
+		{"ulong", "GetUInt64"}, 
+    };
+
+
+	private string GetCorrectGetValueMethod(string type, string propertyName, string key = null)
+    {
+		if (key == null)
+        {
+			key = propertyName;
+        }
+		var deserializationToken = string.Empty;
+
+        if (!typeToMethodTable.ContainsKey(type))
+        {
+			deserializationToken = string.Format("this.{0} = ({1})info.GetValue(\"{2}\", typeof({3}));", propertyName, type, key, type);
+        }
+		else
+		{
+			var typeMethod = typeToMethodTable[type];
+			deserializationToken = string.Format("this.{0} = info.{1}(\"{2}\");", propertyName, typeMethod, key);
+        }
+
+		return deserializationToken;
+    }
+	
+	private void StartRegion(string regionText)
+    {
+#>
+#region <#= regionText #>
+<#+ 
+    }
+
+	private void EndRegion()
+    {
+#>
+#endregion
+<#+
+    }
+
+	protected void GenerateINotifyPropertyChangingMembers()
+	{
+#>
+#region INotifyPropertyChanging members
+
+public event PropertyChangingEventHandler PropertyChanging;
+
+protected virtual void OnPropertyChanging(string propertyName)
+{
+	if(this.PropertyChanging != null)
+	{
+		this.PropertyChanging(this, new PropertyChangingEventArgs(propertyName));
+	}
+}
+
+#endregion
+
+<#+
+    }
+
+	protected void GenerateINotifyPropertyChangedMembers()
+    {
+#>
+#region INotifyPropertyChanged members
+
+public event PropertyChangedEventHandler PropertyChanged;
+
+protected virtual void OnPropertyChanged(string propertyName)
+{
+	if(this.PropertyChanged != null)
+	{
+		this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+	}
+}
+
+#endregion
+
+<#+
+	}
+}
+#>

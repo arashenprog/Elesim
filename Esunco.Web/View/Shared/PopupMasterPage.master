@@ -1,0 +1,26 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/View/Shared/BaseMasterPage.master" AutoEventWireup="true" CodeFile="PopupMasterPage.master.cs" Inherits="View_Shared_PopupMasterPage" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('body').on('mousedown', window.top.userAction).on('mousemove', window.top.userAction).on('keydown', window.top.userAction);
+        });
+    </script>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="body" runat="Server">
+    <dx:ASPxCallbackPanel runat="server" ID="MasterCallbackPanel" ClientInstanceName="MasterCallbackPanel"
+        RenderMode="Div" Width="100%" Height="100%" OnCallback="MasterCallbackPanel_Callback">
+        <PanelCollection>
+            <dx:PanelContent>
+                <div class="popup-window-content">
+                    <asp:ContentPlaceHolder ID="body" runat="server">
+                    </asp:ContentPlaceHolder>
+                </div>
+            </dx:PanelContent>
+        </PanelCollection>
+        <ClientSideEvents CallbackError="Master.GlobalEvents.OnCallbackError" EndCallback="Master.GlobalEvents.OnEndCallback" />
+    </dx:ASPxCallbackPanel>
+</asp:Content>
+

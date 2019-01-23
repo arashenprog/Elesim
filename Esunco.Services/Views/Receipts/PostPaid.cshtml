@@ -1,0 +1,112 @@
+﻿@using AcoreX.Helper;
+@using AcoreX.DateTimeCalendar
+
+@model Esunco.Models.ReceiptModel
+
+
+<div class="row">
+    <div class="col-xs-6 col-md-6">
+        <label>
+            تاریخ:
+        </label>
+        <span>@Model.Date.ToPersian().ToString("yy/MM/dd")</span>
+    </div>
+    <div class="col-xs-6 col-md-6">
+        <label>
+            ساعت:
+        </label>
+        <span>@Model.Date.ToString("HH:mm")</span>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-2">
+        <label>
+            شماره رسید:
+        </label>
+        <span>@Model.OrderID</span>
+    </div>
+
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <label>
+            نوع سیم کارت:
+        </label>
+        <span>@AcoreX.Helper.EnumHelper.GetEnumDescription(Model.SimType)</span>
+    </div>
+
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <label>
+            مبلغ دریافتی:
+        </label>
+        <span>@Model.Price.ToString("#,###") ريال</span>
+    </div>
+
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <label>
+            شماره تلفن خریداری شده:
+        </label>
+        <span class="ltr inline-block">@Model.Title</span>
+    </div>
+
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <label>
+            کد فعال سازی:
+        </label>
+        <span class="ltr">@Model.ActivationCode</span>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <label>
+            شناسه قبض:
+        </label>
+        <span class="ltr">@Model.ReceiptCode</span>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <label>
+            شناسه پرداخت:
+        </label>
+        <span class="ltr">@Model.PaymentCode</span>
+    </div>
+</div>
+@if (Model.ExpireDate.HasValue)
+{
+    <div class="row">
+        <div class="col-md-12">
+            <label>
+                تاریخ انقضا:
+            </label>
+            <span class="ltr">@Model.ExpireDate.Value.ToPersian().ToString("yy/MM/dd")</span>
+        </div>
+    </div>
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <label>
+            نام و نام خانوادگی خریدار:
+        </label>
+        <span class="ltr">@Model.ClientName</span>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <label>
+            آدرس سایت و شماره پشتیبانی:
+        </label>
+        <span class="ltr">@Model.ElesimContact</span>
+    </div>
+</div>
+
+
+
+

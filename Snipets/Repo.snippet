@@ -1,0 +1,70 @@
+<CodeSnippets
+    xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Shortcut>repo</Shortcut>
+      <Title>
+        Esunco Repository
+      </Title>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal>
+          <ID>Name</ID>
+          <Default>RepositoryType</Default>
+          <ToolTip>Repository Name</ToolTip>
+        </Literal>
+      </Declarations>
+      <Code Language="CSharp">
+        <![CDATA[#region  $Name$
+
+        public PaginatedList<$Name$Model> Get$Name$List()
+        {
+            using (var rep = new Repository<$Name$DataEntity>(base.UnitOfWork))
+            {
+                return new PaginatedList<$Name$Model>(rep.Items.ProjectTo<$Name$Model>());
+            }
+        }
+		
+        public $Name$Model New$Name$()
+        {
+            var model = new $Name$Model();
+            return model;            
+        }
+
+        public $Name$Model Save$Name$($Name$Model model)
+        {
+            using (var rep$Name$ = new Repository<$Name$DataEntity>(UnitOfWork))
+            {
+                var entity = rep$Name$.Items.FirstOrDefault(c => c.ID == model.ID);
+                if (entity == null)
+                {
+                    entity = new $Name$DataEntity();                    
+                }
+				rep$Name$.Save(entity);				
+                UnitOfWork.SaveChanges();
+                return Find$Name$(entity.ID);
+            }
+        }
+
+        public $Name$Model Find$Name$(long id)
+        {
+            return base.Find<$Name$Model, $Name$DataEntity>(id);
+        }
+
+        public void Delete$Name$(params long[] list)
+        {
+            base.Delete<$Name$DataEntity>(list);
+        }
+
+
+        #endregion]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+ 
+
+
+</CodeSnippets>
+
+

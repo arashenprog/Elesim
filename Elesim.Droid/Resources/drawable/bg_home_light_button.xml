@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--<ripple xmlns:android="http://schemas.android.com/apk/res/android" android:color="@color/colorPrimaryDark">
+    <item
+        android:drawable="@color/colorPrimary"/>
+
+</ripple>-->
+
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android"  xmlns:app="http://schemas.android.com/apk/res-auto">
+  <item>
+    <selector>
+      <item android:state_selected="true">
+        <color android:color="@color/colorPrimaryDark" />
+      </item>
+
+      <item android:state_activated="true">
+        <color android:color="@color/colorPrimaryDark" />
+      </item>
+
+      <item>
+        <color android:color="@color/colorPrimary" />
+      </item>
+    </selector>
+  </item>
+</layer-list>

@@ -1,0 +1,151 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/View/Shared/BaseMasterPage.master" AutoEventWireup="true" CodeFile="MainMasterPage.master.cs" Inherits="View_Shared_MainMasterPage" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
+
+    <asp:ContentPlaceHolder ID="HeadPlaceHolder" runat="server">
+    </asp:ContentPlaceHolder>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="body" runat="Server">
+    <div class="mainSplitterContainer">
+        <dx:ASPxSplitter ID="ASPxSplitter1" runat="server" FullscreenMode="True" Height="100%" Orientation="Horizontal" Width="100%">
+            <Panes>
+                <dx:SplitterPane>
+                    <Panes>
+                        <dx:SplitterPane Size="80px" MinSize="80px" AllowResize="False" ShowSeparatorImage="False" PaneStyle-Paddings-Padding="0">
+                            <ContentCollection>
+                                <dx:SplitterContentControl>
+                                    <div class="header">
+                                        <asp:ContentPlaceHolder ID="MainMenuPlaceHolder" runat="server">
+                                        </asp:ContentPlaceHolder>
+                                        <div class="accountBox">
+                                            <dx:ASPxMenu ID="UserMenu" runat="server" ShowAsToolbar="true" ShowPopOutImages="True" Width="100px">
+                                                <Items>
+                                                    <dx:MenuItem Name="User" Text="User" DropDownMode="true">
+                                                        <Items>
+                                                            <dx:MenuItem Text="خروج از سیستم" NavigateUrl="~/Login?do=signout" />
+                                                        </Items>
+                                                        <Image IconID="people_employee_16x16">
+                                                        </Image>
+                                                    </dx:MenuItem>
+                                                </Items>
+                                            </dx:ASPxMenu>
+                                        </div>
+                                    </div>
+                                </dx:SplitterContentControl>
+                            </ContentCollection>
+                        </dx:SplitterPane>
+                        <dx:SplitterPane AllowResize="False" ShowSeparatorImage="False">
+                            <Panes>
+                                <dx:SplitterPane MinSize="250px" Size="250px" AllowResize="True" ShowCollapseBackwardButton="True" PaneStyle-Paddings-Padding="0">
+                                    <ContentCollection>
+                                        <dx:SplitterContentControl ID="SplitterContentControl1" runat="server">
+                                            <dx:ASPxNavBar ID="FiltersNavBar" runat="server" ShowExpandButtons="true" AllowExpanding="true" Width="100%" AutoPostBack="false" SyncSelectionMode="CurrentPath">
+                                                <Groups>
+                                                    <dx:NavBarGroup Text="مدیریت سیم کارتها">
+                                                        <Items>
+                                                            <dx:NavBarItem Text="مدیریت سیم کارت ها" NavigateUrl="~/Sims/List.aspx" />
+                                                            <dx:NavBarItem Text="مدیریت پک ها" NavigateUrl="~/Sims/Packs.aspx" />
+                                                            <dx:NavBarItem Text="مزایده" NavigateUrl="~/Sims/Auctions.aspx" />
+                                                        </Items>
+                                                    </dx:NavBarGroup>
+                                                    <dx:NavBarGroup Text="گزارشات">
+                                                        <Items>
+                                                            <dx:NavBarItem Text="گزارش فروش " NavigateUrl="~/Sell/Orders.aspx" />
+                                                            <dx:NavBarItem Text="گزارش سفارشات مشتری" NavigateUrl="~/Reports/ClientOrders.aspx" />
+                                                            <dx:NavBarItem Text="گزارش پرداخت" NavigateUrl="~/Reports/Payments.aspx" />
+                                                            <dx:NavBarItem Text="سود و زیان" NavigateUrl="~/Reports/Profit.aspx" />
+                                                            <dx:NavBarItem Text="گزارش فروش پیش شماره" NavigateUrl="~/Reports/SimCode.aspx" />
+                                                        </Items>
+                                                    </dx:NavBarGroup>
+                                                    <dx:NavBarGroup Text="مشتریان">
+                                                        <Items>
+                                                            <dx:NavBarItem Text="لیست مشتریان" NavigateUrl="~/Clients/List.aspx" />
+                                                            <%--   <dx:NavBarItem Text="لیست سیاه" NavigateUrl="~/Clients/BalckList.aspx" />--%>
+                                                        </Items>
+                                                    </dx:NavBarGroup>
+                                                    <dx:NavBarGroup Text="امنیت">
+                                                        <Items>
+                                                            <dx:NavBarItem Text="کاربران" NavigateUrl="~/Settings/Users.aspx" />
+                                                        </Items>
+                                                    </dx:NavBarGroup>
+                                                </Groups>
+                                            </dx:ASPxNavBar>
+                                        </dx:SplitterContentControl>
+                                    </ContentCollection>
+                                </dx:SplitterPane>
+                                <dx:SplitterPane Name="MainContentPane" ScrollBars="None" PaneStyle-Paddings-Padding="0">
+                                    <ContentCollection>
+                                        <dx:SplitterContentControl ID="SplitterContentControl2" runat="server" Height="100%">
+                                            <div id="MainContainer" style="height: 100%;">
+                                                <dx:ASPxCallbackPanel runat="server" ID="MasterCallbackPanel" ClientInstanceName="MasterCallbackPanel"
+                                                    RenderMode="Div" Width="100%" Height="100%" OnCallback="MasterCallbackPanel_Callback">
+                                                    <PanelCollection>
+                                                        <dx:PanelContent>
+                                                            <div class="main-content">
+                                                                <asp:ContentPlaceHolder ID="MainContentPlaceHolder" runat="server">
+                                                                </asp:ContentPlaceHolder>
+                                                            </div>
+                                                        </dx:PanelContent>
+                                                    </PanelCollection>
+                                                    <ClientSideEvents CallbackError="Master.GlobalEvents.OnCallbackError" EndCallback="Master.GlobalEvents.OnEndCallback" />
+                                                </dx:ASPxCallbackPanel>
+                                            </div>
+                                        </dx:SplitterContentControl>
+                                    </ContentCollection>
+                                </dx:SplitterPane>
+                            </Panes>
+
+                        </dx:SplitterPane>
+                    </Panes>
+                </dx:SplitterPane>
+            </Panes>
+        </dx:ASPxSplitter>
+    </div>
+    <dx:ASPxPopupControl ID="MasterPopupControl" ClientInstanceName="MasterPopupControl" runat="server"
+        Width="50px" Height="50px" ContentUrl="javascript:void(0)" ShowFooter="false"
+        Modal="True" EnableViewState="false" PopupHorizontalAlign="WindowCenter" PopupVerticalAlign="WindowCenter"
+        ShowShadow="true" AllowDragging="true" CloseAction="CloseButton">
+        <ClientSideEvents
+            CloseUp="function(s,e){  e.window.onClose(s,e); if(e.handled==true) return; MasterPopupControl.SetWindowContentHTML(e.window,''); }"
+            Closing="function(s,e){ e.window.onClosing(s,e);if(e.handled==true) return; MasterPopupControl.SetWindowContentHTML(e.window,''); }"
+            Shown="function(s,e){ e.window.onShown(s,e); }" />
+        <Windows>
+            <dx:PopupWindow Modal="true" Name="win1" ShowRefreshButton="True" HeaderImage-SpriteProperties-CssClass="sprite16 sprite_form" ContentUrl="javascript:void(0)">
+                <ContentStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                <ContentStyle Paddings-Padding="0" />
+            </dx:PopupWindow>
+            <dx:PopupWindow Modal="true" Name="win2" ShowRefreshButton="True" HeaderImage-SpriteProperties-CssClass="sprite16 sprite_form" ContentUrl="javascript:void(0)">
+                <ContentStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                <ContentStyle Paddings-Padding="0" />
+            </dx:PopupWindow>
+            <dx:PopupWindow Modal="true" Name="win3" ShowRefreshButton="True" HeaderImage-SpriteProperties-CssClass="sprite16 sprite_form" ContentUrl="javascript:void(0)">
+                <ContentStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                <ContentStyle Paddings-Padding="0" />
+            </dx:PopupWindow>
+            <dx:PopupWindow Modal="true" Name="pop" ShowRefreshButton="False" ShowFooter="True" HeaderImage-SpriteProperties-CssClass="sprite16 sprite_warning">
+                <FooterTemplate>
+                    <center>
+                            <div class="popup">
+                                <div class="popup-confirm">
+                                    <dx:ASPxButton ClientInstanceName="btnPopupOk" ID="btnPopupOk" runat="server" AllowFocus="true"
+                                        Text="تایید" >
+                                        <ClientSideEvents Click="function(s,e){ MasterPopupControl.HideWindow(MasterPopupControl.GetWindowByName('pop')); }" />
+                                    </dx:ASPxButton>
+                                </div>
+                                <div class="popup-cancel">
+                                    <dx:ASPxButton ClientInstanceName="btnPopupCancel" ID="btnPopupCancel" runat="server"
+                                        AllowFocus="true" Text="Cancel" >
+                                        <ClientSideEvents Click="function(s,e){ MasterPopupControl.HideWindow(MasterPopupControl.GetWindowByName('pop'));}" />
+                                    </dx:ASPxButton>
+                                </div>
+                            </div >
+                            <div class="clear"></div>
+                        </center>
+                </FooterTemplate>
+                <FooterStyle Paddings-Padding="5px" />
+                <ContentStyle CssClass="popup-content" />
+            </dx:PopupWindow>
+        </Windows>
+    </dx:ASPxPopupControl>
+</asp:Content>
+

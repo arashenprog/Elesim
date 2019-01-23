@@ -1,0 +1,70 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>اِلِ سـیم | ورود</title>
+    <link rel="stylesheet" href="./node_modules/bootstrap-v4-rtl/dist/css/bootstrap-rtl.min.css">
+    <link rel="stylesheet" href="./assets/styles/master.css">
+
+
+</head>
+
+<body class="rtl">
+    <div class="container-fluid full-page">
+        <div class="row">
+            <div class="col-lg-4 col-sm-12 pl0 pr0">
+                <div class="form-logo">
+                    <img src="./assets/images/logo.png">
+                    <h5>ورود به حساب کاربری</h5>
+                </div>
+
+                <div class="full-form">
+                    <div class="timer" style="display: none;">
+                        <span>کد ارسال شده را وارد کنید</span>
+                        <div class="counter">
+                            60
+                        </div>
+                        ثانیه
+
+                    </div>
+                    <form id="confirm-number-form" style="display: none;">
+                        <div class="input-group-lg">
+                            <label for="name">کد تایید ارسال شده</label>
+                            <input type="text" class="form-control " id="name">
+                        </div>
+                        <div class="mr-lg"></div>
+                        <button type="submit" class="btn btn-block btn-success btn-lg"> تایید و ورود </button>
+                    </form>
+                    <form id="login-form">
+                        <div class="input-group-lg">
+                            <label for="phoneNumber">شماره تلفن</label>
+                            <input type="text" class="form-control ltr " id="phoneNumber" aria-describedby="phoneHelp"
+                                placeholder="09 -- --- -- --">
+                            <small id="phoneHelp" class="form-text text-muted">شماره تلفنی که در هنگام ثبت نام وارد
+                                کرده اید</small>
+                        </div>
+
+                        <div class="mr-lg"></div>
+                        <button type="submit" class="btn btn-block btn-success btn-lg" onclick="onLoginClick(event)">ورود</button>
+                        <button type="submit" class="btn btn-block btn-primary btn-lg">حساب کاربری ندارم ، ثبت نام
+                            میکنم</button>
+
+                    </form>
+                </div>
+            </div>
+            <div class="col-lg-8 col-sm-12 pl0 pr0">
+                <div class="full-background login-background">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="./node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="./node_modules/poper/dist/poper.js"></script>
+    <script src="./node_modules/bootstrap-v4-rtl/dist/js/bootstrap.min.js"></script>
+    <script src="./assets/js/theme.js"></script>
+</body>
+
+</html>

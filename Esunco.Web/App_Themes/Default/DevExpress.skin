@@ -1,0 +1,166 @@
+﻿<dx:ASPxMenu runat="server"  ItemAutoWidth="false" Width="100%" AppearAfter="50" DisappearAfter="50"   ShowAsToolbar="true">
+        
+</dx:ASPxMenu>
+
+
+
+
+
+
+ <dx:ASPxColorEdit runat="server"  SaveStateToCookies="true" Color="#f7f7f7"  EnableCustomColors="true" CustomColorButtonText="انتخاب"  PopupHorizontalAlign="OutsideLeft"  OkButtonText="تایید" CancelButtonText="انصراف"   >
+                           
+   </dx:ASPxColorEdit>
+
+<dx:ASPxGridView runat="server" AutoGenerateColumns="False"  
+    Width="100%"  >
+    <Settings HorizontalScrollBarMode="Auto" VerticalScrollBarMode="Visible" VerticalScrollableHeight="0" ColumnMinWidth="200" />
+    <SettingsBehavior AllowFocusedRow="true" EnableRowHotTrack="true"  EnableCustomizationWindow="true"/> 
+    <SettingsPager Mode="ShowPager"  AllButton-Text="تمامی"  FirstPageButton-Text="اول" LastPageButton-Text="آخر" NextPageButton-Text="بعدی" PrevPageButton-Text="قبلی" 
+           PageSize="16" ShowEmptyDataRows="true" AlwaysShowPager="true"  Summary-Text="صفحه {0} از {1}&nbsp;&nbsp;({2} ردیف)" Summary-EmptyText="0 ردیف"/>
+    <SettingsContextMenu Enabled="true" EnableFooterMenu="False" ColumnMenuItemVisibility-ShowFooter="false" RowMenuItemVisibility-DeleteRow="false" RowMenuItemVisibility-NewRow="false" RowMenuItemVisibility-EditRow="false" />
+    <SettingsCommandButton RenderMode="Button" />
+    <SettingsText 
+			GroupContinuedOnNextPage=" (ادامه در صفحه بعد)  "
+            ContextMenuRefresh="بروز رسانی"  
+            ContextMenuClearFilter="پاک کردن فیلتر" 
+            ContextMenuClearGrouping="پاک کردن گروه بندی" 
+            ContextMenuDeleteRow="حذف رکورد" 
+            ContextMenuEditRow="ویرایش" 
+            ContextMenuNewRow="جدید"
+            ContextMenuSortAscending="مرتب سازی صعودی"
+            ContextMenuSortDescending="مرتب سازی نزولی"
+            ContextMenuClearSorting="پاک کردن مرتب سازی"
+            ContextMenuGroupByColumn="گروه بندی بر اساس این ستون"
+            ContextMenuShowGroupPanel="نمایش پنل گروه بندی"
+            ContextMenuHideColumn="عدم نمایش ستون"
+            ContextMenuShowCustomizationWindow="نمایش ستونها"
+            ContextMenuShowFilterRow="نمایش فلیتر"
+            CommandEdit="ویرایش"
+            CommandDelete="حذف"
+            CommandNew="جدید"
+            CommandRecover="لغو حذف" 
+            CommandCancel="انصراف" CommandUpdate="ذخیره"
+            CommandBatchEditUpdate="دخیره تغیرات"  CommandBatchEditCancel="انصراف"
+            EmptyDataRow="موردی یافت نشد" 
+            GroupPanel="لطفا جهت گروه بندی ستون یا ستون های مورد نظرتان را به داخل این کادر بکشید"
+            PopupEditFormCaption="ایجاد / ویرایش" 
+            SearchPanelEditorNullText="جستجو..."
+             />
+    <SettingsLoadingPanel Text="لطفا کمی صبر کنید"/>
+
+    <SettingsSearchPanel Visible="true" />
+    <SettingsAdaptivity AdaptivityMode="Off" />
+    <SettingsEditing Mode="Inline">
+        <BatchEditSettings EditMode="Row"  AllowValidationOnEndEdit="true" AllowEndEditOnValidationError="true" StartEditAction="DblClick"/>
+    </SettingsEditing>
+        
+    <SettingsCookies Enabled="false"   StoreColumnsVisiblePosition="true" StoreGroupingAndSorting="true" />
+    <Styles>
+        <AlternatingRow Enabled="True"/>
+        <Cell  HorizontalAlign="Right" Wrap="False" Paddings-Padding="5px" />
+        <CommandColumn HorizontalAlign="Right" />
+        <Header HorizontalAlign="Right" Paddings-Padding="5px" Paddings-PaddingRight="3px" Paddings-PaddingLeft="3px" />
+        <PagerBottomPanel Font-Size="1.2em" />
+        <GroupPanel HorizontalAlign="Right" />
+        <GroupFooter HorizontalAlign="Right" />
+        <GroupRow HorizontalAlign="Right" />
+    </Styles>
+    
+    <Images>
+        <ContextMenuRefresh  SpriteProperties-CssClass="sprite16 sprite_refresh" />
+        <ContextMenuDeleteRow  SpriteProperties-CssClass="sprite16 sprite_delete" />
+        <ContextMenuEditRow  SpriteProperties-CssClass="sprite16 sprite_edit" />
+    </Images>
+        
+    <SettingsPopup EditForm-VerticalAlign="WindowCenter" EditForm-HorizontalAlign="WindowCenter" EditForm-Modal="true"  />
+</dx:ASPxGridView>
+
+<dx:ASPxPageControl Width="100%" Height="100%"  
+    runat="server" ActiveTabIndex="0"  TabSpacing="0px"
+    EnableHierarchyRecreation="True">
+    <TabStyle  Paddings-Padding="7px"/>
+</dx:ASPxPageControl>
+
+
+<dx:ASPxTreeList  runat="server" Width="100%" Height="100%" >
+    <Settings VerticalScrollBarMode="Auto" ScrollableHeight="500" GridLines="Both" />
+    <Styles>
+        <AlternatingNode Enabled="True" />
+        <IndentWithButton Paddings-PaddingRight="10px" />
+        <Header HorizontalAlign="Right" Paddings-Padding="5px" Paddings-PaddingRight="5px" Paddings-PaddingLeft="5px" />
+        <Indent Paddings-Padding="10px" />
+        <Node HorizontalAlign="Right" />
+        <Cell Paddings-Padding="5px" />
+    </Styles>
+    <SettingsBehavior AllowDragDrop="false" AllowFocusedNode="true" ColumnResizeMode="Disabled" AllowSort="true" FocusNodeOnExpandButtonClick="true" AutoExpandAllNodes="false" ExpandCollapseAction="NodeDblClick" />
+</dx:ASPxTreeList>
+
+<dx:ASPxTreeView  runat="server" >
+</dx:ASPxTreeView>
+
+<dx:ASPxPopupControl  runat="server"  Modal="True"  PopupHorizontalAlign="WindowCenter" PopupVerticalAlign="WindowCenter"
+        ShowShadow="true"   AllowDragging="true" CloseAction="CloseButton">
+</dx:ASPxPopupControl>
+
+
+ <dx:ASPxUploadControl runat="server" ShowProgressPanel="false" ShowAddRemoveButtons="false"  UploadMode="Advanced"
+        ShowClearFileSelectionButton="false" ShowUploadButton="false" NullText="آپلود فایل ..." Width="100%">           
+    <ValidationSettings  MaxFileSizeErrorText="سایز فایل انتحابی بیش تر از حد مجاز است" NotAllowedFileExtensionErrorText="پسوند فایل انتخاب شده درست نمی باشد">
+    </ValidationSettings>
+    <AdvancedModeSettings EnableMultiSelect="true" />
+    <BrowseButtonStyle Paddings-Padding="7" />
+    <NullTextStyle  />
+    <BrowseButton Image-ToolTip="آپلود" Text="" Image-SpriteProperties-CssClass="sprite16 sprite_upload" />
+    <TextBoxStyle  Paddings-Padding="5" />
+ </dx:ASPxUploadControl>
+
+<dx:ASPxButton runat="server" Width="70px" AutoPostBack="false" UseSubmitBehavior="false"  Paddings-Padding="3px">
+</dx:ASPxButton>
+
+<dx:ASPxButtonEdit runat="server" Width="100px" AutoPostBack="false" UseSubmitBehavior="false"  Paddings-Padding="3px" Height="25px">
+    <ValidationSettings Display="Dynamic" ErrorDisplayMode="ImageWithTooltip" RequiredField-IsRequired="false" ValidationGroup="FormGroup" RequiredField-ErrorText="مقدار این فیلد الزامی می باشد."/>
+</dx:ASPxButtonEdit>
+
+<dx:ASPxDropDownEdit runat="server" Width="100px" AutoPostBack="false" UseSubmitBehavior="false"  Paddings-Padding="3px" Height="25px">
+</dx:ASPxDropDownEdit>
+
+<dx:ASPxRadioButtonList runat="server" AutoPostBack="false" UseSubmitBehavior="false" >
+    <Border BorderWidth="0" />
+    <Paddings Padding="1" PaddingTop="3" />
+</dx:ASPxRadioButtonList>
+
+
+<dx:ASPxLabel runat="server" >
+</dx:ASPxLabel>
+
+<dx:ASPxCheckBox runat="server" >
+</dx:ASPxCheckBox>
+
+<dx:ASPxListBox runat="server" >
+</dx:ASPxListBox>
+
+<dx:ASPxTextBox runat="server" Width="100px" AutoPostBack="false" UseSubmitBehavior="false"  Paddings-Padding="3px" Height="25px">
+    <ValidationSettings Display="Dynamic" ErrorDisplayMode="ImageWithTooltip" RequiredField-IsRequired="false" ValidationGroup="FormGroup" RequiredField-ErrorText="مقدار این فیلد الزامی می باشد."/>
+</dx:ASPxTextBox>
+
+
+<dx:ASPxSpinEdit runat="server" Width="100px" AutoPostBack="false" UseSubmitBehavior="false"  Paddings-Padding="3px" Height="25px">
+    <ValidationSettings Display="Dynamic" ErrorDisplayMode="ImageWithTooltip" RequiredField-IsRequired="false" ValidationGroup="FormGroup" RequiredField-ErrorText="مقدار این فیلد الزامی می باشد."/>
+</dx:ASPxSpinEdit>
+
+<dx:ASPxTokenBox runat="server"  Height="25px" >
+</dx:ASPxTokenBox>
+
+<dx:ASPxMemo runat="server" Width="100px" AutoPostBack="false" UseSubmitBehavior="false"  Paddings-Padding="3px">
+ <ValidationSettings Display="Dynamic" ErrorDisplayMode="ImageWithTooltip" RequiredField-IsRequired="false" ValidationGroup="FormGroup" RequiredField-ErrorText="مقدار این فیلد الزامی می باشد."/>
+</dx:ASPxMemo>
+
+<dx:ASPxComboBox runat="server" Width="100px" AutoPostBack="false" UseSubmitBehavior="false"  
+    HelpTextStyle-CssClass="cdxCombobox-HelperText" HelpTextSettings-Position="Top" ClearButton-DisplayMode="OnHover"
+    HelpTextStyle-ForeColor="Black" HelpTextStyle-Font-Size="Small" Paddings-Padding="3px" Height="25px">
+    <DropDownButton Width="18px" />
+    <ValidationSettings Display="Dynamic" ErrorDisplayMode="ImageWithTooltip" RequiredField-IsRequired="false" ValidationGroup="FormGroup" RequiredField-ErrorText="مقدار این فیلد الزامی می باشد."/>
+</dx:ASPxComboBox>
+
+<dx:ASPxNavBar runat="server" Width="100px" AutoPostBack="false"  >
+</dx:ASPxNavBar>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+  <group android:checkableBehavior="none">
+    <item
+           android:id="@+id/action_credit"
+           android:icon="@drawable/ic_money"
+           android:title="افزایش اعتبار حساب" />
+    <item
+          android:id="@+id/action_account"
+          android:icon="@drawable/ic_account_circle_gray"
+          android:title="ویرایش مشخصات کاربری" />
+  <!--<item
+        android:id="@+id/action_shopping_cart"
+        android:icon="@drawable/ic_shopping_cart_grey_24dp"
+        android:title="سبد خرید" />-->
+    <item
+        android:id="@+id/history"
+        android:icon="@drawable/ic_update_grey_24dp"
+        android:title="تاریخچه خرید" />
+    <item
+        android:id="@+id/action_about"
+        android:icon="@drawable/ic_info_gray_24dp"
+        android:title="درباره اِلِ سیم" />
+    <item
+      android:id="@+id/action_update"
+      android:icon="@drawable/ic_system_update_gray"
+      android:title="بروزرسانی" />
+    <item
+      android:id="@+id/action_signout"
+      android:icon="@drawable/ic_exit_to_app_gray"
+      android:title="خروج از حساب" />
+  </group>
+
+</menu>

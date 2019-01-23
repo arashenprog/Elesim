@@ -1,0 +1,36 @@
+﻿@{
+    Layout = null;
+}
+
+@model Esunco.Models.PaymentCallbackModel
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>پرداخت</title>
+    <link href="~/content/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/content/css/bootstrap-rtl.css" rel="stylesheet" />
+    <link href="~/content/css/master.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0" />
+</head>
+<body class="@(ViewBag.Result ? "green":"red")">
+    <section class="container-fluid">
+        <main>
+            <a href="http://elesim.ir">
+                <img src="~/content/images/ic_logo_main.png" id="logo">
+            </a>
+            <h1 class="@(ViewBag.Result ? "text-success": "text-danger")">
+                @ViewBag.Message
+            </h1>
+            <h4>شناسه درخواست: @Model.SaleOrderId</h4>
+            <div class="margin-40"></div>
+            <div class="form-group">
+                <input type="button" class="btn btn-info btn-wide" id="pay" value="بازگشت به برنامه">
+            </div>
+        </main>
+    </section>
+    <script src="~/content/js/jquery.js"></script>
+    <script src="~/content/js/bootstrap.js"></script>
+    <script src="~/content/js/theme.js"></script>
+</body>
+</html>

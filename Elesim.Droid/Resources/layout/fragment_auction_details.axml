@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootView"
+    android:background="@color/white"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:fillViewport="true"
+        android:scrollbars="vertical"
+        android:scrollbarStyle="insideInset"
+        android:layout_above="@+id/btnBuy">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:padding="16dp">
+            <ImageView
+                android:id="@+id/thumbnail"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:clickable="true"
+                android:scaleType="fitXY"
+                app:srcCompat="@drawable/ic_hamrah_small" />
+            <TextView
+                android:id="@+id/tbxTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textDirection="rtl"
+                android:gravity="center"
+                android:layout_marginTop="10dp"
+                android:text="عنوان"
+                android:textColor="@color/colorPrimaryText"
+                android:textSize="20dp" />
+            <TextView
+                android:id="@+id/tbxLeftTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textDirection="ltr"
+                android:gravity="center"
+                android:layout_marginTop="10dp"
+                android:text="10:20:30"
+                android:textColor="@color/colorRed"
+                android:textSize="36dp" />
+            <TextView
+                android:id="@+id/tbxNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textDirection="ltr"
+                android:gravity="center"
+                android:layout_marginTop="10dp"
+                android:text="0913 204 1267"
+                android:textColor="@color/colorPrimaryText"
+                android:textSize="18dp" />
+            <TextView
+                android:id="@+id/tbxPrice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textDirection="rtl"
+                android:gravity="center"
+                android:layout_marginTop="10dp"
+                android:text="250,000 تومان"
+                android:textColor="@color/colorOrange"
+                android:textSize="16dp" />
+            <TextView
+                android:id="@+id/tbxTopPrice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textDirection="rtl"
+                android:gravity="center"
+                android:layout_marginTop="10dp"
+                android:text="250,000 تومان"
+                android:textColor="@color/colorGreen"
+                android:textSize="16dp" />
+            <TextView
+                android:id="@+id/tbxYourPrice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textDirection="rtl"
+                android:gravity="center"
+                android:layout_marginTop="10dp"
+                android:text="250,000 تومان"
+                android:textColor="@color/colorPrimary"
+                android:textSize="16dp" />
+        </LinearLayout>
+    </ScrollView>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_bottom_button_green"
+        android:padding="16dp"
+        android:id="@+id/btnBuy"
+        android:text="شرکت در مناقصه"
+        android:textColor="@color/white"
+        android:layout_alignParentBottom="true" />
+<!--android:drawableLeft="@drawable/ic_chevron_left"
+  android:drawableRight="@drawable/ic_gavel_white"-->
+</RelativeLayout>

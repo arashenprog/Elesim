@@ -1,0 +1,447 @@
+﻿@font-face {
+    font-family: IRANSans;
+    font-style: normal;
+    font-weight: bold;
+    src: url('fonts/woff/IRANSansWeb_Bold.woff') format('woff'); /* All Major Browsers */
+}
+
+@font-face {
+    font-family: IRANSans;
+    font-style: normal;
+    font-weight: 500;
+    src: url('fonts/woff/IRANSansWeb_Medium.woff') format('woff'); /* All Major Browsers */
+}
+
+@font-face {
+    font-family: IRANSans;
+    font-style: normal;
+    font-weight: 300;
+    src: url('fonts/woff/IRANSansWeb_Light.woff') format('woff'); /* All Major Browsers */
+}
+
+@font-face {
+    font-family: IRANSans;
+    font-style: normal;
+    font-weight: 200;
+    src: url('fonts/woff/IRANSansWeb_UltraLight.woff') format('woff'); /* All Major Browsers */
+}
+
+@font-face {
+    font-family: IRANSans;
+    font-style: normal;
+    font-weight: normal;
+    src: url('fonts/woff/IRANSansWeb.woff') format('woff'); /* All Major Browsers */
+}
+
+* {
+    font-size: small;
+}
+
+html, body, form {
+    height: 100%;
+    padding: 0px;
+    margin: 0;
+    overflow: hidden;
+}
+
+fieldset {
+    border: solid 1px #B8B8B8;
+    padding: 10px;
+}
+
+legend {
+    color: #959595;
+}
+
+label {
+    margin-bottom: 5px;
+    display: inline-block;
+}
+
+span, a, div, label {
+    /*white-space: nowrap!important;*/
+}
+
+.nowrap label {
+    white-space: nowrap !important;
+}
+
+td {
+    padding: 0px;
+}
+
+.hide {
+    visibility: collapse;
+}
+
+.wrapper {
+    direction: rtl;
+    min-height: 99%;
+    height: 100%;
+}
+
+.header {
+    height: 80px;
+    background-color: #0091ea;
+    position: relative;
+}
+
+.footer {
+    height: 30px;
+    background-color: #5066ac;
+    position: fixed;
+    bottom: 0;
+    text-align: right;
+    font-family: Tahoma;
+    font-size: small;
+    border-top: solid 1px #3d5294;
+}
+
+    .footer span {
+        margin-top: 5px;
+        margin-right: 10px;
+        display: block;
+        direction: rtl;
+        color: #fff;
+    }
+
+/*.header img.logo {
+    position: absolute;
+    right: 10px;
+    top: 12px;
+    display: block;
+}*/
+img.logo {
+    display: inline-block;
+    margin: 15px 10px;
+    width: 250px;
+}
+
+.header span.title {
+    position: absolute;
+    right: 120px;
+    color: white;
+    top: 40px;
+    display: block;
+    font-family: Tahoma;
+    font-size: large;
+    line-height: 0px;
+    padding: 0px;
+}
+
+.header span.company {
+    position: absolute;
+    right: 120px;
+    color: white;
+    top: 55px;
+    display: block;
+    font-family: 'B Badr';
+    font-size: medium;
+    line-height: 0px;
+    padding: 0px;
+}
+
+.header img.logo-text {
+    position: absolute;
+    right: 120px;
+    color: white;
+    top: 55px;
+    display: block;
+    padding: 0px;
+}
+
+.header .accountBox {
+    position: absolute;
+    top: 25px;
+    left: 10px;
+    z-index: 1000;
+}
+
+.menu {
+    height: 30px;
+}
+
+.content {
+    /*height: calc(100% - 60px);*/
+    position: fixed;
+    top: 118px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    clear: both;
+    margin: 0px;
+}
+
+.tab-content {
+    position: fixed;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    clear: both;
+    margin: 0px;
+}
+
+.main-content {
+    height: 100%;
+    margin: auto;
+}
+
+
+
+.footer {
+    width: 100%;
+}
+
+.footer-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    margin: 10px;
+}
+
+    .footer-bar .btn-save, .footer-bar-pop .btn-save {
+        float: left;
+    }
+
+    .footer-bar .btn-cancel, .footer-bar-pop .btn-cancel {
+        float: left;
+        margin-right: 5px;
+    }
+
+    .footer-bar .btn-option, .footer-bar-pop .btn-option {
+        float: left;
+        margin-right: 10px;
+    }
+
+.footer-bar-pop {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    margin: 10px;
+}
+
+
+
+a:link {
+    color: black;
+}
+
+
+.footer-bar .btn-save, .footer-bar-pop .btn-save {
+    float: left;
+}
+
+.footer-bar .btn-cancel, .footer-bar-pop .btn-cancel {
+    float: left;
+    margin-right: 5px;
+}
+
+.footer-bar .btn-option, .footer-bar-pop .btn-option {
+    float: left;
+    margin-right: 10px;
+}
+
+.clear {
+    clear: both;
+}
+
+.over-top {
+    z-index: 10000000;
+}
+
+.rtl {
+    direction: rtl;
+}
+
+.ltr {
+    direction: ltr;
+}
+
+
+
+
+
+.memo {
+    overflow-wrap: break-word;
+    clear: both;
+    white-space: pre-line;
+}
+
+
+.block {
+    display: block;
+}
+
+.inline {
+    display: inline;
+}
+
+.highlight {
+    background-color: #ffd83a;
+    color: black;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.margin-5 {
+    margin: 5px;
+}
+
+.margin-10 {
+    margin: 10px;
+}
+
+.margin-20 {
+    margin: 20px;
+}
+
+.margin-40 {
+    margin: 40px;
+}
+
+.padding-5 {
+    padding: 5px;
+}
+
+.padding-10 {
+    padding: 10px;
+}
+
+.padding-20 {
+    margin: 20px;
+}
+
+.padding-40 {
+    padding: 40px;
+}
+
+.full-width {
+    width: 100%;
+}
+
+table.edit-from {
+    width: 100%;
+}
+
+    table.edit-from td {
+        padding:2px;
+    }
+
+.novalidate {
+    margin: 3px;
+}
+
+.error {
+    background: #ffecec url('../../Content/Images/Icons/large/alarm-error.png') no-repeat 99% 50%;
+    border: 1px solid #f5aca6;
+}
+
+.success {
+    background: #e9ffd9 url('../../Content/Images/Icons/large/alarm-success.png') no-repeat 99% 50%;
+    border: 1px solid #a6ca8a;
+}
+
+.warning {
+    background: #fff8c4 url('../../Content/Images/Icons/large/alarm-warning.png') no-repeat 99% 50%;
+    border: 1px solid #f2c779;
+}
+
+.notice {
+    background: #e3f7fc url('../../Content/Images/Icons/large/alarm-info.png') no-repeat 99% 50%;
+    border: 1px solid #8ed9f6;
+}
+
+
+
+.popup {
+    display: inline-block;
+    text-align: center;
+}
+
+.popup-confirm {
+    display: table-cell;
+    padding-left: 2px;
+    padding-right: 2px;
+}
+
+.popup-cancel {
+    display: table-cell;
+    padding-left: 2px;
+    padding-right: 2px;
+}
+
+.popup-content {
+    text-align: right;
+    padding: 5px;
+}
+
+.popup-window-content {
+    text-align: right;
+    padding: 7px;
+    height: 100%;
+}
+
+    .popup-window-content table.form {
+        width: 100%;
+    }
+
+        .popup-window-content table.form td {
+            padding: 3px;
+        }
+
+            .popup-window-content table.form td.label {
+                text-align: left;
+                min-width: 50px;
+            }
+
+                .popup-window-content table.form td.label.md {
+                    min-width: 100px;
+                }
+
+div.timeOutContainer {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+}
+
+div.timeOut {
+    opacity: 0.6;
+    background-color: #da7878;
+    text-align: center;
+    vertical-align: middle;
+    display: table;
+    width: 100%;
+    height: 100%;
+}
+
+span.timeOutCounter {
+    display: table-cell;
+    vertical-align: middle;
+    font-size: 120px;
+    color: #FFF;
+    opacity: 0;
+    font-family: Traffic;
+}
+
+
+.dxm-horizontal {
+    border-bottom: 1px solid #d1d1d1;
+}
+
+.dxgvSearchPanel_Moderno {
+    margin-right: 20px !important;
+    margin-left: 20px !important;
+}
+/* fix treeList height */
+.dxtlCSD {
+    height: 100% !important;
+}

@@ -1,0 +1,1407 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DomainModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="2.0.0.0" name="EntityModel" namespace="Esunco.Data" showPropertiesCompartment="true" xmlns="http://www.telerik.com/ORM">
+  <orm:orm name="EntityModel" backend="mssql" default-schema="dbo" xmlns:orm="http://tempuri.org/ORM">
+    <orm:namespace name="Esunco.Data" default="true">
+      <orm:class name="UserDataEntity" uniqueId="85873cfa-a728-4e0d-aeb7-d34b33916e28">
+        <orm:table name="Users" />
+        <orm:identity>
+          <orm:key-generator name="autoinc">
+            <orm:key-generator-member property-name="ID" />
+          </orm:key-generator>
+          <orm:single-field field-name="_iD" />
+        </orm:identity>
+        <orm:concurrency strategy="changed" />
+        <orm:field name="_iD" property="ID" behavior="readwrite" uniqueId="23a8c8d6-9e57-4edb-b8c4-ae18ab562134" type="System.Int64">
+          <orm:column name="ID" sql-type="bigint" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int64" />
+        </orm:field>
+        <orm:field name="_username" property="Username" behavior="readwrite" uniqueId="c50309d7-cf00-4422-a93b-d7a2e2e1c011" type="System.String">
+          <orm:column name="Username" sql-type="varchar" nullable="false" length="100" scale="0" ado-type="StringVariableLength" />
+        </orm:field>
+        <orm:field name="_passwordSalt" property="PasswordSalt" behavior="readwrite" uniqueId="bc95d695-5705-41d5-8fcd-e5586a558bab" type="System.String">
+          <orm:column name="PasswordSalt" sql-type="varchar" nullable="false" length="50" scale="0" ado-type="StringVariableLength" />
+        </orm:field>
+        <orm:field name="_email" property="Email" behavior="readwrite" uniqueId="a9697c2a-a42d-420c-8fd7-cded4b1f39ac" type="System.String">
+          <orm:column name="Email" sql-type="nvarchar" nullable="true" length="100" scale="0" ado-type="UnicodeStringVariableLength" />
+        </orm:field>
+        <orm:field name="_roleID" property="RoleID" behavior="readwrite" uniqueId="05839f68-9a7e-4fdb-bb52-5c1e17396c75" type="System.Byte">
+          <orm:column name="RoleID" sql-type="tinyint" nullable="false" length="0" scale="0" ado-type="Byte" />
+        </orm:field>
+        <orm:field name="_enabled" property="Enabled" behavior="readwrite" uniqueId="6ebdb234-b54f-4d8d-a5f5-90ba302d1990" type="System.Boolean">
+          <orm:column name="Enabled" sql-type="bit" nullable="false" length="0" scale="0" ado-type="Bit" />
+        </orm:field>
+        <orm:field name="_registerTime" property="RegisterTime" behavior="readwrite" uniqueId="03f2af73-0e7e-4334-bbf0-97ea7599f1ab" type="System.DateTime">
+          <orm:column name="RegisterTime" sql-type="datetime" nullable="false" length="0" scale="0" ado-type="DateTime" />
+        </orm:field>
+        <orm:field name="_lastActivityTime" property="LastActivityTime" behavior="readwrite" uniqueId="4298de2c-f496-4adb-86b2-e319d644966a" type="System.DateTime">
+          <orm:column name="LastActivityTime" sql-type="datetime" nullable="false" length="0" scale="0" ado-type="DateTime" />
+        </orm:field>
+        <orm:field name="_password" property="Password" behavior="readwrite" uniqueId="e7bca8ef-86fe-4a23-845e-33cf47d0bab9" type="System.String">
+          <orm:column name="Password" sql-type="varchar" nullable="false" length="50" scale="0" ado-type="StringVariableLength" />
+        </orm:field>
+        <orm:index name="IX_Users" unique="true">
+          <orm:columnMapping>
+            <orm:column name="Username" sql-type="varchar" nullable="false" length="100" scale="0" ado-type="StringVariableLength" />
+          </orm:columnMapping>
+        </orm:index>
+      </orm:class>
+      <orm:class name="SimDataEntity" uniqueId="a329c4c5-9865-45b7-963b-821260a103cf">
+        <orm:table name="Sims" />
+        <orm:identity>
+          <orm:key-generator name="autoinc">
+            <orm:key-generator-member property-name="ID" />
+          </orm:key-generator>
+          <orm:single-field field-name="_iD" />
+        </orm:identity>
+        <orm:concurrency strategy="changed" />
+        <orm:field name="_iD" property="ID" behavior="readwrite" uniqueId="103ed7cc-3c81-4d67-afd0-718fcbca1abb" type="System.Int64">
+          <orm:column name="ID" sql-type="bigint" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int64" />
+        </orm:field>
+        <orm:field name="_number" property="Number" behavior="readwrite" uniqueId="f3bec287-a98e-4eb5-b029-80c3a68a61e0" type="System.Int64">
+          <orm:column name="Number" sql-type="bigint" nullable="false" length="0" scale="0" ado-type="Int64" />
+        </orm:field>
+        <orm:field name="_price" property="Price" behavior="readwrite" uniqueId="181b6d2b-6efe-4b23-82a8-e8f565d14b33" type="System.Int64">
+          <orm:column name="Price" sql-type="bigint" nullable="false" length="0" scale="0" ado-type="Int64" />
+        </orm:field>
+        <orm:field name="_receiptCode" property="ReceiptCode" behavior="readwrite" uniqueId="2fa7b57d-e938-4aa0-af66-9003891ee182" type="System.String">
+          <orm:column name="ReceiptCode" sql-type="nvarchar" nullable="true" length="50" scale="0" ado-type="UnicodeStringVariableLength" />
+        </orm:field>
+        <orm:field name="_paymentCode" property="PaymentCode" behavior="readwrite" uniqueId="15d31cb8-71f2-4e64-a269-aeaa9f90c4b7" type="System.String">
+          <orm:column name="PaymentCode" sql-type="nvarchar" nullable="true" length="50" scale="0" ado-type="UnicodeStringVariableLength" />
+        </orm:field>
+        <orm:field name="_activationCode" property="ActivationCode" behavior="readwrite" uniqueId="529d9f00-e9b9-42ae-8fc6-50d5894cefa5" type="System.String">
+          <orm:column name="ActivationCode" sql-type="nvarchar" nullable="true" length="50" scale="0" ado-type="UnicodeStringVariableLength" />
+        </orm:field>
+        <orm:field name="_statusID" property="StatusID" behavior="readwrite" uniqueId="d1181249-5151-4c99-a9d9-5717d7e03222" type="System.Byte">
+          <orm:column name="StatusID" sql-type="tinyint" nullable="false" length="0" scale="0" ado-type="Byte" />
+        </orm:field>
+        <orm:field name="_typeID" property="TypeID" behavior="readwrite" uniqueId="be0bc54b-57f0-489f-b5bb-b19f07a77d24" type="System.Byte">
+          <orm:column name="TypeID" sql-type="tinyint" nullable="false" length="0" scale="0" ado-type="Byte" />
+        </orm:field>
+        <orm:field name="_rondPrice" property="RondPrice" behavior="readwrite" uniqueId="6235ce67-8405-494e-9309-9460c07d2895" type="System.Nullable`1[[System.Int64, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <orm:column name="RondPrice" sql-type="bigint" nullable="true" length="0" scale="0" ado-type="Int64" />
+        </orm:field>
+        <orm:field name="_registerTime" property="RegisterTime" behavior="readwrite" uniqueId="b59e4c39-6320-4278-bc88-25ccefef61bd" type="System.DateTime">
+          <orm:column name="RegisterTime" sql-type="datetime" nullable="false" length="0" scale="0" has-default-value="true" ado-type="DateTime" />
+        </orm:field>
+        <orm:field name="_display" property="Display" behavior="readwrite" uniqueId="834d876f-9811-4add-b06d-a60176dd1dbf" type="System.String">
+          <orm:column name="Display" sql-type="nvarchar" nullable="true" length="50" scale="0" ado-type="UnicodeStringVariableLength" />
+        </orm:field>
+        <orm:field name="_code" property="Code" behavior="readwrite" uniqueId="8ad6a0fb-bc78-4d05-a3bd-422a714c3cc5" type="System.String">
+          <orm:column name="Code" sql-type="nvarchar" nullable="true" length="10" scale="0" ado-type="UnicodeStringVariableLength" />
+        </orm:field>
+        <orm:field name="_traceCode" property="TraceCode" behavior="readwrite" uniqueId="46027de0-01b2-4e33-a97d-12b3f70791a7" type="System.String">
+          <orm:column name="TraceCode" sql-type="nvarchar" nullable="true" length="50" scale="0" ado-type="UnicodeStringVariableLength" />
+        </orm:field>
+        <orm:field name="_expireDate" property="ExpireDate" behavior="readwrite" uniqueId="48a1c4d5-81db-4307-86d7-88d0ca5b2b1f" type="System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <orm:column name="ExpireDate" sql-type="datetime" nullable="true" length="0" scale="0" ado-type="DateTime" />
+        </orm:field>
+        <orm:field name="_createDate" property="CreateDate" behavior="readwrite" uniqueId="e0cf6338-0e5b-4675-9e47-e2c7b9d01dd9" type="System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <orm:column name="CreateDate" sql-type="datetime" nullable="true" length="0" scale="0" ado-type="DateTime" />
+        </orm:field>
+        <orm:field name="_visible" property="Visible" behavior="readwrite" uniqueId="5a3e0689-7a0e-4898-bb45-6b52a31b2084" type="System.Boolean">
+          <orm:column name="Visible" sql-type="bit" nullable="false" length="0" scale="0" has-default-value="true" ado-type="Bit" />
+        </orm:field>
+        <orm:field name="_buyPrice" property="BuyPrice" behavior="readwrite" uniqueId="7646020c-2019-4025-b6bf-f4b8d81a42b7" type="System.Int64">
+          <orm:column name="BuyPrice" sql-type="bigint" nullable="false" length="0" scale="0" has-default-value="true" ado-type="Int64" />
+        </orm:field>
+        <orm:field name="_packSimDataEntities" property="PackSimDataEntities" behavior="readwrite" uniqueId="7d8a1dc3-cce0-49e9-b94a-529922183ee7" type="Esunco.Data.PackSimDataEntity">
+          <orm:collection element-class="Esunco.Data.PackSimDataEntity" inverse-field="_simDataEntity" order-by="" uniqueId="c3bb04c0-7c7b-41a8-b830-6ed2520646d1" />
+        </orm:field>
+        <orm:field name="_orderItemDataEntities" property="OrderItemDataEntities" behavior="readwrite" uniqueId="ed35be3e-3413-4ffe-9a3f-1b961540b985" type="Esunco.Data.OrderItemDataEntity">
+          <orm:collection element-class="Esunco.Data.OrderItemDataEntity" inverse-field="_simDataEntity" order-by="" uniqueId="37246ccb-c439-45c5-8d61-9ad78e6cf677" />
+        </orm:field>
+        <orm:field name="_auctionSimDataEntities" property="AuctionSimDataEntities" behavior="readwrite" uniqueId="d44fb395-73f7-4c77-bd8e-e971f77b485a" type="Esunco.Data.AuctionSimDataEntity">
+          <orm:collection element-class="Esunco.Data.AuctionSimDataEntity" inverse-field="_simDataEntity" order-by="" uniqueId="fbaa9214-efec-4b58-b14d-aa43e6b9f8d2" />
+        </orm:field>
+      </orm:class>
+      <orm:class name="RegionDataEntity" uniqueId="b74691a5-e777-4214-b79f-c9dda38457d2">
+        <orm:table name="Regions" />
+        <orm:identity>
+          <orm:key-generator name="autoinc">
+            <orm:key-generator-member property-name="ID" />
+          </orm:key-generator>
+          <orm:single-field field-name="_iD" />
+        </orm:identity>
+        <orm:concurrency strategy="changed" />
+        <orm:field name="_type" property="Type" behavior="readwrite" uniqueId="568e79ab-2a48-4de9-92f6-882e18bd5dec" type="System.Byte">
+          <orm:column name="Type" sql-type="tinyint" nullable="false" length="0" scale="0" ado-type="Byte" />
+        </orm:field>
+        <orm:field name="_title" property="Title" behavior="readwrite" uniqueId="12f9b289-99c6-47b9-a21b-9e1e5aed493a" type="System.String">
+          <orm:column name="Title" sql-type="nvarchar" nullable="false" length="200" scale="0" ado-type="UnicodeStringVariableLength" />
+        </orm:field>
+        <orm:field name="_parentID" property="ParentID" behavior="readwrite" uniqueId="313f45e5-61fc-4592-8b00-0ba576807795" type="System.Nullable`1[[System.Int64, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <orm:column name="ParentID" sql-type="bigint" nullable="true" length="0" scale="0" ado-type="Int64" />
+        </orm:field>
+        <orm:field name="_iD" property="ID" behavior="readwrite" uniqueId="20bdb3c7-6f6e-4319-89d9-427efdce582a" type="System.Int64">
+          <orm:column name="ID" sql-type="bigint" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int64" />
+        </orm:field>
+      </orm:class>
+      <orm:class name="PackSimDataEntity" uniqueId="863436b9-7eef-40ac-821e-1651081d8490">
+        <orm:table name="PackSims" />
+        <orm:identity>
+          <orm:key-generator name="autoinc">
+            <orm:key-generator-member property-name="ID" />
+          </orm:key-generator>
+          <orm:single-field field-name="_iD" />
+        </orm:identity>
+        <orm:concurrency strategy="changed" />
+        <orm:field name="_iD" property="ID" behavior="readwrite" uniqueId="f9e7d3d6-cc79-463c-80d5-5ab0b7ed1326" type="System.Int64">
+          <orm:column name="ID" sql-type="bigint" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int64" />
+        </orm:field>
+        <orm:field name="_simID" property="SimID" behavior="readwrite" uniqueId="a17b06c6-4fc6-4ad0-b7d4-7e6d915d8a3b" type="System.Int64">
+          <orm:column name="SimID" sql-type="bigint" nullable="false" length="0" scale="0" ado-type="Int64" />
+        </orm:field>
+        <orm:field name="_packageID" property="PackageID" behavior="readwrite" uniqueId="ee20f31f-efc0-485c-9c5d-d707547f0a91" type="System.Int64">
+          <orm:column name="PackageID" sql-type="bigint" nullable="false" length="0" scale="0" ado-type="Int64" />
+        </orm:field>
+        <orm:field name="_simDataEntity" property="SimDataEntity" behavior="readwrite" uniqueId="2bf97c48-b011-4bd7-aac0-39b437e6b86b" type="Esunco.Data.SimDataEntity">
+          <orm:reference uniqueId="c3bb04c0-7c7b-41a8-b830-6ed2520646d1" association-name="PackSimDataEntityHasSimDataEntity">
+            <orm:sharedfield name="_simID" target-class="Esunco.Data.SimDataEntity" target-field="_iD" />
+            <orm:constraint name="FK_PackSims_Sims" delete-action="cascade" destination-table="Sims" />
+          </orm:reference>
+        </orm:field>
+        <orm:field name="_packageDataEntity" property="PackageDataEntity" behavior="readwrite" uniqueId="aee43e2b-1ed2-408d-85e7-7c2f12d07d72" type="Esunco.Data.PackDataEntity">
+          <orm:reference uniqueId="89bd0e53-74d0-44b9-82b4-95d956704187" association-name="PackSimDataEntityHasPackDataEntity">
+            <orm:sharedfield name="_packageID" target-class="Esunco.Data.PackDataEntity" target-field="_iD" />
+            <orm:constraint name="FK_PackSims_Packs" delete-action="cascade" destination-table="Packs" />
+          </orm:reference>
+        </orm:field>
+        <orm:index name="IX_PackageSims" unique="true">
+          <orm:columnMapping>
+            <orm:column name="SimID" sql-type="bigint" nullable="false" length="0" scale="0" ado-type="Int64" />
+          </orm:columnMapping>
+          <orm:columnMapping>
+            <orm:column name="PackageID" sql-type="bigint" nullable="false" length="0" scale="0" ado-type="Int64" />
+          </orm:columnMapping>
+        </orm:index>
+        <orm:index name="idx_PackageSims_SimID">
+          <orm:columnMapping>
+            <orm:column name="SimID" sql-type="bigint" nullable="false" length="0" scale="0" ado-type="Int64" />
+          </orm:columnMapping>
+        </orm:index>
+        <orm:index name="idx_PackageSims_PackageID">
+          <orm:columnMapping>
+            <orm:column name="PackageID" sql-type="bigint" nullable="false" length="0" scale="0" ado-type="Int64" />
+          </orm:columnMapping>
+        </orm:index>
+      </orm:class>
+      <orm:class name="PackDataEntity" uniqueId="c2442067-2c46-4e21-874a-47011b3f0d21">
+        <orm:table name="Packs" />
+        <orm:identity>
+          <orm:key-generator name="autoinc">
+            <orm:key-generator-member property-name="ID" />
+          </orm:key-generator>
+          <orm:single-field field-name="_iD" />
+        </orm:identity>
+        <orm:concurrency strategy="changed" />
+        <orm:field name="_title" property="Title" behavior="readwrite" uniqueId="888dd8c4-9c76-4b34-9ec6-92a64c0ee9ca" type="System.String">
+          <orm:column name="Title" sql-type="nvarchar" nullable="false" length="200" scale="0" ado-type="UnicodeStringVariableLength" />
+        </orm:field>
+        <orm:field name="_price" property="Price" behavior="readwrite" uniqueId="49414b1d-9787-453d-a3de-9d824af567fc" type="System.Int64">
+          <orm:column name="Price" sql-type="bigint" nullable="false" length="0" scale="0" ado-type="Int64" />
+        </orm:field>
+        <orm:field name="_iD" property="ID" behavior="readwrite" uniqueId="02fc6054-6f31-4776-9105-6a44cd1c0b9b" type="System.Int64">
+          <orm:column name="ID" sql-type="bigint" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int64" />
+        </orm:field>
+        <orm:field name="_createTime" property="CreateTime" behavior="readwrite" uniqueId="df6b814c-23f3-4923-af52-6d029c482fab" type="System.DateTime">
+          <orm:column name="CreateTime" sql-type="datetime" nullable="false" length="0" scale="0" ado-type="DateTime" />
+        </orm:field>
+        <orm:field name="_visible" property="Visible" behavior="readwrite" uniqueId="00fde003-62dc-4fa4-8f09-fad21d890f5d" type="System.Boolean">
+          <orm:column name="Visible" sql-type="bit" nullable="false" length="0" scale="0" has-default-value="true" ado-type="Bit" />
+        </orm:field>
+        <orm:field name="_code" property="Code" behavior="readwrite" uniqueId="ff95d256-50bf-467e-bba8-49eeeee5d7f6" type="System.String">
+          <orm:column name="Code" sql-type="nvarchar" nullable="true" length="100" scale="0" has-default-value="true" ado-type="UnicodeStringVariableLength" />
+        </orm:field>
+        <orm:field name="_typeID" property="TypeID" behavior="readwrite" uniqueId="aa7ccf09-ed1d-4f56-b917-1663f6a5808f" type="System.Byte">
+          <orm:column name="TypeID" sql-type="tinyint" nullable="false" length="0" scale="0" has-default-value="true" ado-type="Byte" />
+        </orm:field>
+        <orm:field name="_statusID" property="StatusID" behavior="readwrite" uniqueId="f330856c-e091-48b9-b08b-65190e17c66b" type="System.Byte">
+          <orm:column name="StatusID" sql-type="tinyint" nullable="false" length="0" scale="0" has-default-value="true" ado-type="Byte" />
+        </orm:field>
+        <orm:field name="_packSimDataEntities" property="PackSimDataEntities" behavior="readwrite" uniqueId="e1b83ffe-a25a-4727-80ca-6a8fd2beed61" type="Esunco.Data.PackSimDataEntity">
+          <orm:collection element-class="Esunco.Data.PackSimDataEntity" inverse-field="_packageDataEntity" order-by="" uniqueId="89bd0e53-74d0-44b9-82b4-95d956704187" />
+        </orm:field>
+        <orm:field name="_orderItemDataEntities" property="OrderItemDataEntities" behavior="readwrite" uniqueId="787535d3-c3f5-4201-96fb-24d5ca720dac" type="Esunco.Data.OrderItemDataEntity">
+          <orm:collection element-class="Esunco.Data.OrderItemDataEntity" inverse-field="_packDataEntity" order-by="" uniqueId="8039b2ef-bd2b-445b-9102-0398e5c0a0d7" />
+        </orm:field>
+      </orm:class>
+      <orm:class name="OrderDataEntity" uniqueId="34105f28-b715-4315-b155-59f52098c1f4">
+        <orm:table name="Orders" />
+        <orm:identity>
+          <orm:key-generator name="autoinc">
+            <orm:key-generator-member property-name="ID" />
+          </orm:key-generator>
+          <orm:single-field field-name="_iD" />
+        </orm:identity>
+        <orm:concurrency strategy="changed" />
+        <orm:field name="_iD" property="ID" behavior="readwrite" uniqueId="7f56fc17-21db-4f48-94c3-473f782040bd" type="System.Int64">
+          <orm:column name="ID" sql-type="bigint" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int64" />
+        </orm:field>
+        <orm:field name="_clientID" property="ClientID" behavior="readwrite" uniqueId="7109d97b-431f-493d-a359-9013775cb7d5" type="System.Int64">
+          <orm:column name="ClientID" sql-type="bigint" nullable="false" length="0" scale="0" ado-type="Int64" />
+        </orm:field>
+        <orm:field name="_status" property="Status" behavior="readwrite" uniqueId="e8bfa137-eaa7-40f0-b363-ffb208bb93a5" type="System.Byte">
+          <orm:column name="Status" sql-type="tinyint" nullable="false" length="0" scale="0" ado-type="Byte" />
+        </orm:field>
+        <orm:field name="_paymentID" property="PaymentID" behavior="readwrite" uniqueId="d8336046-f2f3-409c-8278-b31fa7786220" type="System.Nullable`1[[System.Int64, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <orm:column name="PaymentID" sql-type="bigint" nullable="true" length="0" scale="0" ado-type="Int64" />
+        </orm:field>
+        <orm:field name="_isCredit" property="IsCredit" behavior="readwrite" uniqueId="168216ef-4c2b-42ca-a3e8-cf1b8cfff25a" type="System.Boolean">
+          <orm:column name="IsCredit" sql-type="bit" nullable="false" length="0" scale="0" has-default-value="true" ado-type="Bit" />
+        </orm:field>
+        <orm:field name="_totalPrice" property="TotalPrice" behavior="readwrite" uniqueId="17057cdd-00a6-44d5-8833-3de0266661db" type="System.Int64">
+          <orm:column name="TotalPrice" sql-type="bigint" nullable="false" length="0" scale="0" has-default-value="true" ado-type="Int64" />
+        </orm:field>
+        <orm:field name="_createTime" property="CreateTime" behavior="readwrite" uniqueId="f85b2f95-079f-4b81-a3b5-810c4e136438" type="System.DateTime">
+          <orm:column name="CreateTime" sql-type="datetime" nullable="false" length="0" scale="0" has-default-value="true" ado-type="DateTime" />
+        </orm:field>
+        <orm:field name="_filePassword" property="FilePassword" behavior="readwrite" uniqueId="477c33e8-8414-40e6-8c9f-f4163753dcf2" type="System.String">
+          <orm:column name="FilePassword" sql-type="nvarchar" nullable="true" length="50" scale="0" ado-type="UnicodeStringVariableLength" />
+        </orm:field>
+        <orm:field name="_fileID" property="FileID" behavior="readwrite" uniqueId="b959d3a2-4698-4fe1-b247-4660df9dd097" type="System.Nullable`1[[System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <orm:column name="FileID" sql-type="uniqueidentifier" nullable="true" length="0" scale="0" has-default-value="true" ado-type="Guid" />
+        </orm:field>
+        <orm:field name="_clientDataEntity" property="ClientDataEntity" behavior="readwrite" uniqueId="ad784014-fb2a-417d-96b8-fd894d1ebeb4" type="Esunco.Data.ClientDataEntity">
+          <orm:reference uniqueId="eadca8fc-8281-48e8-ab11-1e83c7a41799" association-name="OrderDataEntityHasClientDataEntity">
+            <orm:sharedfield name="_clientID" target-class="Esunco.Data.ClientDataEntity" target-field="_iD" />
+            <orm:constraint name="FK_Orders_Clients" delete-action="dbdefaultrule" destination-table="Clients" />
+          </orm:reference>
+        </orm:field>
+        <orm:field name="_paymentDataEntity" property="PaymentDataEntity" behavior="readwrite" uniqueId="cbeb75df-2098-493e-a3cc-c414fd2731cf" type="Esunco.Data.PaymentDataEntity">
+          <orm:reference uniqueId="0be605f5-4d35-4528-b0e6-c28b9094da52" association-name="OrderDataEntityHasPaymentDataEntity">
+            <orm:sharedfield name="_paymentID" target-class="Esunco.Data.PaymentDataEntity" target-field="_iD" />
+            <orm:constraint name="FK_Orders_Payments" delete-action="dbdefaultrule" destination-table="Payments" />
+          </orm:reference>
+        </orm:field>
+        <orm:field name="_orderItemDataEntities" property="OrderItemDataEntities" behavior="readwrite" uniqueId="f1c60033-313b-4031-8af9-d10a2b531037" type="Esunco.Data.OrderItemDataEntity">
+          <orm:collection element-class="Esunco.Data.OrderItemDataEntity" inverse-field="_orderDataEntity" order-by="" uniqueId="5ed8655a-790b-4885-a16d-3a2afa07697d" />
+        </orm:field>
+      </orm:class>
+      <orm:class name="OrderItemDataEntity" uniqueId="5c2196d2-365f-47f0-9fd0-e5fb9f78a8e2">
+        <orm:table name="OrderItems" />
+        <orm:identity>
+          <orm:key-generator name="autoinc">
+            <orm:key-generator-member property-name="ID" />
+          </orm:key-generator>
+          <orm:single-field field-name="_iD" />
+        </orm:identity>
+        <orm:concurrency strategy="changed" />
+        <orm:field name="_iD" property="ID" behavior="readwrite" uniqueId="0f69b116-1941-4737-a484-231cb93fa6e2" type="System.Int64">
+          <orm:column name="ID" sql-type="bigint" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int64" />
+        </orm:field>
+        <orm:field name="_orderID" property="OrderID" behavior="readwrite" uniqueId="e86516cc-f0e6-4ce5-ad8c-77a132fb634e" type="System.Int64">
+          <orm:column name="OrderID" sql-type="bigint" nullable="false" length="0" scale="0" ado-type="Int64" />
+        </orm:field>
+        <orm:field name="_simID" property="SimID" behavior="readwrite" uniqueId="98c8cff3-e2d6-4df3-af14-597190e2315c" type="System.Nullable`1[[System.Int64, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <orm:column name="SimID" sql-type="bigint" nullable="true" length="0" scale="0" ado-type="Int64" />
+        </orm:field>
+        <orm:field name="_packID" property="PackID" behavior="readwrite" uniqueId="efb0f43a-1aee-42dc-b740-ded8cb5771c6" type="System.Nullable`1[[System.Int64, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <orm:column name="PackID" sql-type="bigint" nullable="true" length="0" scale="0" ado-type="Int64" />
+        </orm:field>
+        <orm:field name="_auctionID" property="AuctionID" behavior="readwrite" uniqueId="81c55659-cd7f-48a3-a931-16ee94869f0c" type="System.Nullable`1[[System.Int64, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <orm:column name="AuctionID" sql-type="bigint" nullable="true" length="0" scale="0" ado-type="Int64" />
+        </orm:field>
+        <orm:field name="_price" property="Price" behavior="readwrite" uniqueId="fa9db30b-9561-4a52-bde5-d06b5b22db5f" type="System.Int64">
+          <orm:column name="Price" sql-type="bigint" nullable="false" length="0" scale="0" has-default-value="true" ado-type="Int64" />
+        </orm:field>
+        <orm:field name="_simDataEntity" property="SimDataEntity" behavior="readwrite" uniqueId="d863de59-a9c1-4888-836c-ee06d37d330b" type="Esunco.Data.SimDataEntity">
+          <orm:reference uniqueId="37246ccb-c439-45c5-8d61-9ad78e6cf677" association-name="OrderItemDataEntityHasSimDataEntity">
+            <orm:sharedfield name="_simID" target-class="Esunco.Data.SimDataEntity" target-field="_iD" />
+            <orm:constraint name="FK_OrderItems_Sims" delete-action="cascade" destination-table="Sims" />
+          </orm:reference>
+        </orm:field>
+        <orm:field name="_packDataEntity" property="PackDataEntity" behavior="readwrite" uniqueId="1dbfdab1-7aff-4d70-9002-b8c876413c26" type="Esunco.Data.PackDataEntity">
+          <orm:reference uniqueId="8039b2ef-bd2b-445b-9102-0398e5c0a0d7" association-name="OrderItemDataEntityHasPackDataEntity">
+            <orm:sharedfield name="_packID" target-class="Esunco.Data.PackDataEntity" target-field="_iD" />
+            <orm:constraint name="FK_OrderItems_Packs" delete-action="cascade" destination-table="Packs" />
+          </orm:reference>
+        </orm:field>
+        <orm:field name="_orderDataEntity" property="OrderDataEntity" behavior="readwrite" uniqueId="a0a9bc1c-4e38-4365-bac9-66296b7b84a6" type="Esunco.Data.OrderDataEntity">
+          <orm:reference uniqueId="5ed8655a-790b-4885-a16d-3a2afa07697d" association-name="OrderItemDataEntityHasOrderDataEntity">
+            <orm:sharedfield name="_orderID" target-class="Esunco.Data.OrderDataEntity" target-field="_iD" />
+            <orm:constraint name="FK_OrderItems_Orders" delete-action="cascade" destination-table="Orders" />
+          </orm:reference>
+        </orm:field>
+        <orm:field name="_auctionDataEntity" property="AuctionDataEntity" behavior="readwrite" uniqueId="f084756d-ca8e-48ca-a8f7-94441b2426d6" type="Esunco.Data.AuctionDataEntity">
+          <orm:reference uniqueId="c1c4d2bd-6f21-4719-b528-7b738732b600" association-name="OrderItemDataEntityHasAuctionDataEntity">
+            <orm:sharedfield name="_auctionID" target-class="Esunco.Data.AuctionDataEntity" target-field="_iD" />
+            <orm:constraint name="FK_OrderItems_Auctions" delete-action="cascade" destination-table="Auctions" />
+          </orm:reference>
+        </orm:field>
+      </orm:class>
+      <orm:class name="ClientDataEntity" uniqueId="cfdd11a2-2580-451d-8887-d3ab925230a9">
+        <orm:table name="Clients" />
+        <orm:identity>
+          <orm:key-generator name="autoinc">
+            <orm:key-generator-member property-name="ID" />
+          </orm:key-generator>
+          <orm:single-field field-name="_iD" />
+        </orm:identity>
+        <orm:concurrency strategy="changed" />
+        <orm:field name="_iD" property="ID" behavior="readwrite" uniqueId="396321f9-4d11-45bf-b728-bf58cece992e" type="System.Int64">
+          <orm:column name="ID" sql-type="bigint" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int64" />
+        </orm:field>
+        <orm:field name="_firstname" property="Firstname" behavior="readwrite" uniqueId="5aa9e25b-cda9-4dca-98a8-e7441e40b9f7" type="System.String">
+          <orm:column name="Firstname" sql-type="nvarchar" nullable="false" length="200" scale="0" ado-type="UnicodeStringVariableLength" />
+        </orm:field>
+        <orm:field name="_lastname" property="Lastname" behavior="readwrite" uniqueId="42f0e8e6-92a3-4e67-a305-eb5fd53f9b4a" type="System.String">
+          <orm:column name="Lastname" sql-type="nvarchar" nullable="false" length="200" scale="0" ado-type="UnicodeStringVariableLength" />
+        </orm:field>
+        <orm:field name="_phone" property="Phone" behavior="readwrite" uniqueId="0d276098-a7ca-42fc-a60a-9e8458024a11" type="System.String">
+          <orm:column name="Phone" sql-type="nvarchar" nullable="true" length="200" scale="0" ado-type="UnicodeStringVariableLength" />
+        </orm:field>
+        <orm:field name="_mobile" property="Mobile" behavior="readwrite" uniqueId="dca9f865-8aee-476e-bb20-d81fb1900afd" type="System.String">
+          <orm:column name="Mobile" sql-type="nvarchar" nullable="false" length="200" scale="0" ado-type="UnicodeStringVariableLength" />
+        </orm:field>
+        <orm:field name="_address" property="Address" behavior="readwrite" uniqueId="efe0be0a-87e9-4cd2-a655-541a42f176f7" type="System.String">
+          <orm:column name="Address" sql-type="nvarchar" nullable="true" length="200" scale="0" ado-type="UnicodeStringVariableLength" />
+        </orm:field>
+        <orm:field name="_postalCode" property="PostalCode" behavior="readwrite" uniqueId="3893ed67-bdeb-47d6-b191-c741359def0f" type="System.String">
+          <orm:column name="PostalCode" sql-type="nvarchar" nullable="true" length="200" scale="0" ado-type="UnicodeStringVariableLength" />
+        </orm:field>
+        <orm:field name="_nationalCode" property="NationalCode" behavior="readwrite" uniqueId="8ea25e02-481c-4885-9cf8-70e7dcdc4523" type="System.String">
+          <orm:column name="NationalCode" sql-type="nchar" nullable="true" length="10" scale="0" ado-type="UnicodeStringFixedLength" />
+        </orm:field>
+        <orm:field name="_blocked" property="Blocked" behavior="readwrite" uniqueId="4b5954c8-bde7-4acc-9860-529fc9f015ea" type="System.Boolean">
+          <orm:column name="Blocked" sql-type="bit" nullable="false" length="0" scale="0" ado-type="Bit" />
+        </orm:field>
+        <orm:field name="_officeCode" property="OfficeCode" behavior="readwrite" uniqueId="5d9e4ff8-ada0-4efa-9025-ac8ce5107fcc" type="System.String">
+          <orm:column name="OfficeCode" sql-type="nvarchar" nullable="true" length="200" scale="0" ado-type="UnicodeStringVariableLength" />
+        </orm:field>
+        <orm:field name="_email" property="Email" behavior="readwrite" uniqueId="ce7987ba-2990-4d78-b6d0-98efa8c6e7b7" type="System.String">
+          <orm:column name="Email" sql-type="nvarchar" nullable="true" length="200" scale="0" ado-type="UnicodeStringVariableLength" />
+        </orm:field>
+        <orm:field name="_token" property="Token" behavior="readwrite" uniqueId="703bdca2-f636-43d5-a559-e2c7694b1db6" type="System.String">
+          <orm:column name="Token" sql-type="nvarchar" nullable="true" length="200" scale="0" ado-type="UnicodeStringVariableLength" />
+        </orm:field>
+        <orm:field name="_sMSCode" property="SMSCode" behavior="readwrite" uniqueId="41f96437-c582-414b-85ba-9f8d01c1c8fc" type="System.Int32">
+          <orm:column name="SMSCode" sql-type="int" nullable="false" length="0" scale="0" has-default-value="true" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="_sMSCodeCreatedTime" property="SMSCodeCreatedTime" behavior="readwrite" uniqueId="5a74b0ac-5ab3-4a55-af7a-6663c929adec" type="System.DateTime">
+          <orm:column name="SMSCodeCreatedTime" sql-type="datetime" nullable="false" length="0" scale="0" has-default-value="true" ado-type="DateTime" />
+        </orm:field>
+        <orm:field name="_credit" property="Credit" behavior="readwrite" uniqueId="330325c7-6ecb-473c-a60d-5b0f68a8f448" type="System.Int64">
+          <orm:column name="Credit" sql-type="bigint" nullable="false" length="0" scale="0" has-default-value="true" ado-type="Int64" />
+        </orm:field>
+        <orm:field name="_lastCredit" property="LastCredit" behavior="readwrite" uniqueId="6221c864-a0bb-4b3b-ac82-cdf4243e1a23" type="System.Int64">
+          <orm:column name="LastCredit" sql-type="bigint" nullable="false" length="0" scale="0" has-default-value="true" ado-type="Int64" />
+        </orm:field>
+        <orm:field name="_blockedCredit" property="BlockedCredit" behavior="readwrite" uniqueId="8a165e90-d8c6-4c8b-bfa6-026b59f37656" type="System.Int64">
+          <orm:column name="BlockedCredit" sql-type="bigint" nullable="false" length="0" scale="0" has-default-value="true" ado-type="Int64" />
+        </orm:field>
+        <orm:field name="_accountType" property="AccountType" behavior="readwrite" uniqueId="42dc9f70-b1c4-4d39-8913-1a06d097e5cf" type="System.Byte">
+          <orm:column name="AccountType" sql-type="tinyint" nullable="false" length="0" scale="0" has-default-value="true" ado-type="Byte" />
+        </orm:field>
+        <orm:field name="_orderDataEntities" property="OrderDataEntities" behavior="readwrite" uniqueId="b817fa60-631d-4890-8130-a9c5def8d1b9" type="Esunco.Data.OrderDataEntity">
+          <orm:collection element-class="Esunco.Data.OrderDataEntity" inverse-field="_clientDataEntity" order-by="" uniqueId="eadca8fc-8281-48e8-ab11-1e83c7a41799" />
+        </orm:field>
+        <orm:field name="_auctionBidDataEntities" property="AuctionBidDataEntities" behavior="readwrite" uniqueId="3c618691-bba8-4d4d-951a-0bd47cb880be" type="Esunco.Data.AuctionBidDataEntity">
+          <orm:collection element-class="Esunco.Data.AuctionBidDataEntity" inverse-field="_clientDataEntity" order-by="" uniqueId="d2fff570-817c-43ae-85e2-2ad1760b565c" />
+        </orm:field>
+        <orm:field name="_creditChargeDataEntities" property="CreditChargeDataEntities" behavior="readwrite" uniqueId="7d40745b-14b8-4d4a-98d6-8d3dd21bc1b4" type="Esunco.Data.CreditChargeDataEntity">
+          <orm:collection element-class="Esunco.Data.CreditChargeDataEntity" inverse-field="_clientDataEntity" order-by="" uniqueId="1f4e1011-22ae-40c4-bb3f-7169d8bf73d0" />
+        </orm:field>
+      </orm:class>
+      <orm:class name="AuctionSimDataEntity" uniqueId="a10ea222-955b-43df-9a25-b535708f60dc">
+        <orm:table name="AuctionSims" />
+        <orm:identity>
+          <orm:key-generator name="autoinc">
+            <orm:key-generator-member property-name="ID" />
+          </orm:key-generator>
+          <orm:single-field field-name="_iD" />
+        </orm:identity>
+        <orm:concurrency strategy="changed" />
+        <orm:field name="_iD" property="ID" behavior="readwrite" uniqueId="c9665596-1cf1-487d-8669-410a7b44ecde" type="System.Int64">
+          <orm:column name="ID" sql-type="bigint" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int64" />
+        </orm:field>
+        <orm:field name="_simID" property="SimID" behavior="readwrite" uniqueId="2e4da2e2-6d1c-45e6-8879-27a0f1e5fd9d" type="System.Int64">
+          <orm:column name="SimID" sql-type="bigint" nullable="false" length="0" scale="0" ado-type="Int64" />
+        </orm:field>
+        <orm:field name="_auctionID" property="AuctionID" behavior="readwrite" uniqueId="6eb985d0-9e73-408f-b5af-dab6e77dbd99" type="System.Int64">
+          <orm:column name="AuctionID" sql-type="bigint" nullable="false" length="0" scale="0" ado-type="Int64" />
+        </orm:field>
+        <orm:field name="_simDataEntity" property="SimDataEntity" behavior="readwrite" uniqueId="2ad20250-90d0-4439-83df-c0483251ce7a" type="Esunco.Data.SimDataEntity">
+          <orm:reference uniqueId="fbaa9214-efec-4b58-b14d-aa43e6b9f8d2" association-name="AuctionSimDataEntityHasSimDataEntity">
+            <orm:sharedfield name="_simID" target-class="Esunco.Data.SimDataEntity" target-field="_iD" />
+            <orm:constraint name="FK_AuctionSims_Sims" delete-action="cascade" destination-table="Sims" />
+          </orm:reference>
+        </orm:field>
+        <orm:field name="_auctionDataEntity" property="AuctionDataEntity" behavior="readwrite" uniqueId="b388a092-0016-4ed5-99bb-7394020912c8" type="Esunco.Data.AuctionDataEntity">
+          <orm:reference uniqueId="f5f5de81-2afd-491d-9b28-efd848f6fea1" association-name="AuctionSimDataEntityHasAuctionDataEntity">
+            <orm:sharedfield name="_auctionID" target-class="Esunco.Data.AuctionDataEntity" target-field="_iD" />
+            <orm:constraint name="FK_AuctionSims_Auctions" delete-action="cascade" destination-table="Auctions" />
+          </orm:reference>
+        </orm:field>
+      </orm:class>
+      <orm:class name="AuctionDataEntity" uniqueId="c4643f4b-e0f7-486c-af41-e5419f57b165">
+        <orm:table name="Auctions" />
+        <orm:identity>
+          <orm:key-generator name="autoinc">
+            <orm:key-generator-member property-name="ID" />
+          </orm:key-generator>
+          <orm:single-field field-name="_iD" />
+        </orm:identity>
+        <orm:concurrency strategy="changed" />
+        <orm:field name="_iD" property="ID" behavior="readwrite" uniqueId="67fa2259-0648-432b-8736-fe9f2c735d3d" type="System.Int64">
+          <orm:column name="ID" sql-type="bigint" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int64" />
+        </orm:field>
+        <orm:field name="_startTime" property="StartTime" behavior="readwrite" uniqueId="5fbb96e2-4a72-44e2-93e6-8d53a81a8431" type="System.DateTime">
+          <orm:column name="StartTime" sql-type="datetime" nullable="false" length="0" scale="0" ado-type="DateTime" />
+        </orm:field>
+        <orm:field name="_finishTime" property="FinishTime" behavior="readwrite" uniqueId="43a6db56-ffff-40ff-8d3b-580916fd498d" type="System.DateTime">
+          <orm:column name="FinishTime" sql-type="datetime" nullable="false" length="0" scale="0" ado-type="DateTime" />
+        </orm:field>
+        <orm:field name="_basePrice" property="BasePrice" behavior="readwrite" uniqueId="7cc55174-9d5e-40a7-b059-ad3e16958312" type="System.Int64">
+          <orm:column name="BasePrice" sql-type="bigint" nullable="false" length="0" scale="0" ado-type="Int64" />
+        </orm:field>
+        <orm:field name="_title" property="Title" behavior="readwrite" uniqueId="916b8d22-02c3-4289-bd4a-688e379a76d2" type="System.String">
+          <orm:column name="Title" sql-type="nvarchar" nullable="false" length="200" scale="0" ado-type="UnicodeStringVariableLength" />
+        </orm:field>
+        <orm:field name="_notifyTime" property="NotifyTime" behavior="readwrite" uniqueId="fc94b7c4-2212-44a0-9f56-5944f0534ecb" type="System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <orm:column name="NotifyTime" sql-type="datetime" nullable="true" length="0" scale="0" ado-type="DateTime" />
+        </orm:field>
+        <orm:field name="_statusID" property="StatusID" behavior="readwrite" uniqueId="4c451875-f67c-4d6f-ae42-47cbf75c063b" type="System.Byte">
+          <orm:column name="StatusID" sql-type="tinyint" nullable="false" length="0" scale="0" has-default-value="true" ado-type="Byte" />
+        </orm:field>
+        <orm:field name="_orderItemDataEntities" property="OrderItemDataEntities" behavior="readwrite" uniqueId="50acd3bc-8b2c-4119-965a-c7bede0b7f3c" type="Esunco.Data.OrderItemDataEntity">
+          <orm:collection element-class="Esunco.Data.OrderItemDataEntity" inverse-field="_auctionDataEntity" order-by="" uniqueId="c1c4d2bd-6f21-4719-b528-7b738732b600" />
+        </orm:field>
+        <orm:field name="_auctionSimDataEntities" property="AuctionSimDataEntities" behavior="readwrite" uniqueId="5d1e94e9-5d48-480c-ae01-50a5c721e387" type="Esunco.Data.AuctionSimDataEntity">
+          <orm:collection element-class="Esunco.Data.AuctionSimDataEntity" inverse-field="_auctionDataEntity" order-by="" uniqueId="f5f5de81-2afd-491d-9b28-efd848f6fea1" />
+        </orm:field>
+        <orm:field name="_auctionBidDataEntities" property="AuctionBidDataEntities" behavior="readwrite" uniqueId="4af39411-5d6e-4c55-8637-9f84d45f7daa" type="Esunco.Data.AuctionBidDataEntity">
+          <orm:collection element-class="Esunco.Data.AuctionBidDataEntity" inverse-field="_auctionDataEntity" order-by="" uniqueId="94be2978-6d19-4836-8fe5-e5a956265dbb" />
+        </orm:field>
+      </orm:class>
+      <orm:class name="AuctionBidDataEntity" uniqueId="bd0eed27-08c6-41d5-b1c4-8e54a526c667">
+        <orm:table name="AuctionBids" />
+        <orm:identity>
+          <orm:key-generator name="autoinc">
+            <orm:key-generator-member property-name="ID" />
+          </orm:key-generator>
+          <orm:single-field field-name="_iD" />
+        </orm:identity>
+        <orm:concurrency strategy="changed" />
+        <orm:field name="_iD" property="ID" behavior="readwrite" uniqueId="defc08df-6665-4a9f-bc13-dcb97e29f627" type="System.Int64">
+          <orm:column name="ID" sql-type="bigint" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int64" />
+        </orm:field>
+        <orm:field name="_auctionID" property="AuctionID" behavior="readwrite" uniqueId="49a263fa-1d9c-4e3c-aacd-c72fbb46a869" type="System.Int64">
+          <orm:column name="AuctionID" sql-type="bigint" nullable="false" length="0" scale="0" ado-type="Int64" />
+        </orm:field>
+        <orm:field name="_clientID" property="ClientID" behavior="readwrite" uniqueId="6b467c51-a0d1-4962-a91e-ec3222c6d82d" type="System.Int64">
+          <orm:column name="ClientID" sql-type="bigint" nullable="false" length="0" scale="0" ado-type="Int64" />
+        </orm:field>
+        <orm:field name="_time" property="Time" behavior="readwrite" uniqueId="18bedc20-6e28-40ec-86e9-a4b3d7a7e53f" type="System.DateTime">
+          <orm:column name="Time" sql-type="datetime" nullable="false" length="0" scale="0" has-default-value="true" ado-type="DateTime" />
+        </orm:field>
+        <orm:field name="_price" property="Price" behavior="readwrite" uniqueId="8a1d63c4-1478-4270-8730-b6dcd7252d81" type="System.Int64">
+          <orm:column name="Price" sql-type="bigint" nullable="false" length="0" scale="0" ado-type="Int64" />
+        </orm:field>
+        <orm:field name="_isWinner" property="IsWinner" behavior="readwrite" uniqueId="6d57263e-4a5d-4248-956d-b39555b4fad7" type="System.Boolean">
+          <orm:column name="IsWinner" sql-type="bit" nullable="false" length="0" scale="0" has-default-value="true" ado-type="Bit" />
+        </orm:field>
+        <orm:field name="_clientDataEntity" property="ClientDataEntity" behavior="readwrite" uniqueId="bd3e5104-5dd8-495c-aa08-024f0f4defc5" type="Esunco.Data.ClientDataEntity">
+          <orm:reference uniqueId="d2fff570-817c-43ae-85e2-2ad1760b565c" association-name="AuctionBidDataEntityHasClientDataEntity">
+            <orm:sharedfield name="_clientID" target-class="Esunco.Data.ClientDataEntity" target-field="_iD" />
+            <orm:constraint name="FK_AuctionBids_Clients" delete-action="cascade" destination-table="Clients" />
+          </orm:reference>
+        </orm:field>
+        <orm:field name="_auctionDataEntity" property="AuctionDataEntity" behavior="readwrite" uniqueId="a3e89e0b-3868-493b-9b32-45c93ea7dd1c" type="Esunco.Data.AuctionDataEntity">
+          <orm:reference uniqueId="94be2978-6d19-4836-8fe5-e5a956265dbb" association-name="AuctionBidDataEntityHasAuctionDataEntity">
+            <orm:sharedfield name="_auctionID" target-class="Esunco.Data.AuctionDataEntity" target-field="_iD" />
+            <orm:constraint name="FK_AuctionBids_Auctions" delete-action="cascade" destination-table="Auctions" />
+          </orm:reference>
+        </orm:field>
+      </orm:class>
+      <orm:class name="PaymentDataEntity" uniqueId="9270416f-c505-49df-b05f-388a43b77cd4">
+        <orm:table name="Payments" />
+        <orm:identity>
+          <orm:key-generator name="autoinc">
+            <orm:key-generator-member property-name="ID" />
+          </orm:key-generator>
+          <orm:single-field field-name="_iD" />
+        </orm:identity>
+        <orm:concurrency strategy="changed" />
+        <orm:field name="_iD" property="ID" behavior="readwrite" uniqueId="774eaec9-1e83-4134-aeb0-aa6434457759" type="System.Int64">
+          <orm:column name="ID" sql-type="bigint" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int64" />
+        </orm:field>
+        <orm:field name="_saleOrderID" property="SaleOrderID" behavior="readwrite" uniqueId="c1b17e36-3a6f-4072-8f9b-7ac8c18a5c5c" type="System.Int64">
+          <orm:column name="SaleOrderID" sql-type="bigint" nullable="false" length="0" scale="0" ado-type="Int64" />
+        </orm:field>
+        <orm:field name="_price" property="Price" behavior="readwrite" uniqueId="2714c4de-7a90-4858-a624-a3121c1a88ed" type="System.Int64">
+          <orm:column name="Price" sql-type="bigint" nullable="false" length="0" scale="0" ado-type="Int64" />
+        </orm:field>
+        <orm:field name="_resultCode" property="ResultCode" behavior="readwrite" uniqueId="ced7fce0-c690-48d9-bd8e-a2459be0e38e" type="System.String">
+          <orm:column name="ResultCode" sql-type="varchar" nullable="true" length="50" scale="0" ado-type="StringVariableLength" />
+        </orm:field>
+        <orm:field name="_refID" property="RefID" behavior="readwrite" uniqueId="be572679-111c-459a-869e-8b3983049eea" type="System.String">
+          <orm:column name="RefID" sql-type="varchar" nullable="true" length="50" scale="0" ado-type="StringVariableLength" />
+        </orm:field>
+        <orm:field name="_saleRefID" property="SaleRefID" behavior="readwrite" uniqueId="4ef2ea5f-3bba-41c4-8988-3adf168934ea" type="System.Nullable`1[[System.Int64, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <orm:column name="SaleRefID" sql-type="bigint" nullable="true" length="0" scale="0" ado-type="Int64" />
+        </orm:field>
+        <orm:field name="_status" property="Status" behavior="readwrite" uniqueId="37a450b6-b467-4ca0-846d-34f0c0e1eb15" type="System.Byte">
+          <orm:column name="Status" sql-type="tinyint" nullable="false" length="0" scale="0" ado-type="Byte" />
+        </orm:field>
+        <orm:field name="_createTime" property="CreateTime" behavior="readwrite" uniqueId="93aac8d2-20d7-4964-840a-223518e80083" type="System.DateTime">
+          <orm:column name="CreateTime" sql-type="datetime" nullable="false" length="0" scale="0" ado-type="DateTime" />
+        </orm:field>
+        <orm:field name="_orderDataEntities" property="OrderDataEntities" behavior="readwrite" uniqueId="56c7a74f-c229-4d20-aa7a-4e769cb9d1e6" type="Esunco.Data.OrderDataEntity">
+          <orm:collection element-class="Esunco.Data.OrderDataEntity" inverse-field="_paymentDataEntity" order-by="" uniqueId="0be605f5-4d35-4528-b0e6-c28b9094da52" />
+        </orm:field>
+        <orm:field name="_creditChargeDataEntities" property="CreditChargeDataEntities" behavior="readwrite" uniqueId="bc4056bc-511c-4923-93f4-654a752fb999" type="Esunco.Data.CreditChargeDataEntity">
+          <orm:collection element-class="Esunco.Data.CreditChargeDataEntity" inverse-field="_paymentDataEntity" order-by="" uniqueId="15fb66c6-d577-4769-8a0f-8982a1ae3ca0" />
+        </orm:field>
+      </orm:class>
+      <orm:class name="CreditChargeDataEntity" uniqueId="42e5080b-c344-4e99-b13a-9ca48c3ddfb8">
+        <orm:table name="CreditCharges" />
+        <orm:identity>
+          <orm:key-generator name="autoinc">
+            <orm:key-generator-member property-name="ID" />
+          </orm:key-generator>
+          <orm:single-field field-name="_iD" />
+        </orm:identity>
+        <orm:concurrency strategy="changed" />
+        <orm:field name="_iD" property="ID" behavior="readwrite" uniqueId="dee5b0cd-3e9c-44e0-97cc-f6baf5f0f821" type="System.Int64">
+          <orm:column name="ID" sql-type="bigint" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int64" />
+        </orm:field>
+        <orm:field name="_clientID" property="ClientID" behavior="readwrite" uniqueId="9dbef90b-0cb4-4edf-a4e8-fb8d3e8f1d8b" type="System.Int64">
+          <orm:column name="ClientID" sql-type="bigint" nullable="false" length="0" scale="0" ado-type="Int64" />
+        </orm:field>
+        <orm:field name="_paymentID" property="PaymentID" behavior="readwrite" uniqueId="61ef3d40-5f89-4d8a-8163-f355c6f320d4" type="System.Int64">
+          <orm:column name="PaymentID" sql-type="bigint" nullable="false" length="0" scale="0" ado-type="Int64" />
+        </orm:field>
+        <orm:field name="_paymentDataEntity" property="PaymentDataEntity" behavior="readwrite" uniqueId="53d6b3d8-b7fb-40df-8492-f7821bcc70e2" type="Esunco.Data.PaymentDataEntity">
+          <orm:reference uniqueId="15fb66c6-d577-4769-8a0f-8982a1ae3ca0" association-name="CreditChargeDataEntityHasPaymentDataEntity">
+            <orm:sharedfield name="_paymentID" target-class="Esunco.Data.PaymentDataEntity" target-field="_iD" />
+            <orm:constraint name="FK_CreditCharges_Payments" delete-action="dbdefaultrule" destination-table="Payments" />
+          </orm:reference>
+        </orm:field>
+        <orm:field name="_clientDataEntity" property="ClientDataEntity" behavior="readwrite" uniqueId="1cc70602-94bf-49b6-bc3a-36ffca9fe4c9" type="Esunco.Data.ClientDataEntity">
+          <orm:reference uniqueId="1f4e1011-22ae-40c4-bb3f-7169d8bf73d0" association-name="CreditChargeDataEntityHasClientDataEntity">
+            <orm:sharedfield name="_clientID" target-class="Esunco.Data.ClientDataEntity" target-field="_iD" />
+            <orm:constraint name="FK_CreditCharges_Clients" delete-action="dbdefaultrule" destination-table="Clients" />
+          </orm:reference>
+        </orm:field>
+      </orm:class>
+      <orm:class name="OrderReportViewDataEntity" uniqueId="762d87d1-21f0-4cbd-81c0-869124bc09c6">
+        <orm:table name="OrderReportView" view="true" />
+        <orm:identity>
+          <orm:single-field field-name="_iD" />
+        </orm:identity>
+        <orm:concurrency strategy="changed" />
+        <orm:field name="_saleRefID" property="SaleRefID" behavior="readwrite" uniqueId="f1b7d92a-f543-4459-b3ac-cd20a3a88a25" type="System.Nullable`1[[System.Int64, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <orm:column name="SaleRefID" sql-type="bigint" nullable="true" length="0" scale="0" ado-type="Int64" />
+        </orm:field>
+        <orm:field name="_saleOrderID" property="SaleOrderID" behavior="readwrite" uniqueId="b52de1a3-132d-41d3-afb4-a20f34a6fd8f" type="System.Nullable`1[[System.Int64, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <orm:column name="SaleOrderID" sql-type="bigint" nullable="true" length="0" scale="0" ado-type="Int64" />
+        </orm:field>
+        <orm:field name="_resultCode" property="ResultCode" behavior="readwrite" uniqueId="edb4a31c-5816-4946-8579-3aea972647c3" type="System.String">
+          <orm:column name="ResultCode" sql-type="varchar" nullable="true" length="50" scale="0" ado-type="StringVariableLength" />
+        </orm:field>
+        <orm:field name="_refID" property="RefID" behavior="readwrite" uniqueId="536fcadb-f3cb-4a69-847a-99eeedb58805" type="System.String">
+          <orm:column name="RefID" sql-type="varchar" nullable="true" length="50" scale="0" ado-type="StringVariableLength" />
+        </orm:field>
+        <orm:field name="_paymentStatus" property="PaymentStatus" behavior="readwrite" uniqueId="cab0ce11-e106-4917-8ebf-809206a9dec9" type="System.Nullable`1[[System.Byte, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <orm:column name="PaymentStatus" sql-type="tinyint" nullable="true" length="0" scale="0" ado-type="Byte" />
+        </orm:field>
+        <orm:field name="_orderTime" property="OrderTime" behavior="readwrite" uniqueId="7cce7caf-1c3f-4c7f-8efe-da6cb6534935" type="System.DateTime">
+          <orm:column name="OrderTime" sql-type="datetime" nullable="false" length="0" scale="0" ado-type="DateTime" />
+        </orm:field>
+        <orm:field name="_orderStatus" property="OrderStatus" behavior="readwrite" uniqueId="58d94172-385b-4d88-bd07-4de5ebd6c8a2" type="System.Byte">
+          <orm:column name="OrderStatus" sql-type="tinyint" nullable="false" length="0" scale="0" ado-type="Byte" />
+        </orm:field>
+        <orm:field name="_isCredit" property="IsCredit" behavior="readwrite" uniqueId="ba048603-c38e-43df-8ae5-8bbb4b995f32" type="System.Boolean">
+          <orm:column name="IsCredit" sql-type="bit" nullable="false" length="0" scale="0" ado-type="Bit" />
+        </orm:field>
+        <orm:field name="_iD" property="ID" behavior="readwrite" uniqueId="be24beef-8ceb-4cd0-b533-b8558c244446" type="System.Int64">
+          <orm:column name="ID" sql-type="bigint" nullable="false" length="0" scale="0" primary-key="true" ado-type="Int64" />
+        </orm:field>
+        <orm:field name="_clientOfficeCode" property="ClientOfficeCode" behavior="readwrite" uniqueId="f2bac63a-5b01-4cde-a8a1-9a6fba10bbbe" type="System.String">
+          <orm:column name="ClientOfficeCode" sql-type="nvarchar" nullable="true" length="200" scale="0" ado-type="UnicodeStringVariableLength" />
+        </orm:field>
+        <orm:field name="_clientNationalCode" property="ClientNationalCode" behavior="readwrite" uniqueId="2cb7378a-2032-45b7-84ae-329429619cb4" type="System.String">
+          <orm:column name="ClientNationalCode" sql-type="nchar" nullable="true" length="10" scale="0" ado-type="UnicodeStringFixedLength" />
+        </orm:field>
+        <orm:field name="_clientMobile" property="ClientMobile" behavior="readwrite" uniqueId="744963a3-a4bf-48c1-a0cd-51a856d1775b" type="System.String">
+          <orm:column name="ClientMobile" sql-type="nvarchar" nullable="false" length="200" scale="0" ado-type="UnicodeStringVariableLength" />
+        </orm:field>
+        <orm:field name="_clientFullname" property="ClientFullname" behavior="readwrite" uniqueId="fe33baae-2e00-4f44-9ca3-903159cc26d2" type="System.String">
+          <orm:column name="ClientFullname" sql-type="nvarchar" nullable="false" length="401" scale="0" ado-type="UnicodeStringVariableLength" />
+        </orm:field>
+        <orm:field name="_price" property="Price" behavior="readwrite" uniqueId="12ea5df4-fcb2-49c0-89e0-e64769f0e9d3" type="System.Int64">
+          <orm:column name="Price" sql-type="bigint" nullable="false" length="0" scale="0" ado-type="Int64" />
+        </orm:field>
+        <orm:field name="_paymentTime" property="PaymentTime" behavior="readwrite" uniqueId="b7c208fc-04c9-45ea-b658-4bd4656d66c9" type="System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <orm:column name="PaymentTime" sql-type="datetime" nullable="true" length="0" scale="0" ado-type="DateTime" />
+        </orm:field>
+        <orm:field name="_paymentID" property="PaymentID" behavior="readwrite" uniqueId="5ac8641a-94f6-45b4-8657-5733a907ff80" type="System.Nullable`1[[System.Int64, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <orm:column name="PaymentID" sql-type="bigint" nullable="true" length="0" scale="0" ado-type="Int64" />
+        </orm:field>
+      </orm:class>
+      <orm:class name="ClientOrderViewDataEntity" uniqueId="f7e4ca0b-1c73-4aeb-86f7-3ae1fc988d9f">
+        <orm:table name="ClientOrderView" view="true" />
+        <orm:identity>
+          <orm:single-field field-name="_iD" />
+        </orm:identity>
+        <orm:concurrency strategy="changed" />
+        <orm:field name="_total" property="Total" behavior="readwrite" uniqueId="33371273-e776-48ca-b2aa-cac8bfe5248d" type="System.Nullable`1[[System.Int64, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <orm:column name="Total" sql-type="bigint" nullable="true" length="0" scale="0" ado-type="Int64" />
+        </orm:field>
+        <orm:field name="_nationalCode" property="NationalCode" behavior="readwrite" uniqueId="86edad0d-ef23-4ac7-9bab-ed726853ca2a" type="System.String">
+          <orm:column name="NationalCode" sql-type="nchar" nullable="true" length="10" scale="0" ado-type="UnicodeStringFixedLength" />
+        </orm:field>
+        <orm:field name="_name" property="Name" behavior="readwrite" uniqueId="f3bcde35-fd94-483b-a945-8ce8e7617486" type="System.String">
+          <orm:column name="Name" sql-type="nvarchar" nullable="false" length="401" scale="0" ado-type="UnicodeStringVariableLength" />
+        </orm:field>
+        <orm:field name="_mobile" property="Mobile" behavior="readwrite" uniqueId="506b877b-8b53-4433-b563-408623261324" type="System.String">
+          <orm:column name="Mobile" sql-type="nvarchar" nullable="false" length="200" scale="0" ado-type="UnicodeStringVariableLength" />
+        </orm:field>
+        <orm:field name="_iD" property="ID" behavior="readwrite" uniqueId="2e45cc78-a281-413b-a96e-02ab945ab63e" type="System.Int64">
+          <orm:column name="ID" sql-type="bigint" nullable="false" length="0" scale="0" primary-key="true" ado-type="Int64" />
+        </orm:field>
+      </orm:class>
+    </orm:namespace>
+    <orm:schema schema="">
+      <orm:table name="Users">
+        <orm:column name="ID" sql-type="bigint" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int64" />
+        <orm:column name="Username" sql-type="varchar" nullable="false" length="100" scale="0" ado-type="StringVariableLength" />
+        <orm:column name="PasswordSalt" sql-type="varchar" nullable="false" length="50" scale="0" ado-type="StringVariableLength" />
+        <orm:column name="Email" sql-type="nvarchar" nullable="true" length="100" scale="0" ado-type="UnicodeStringVariableLength" />
+        <orm:column name="RoleID" sql-type="tinyint" nullable="false" length="0" scale="0" ado-type="Byte" />
+        <orm:column name="Enabled" sql-type="bit" nullable="false" length="0" scale="0" ado-type="Bit" />
+        <orm:column name="RegisterTime" sql-type="datetime" nullable="false" length="0" scale="0" ado-type="DateTime" />
+        <orm:column name="LastActivityTime" sql-type="datetime" nullable="false" length="0" scale="0" ado-type="DateTime" />
+        <orm:column name="Password" sql-type="varchar" nullable="false" length="50" scale="0" ado-type="StringVariableLength" />
+        <orm:index name="IX_Users" unique="true">
+          <orm:columnMapping>
+            <orm:column name="Username" sql-type="varchar" nullable="false" length="100" scale="0" ado-type="StringVariableLength" />
+          </orm:columnMapping>
+        </orm:index>
+      </orm:table>
+      <orm:table name="Sims">
+        <orm:column name="ID" sql-type="bigint" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int64" />
+        <orm:column name="Number" sql-type="bigint" nullable="false" length="0" scale="0" ado-type="Int64" />
+        <orm:column name="Price" sql-type="bigint" nullable="false" length="0" scale="0" ado-type="Int64" />
+        <orm:column name="ReceiptCode" sql-type="nvarchar" nullable="true" length="50" scale="0" ado-type="UnicodeStringVariableLength" />
+        <orm:column name="PaymentCode" sql-type="nvarchar" nullable="true" length="50" scale="0" ado-type="UnicodeStringVariableLength" />
+        <orm:column name="ActivationCode" sql-type="nvarchar" nullable="true" length="50" scale="0" ado-type="UnicodeStringVariableLength" />
+        <orm:column name="StatusID" sql-type="tinyint" nullable="false" length="0" scale="0" ado-type="Byte" />
+        <orm:column name="TypeID" sql-type="tinyint" nullable="false" length="0" scale="0" ado-type="Byte" />
+        <orm:column name="RondPrice" sql-type="bigint" nullable="true" length="0" scale="0" ado-type="Int64" />
+        <orm:column name="RegisterTime" sql-type="datetime" nullable="false" length="0" scale="0" has-default-value="true" ado-type="DateTime" />
+        <orm:column name="Display" sql-type="nvarchar" nullable="true" length="50" scale="0" ado-type="UnicodeStringVariableLength" />
+        <orm:column name="Code" sql-type="nvarchar" nullable="true" length="10" scale="0" ado-type="UnicodeStringVariableLength" />
+        <orm:column name="TraceCode" sql-type="nvarchar" nullable="true" length="50" scale="0" ado-type="UnicodeStringVariableLength" />
+        <orm:column name="ExpireDate" sql-type="datetime" nullable="true" length="0" scale="0" ado-type="DateTime" />
+        <orm:column name="CreateDate" sql-type="datetime" nullable="true" length="0" scale="0" ado-type="DateTime" />
+        <orm:column name="Visible" sql-type="bit" nullable="false" length="0" scale="0" has-default-value="true" ado-type="Bit" />
+        <orm:column name="BuyPrice" sql-type="bigint" nullable="false" length="0" scale="0" has-default-value="true" ado-type="Int64" />
+      </orm:table>
+      <orm:table name="Orders">
+        <orm:column name="ID" sql-type="bigint" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int64" />
+        <orm:column name="ClientID" sql-type="bigint" nullable="false" length="0" scale="0" ado-type="Int64" />
+        <orm:column name="Status" sql-type="tinyint" nullable="false" length="0" scale="0" ado-type="Byte" />
+        <orm:column name="PaymentID" sql-type="bigint" nullable="true" length="0" scale="0" ado-type="Int64" />
+        <orm:column name="IsCredit" sql-type="bit" nullable="false" length="0" scale="0" has-default-value="true" ado-type="Bit" />
+        <orm:column name="TotalPrice" sql-type="bigint" nullable="false" length="0" scale="0" has-default-value="true" ado-type="Int64" />
+        <orm:column name="CreateTime" sql-type="datetime" nullable="false" length="0" scale="0" has-default-value="true" ado-type="DateTime" />
+        <orm:column name="FilePassword" sql-type="nvarchar" nullable="true" length="50" scale="0" ado-type="UnicodeStringVariableLength" />
+        <orm:column name="FileID" sql-type="uniqueidentifier" nullable="true" length="0" scale="0" has-default-value="true" ado-type="Guid" />
+        <orm:constraint name="FK_Orders_Clients" delete-action="dbdefaultrule" destination-table="Clients">
+          <orm:column name="ClientID" sql-type="bigint" nullable="false" length="0" scale="0" ado-type="Int64" />
+        </orm:constraint>
+        <orm:constraint name="FK_Orders_Payments" delete-action="dbdefaultrule" destination-table="Payments">
+          <orm:column name="PaymentID" sql-type="bigint" nullable="true" length="0" scale="0" ado-type="Int64" />
+        </orm:constraint>
+      </orm:table>
+      <orm:table name="Clients">
+        <orm:column name="ID" sql-type="bigint" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int64" />
+        <orm:column name="Firstname" sql-type="nvarchar" nullable="false" length="200" scale="0" ado-type="UnicodeStringVariableLength" />
+        <orm:column name="Lastname" sql-type="nvarchar" nullable="false" length="200" scale="0" ado-type="UnicodeStringVariableLength" />
+        <orm:column name="Phone" sql-type="nvarchar" nullable="true" length="200" scale="0" ado-type="UnicodeStringVariableLength" />
+        <orm:column name="Mobile" sql-type="nvarchar" nullable="false" length="200" scale="0" ado-type="UnicodeStringVariableLength" />
+        <orm:column name="Address" sql-type="nvarchar" nullable="true" length="200" scale="0" ado-type="UnicodeStringVariableLength" />
+        <orm:column name="PostalCode" sql-type="nvarchar" nullable="true" length="200" scale="0" ado-type="UnicodeStringVariableLength" />
+        <orm:column name="NationalCode" sql-type="nchar" nullable="true" length="10" scale="0" ado-type="UnicodeStringFixedLength" />
+        <orm:column name="Blocked" sql-type="bit" nullable="false" length="0" scale="0" ado-type="Bit" />
+        <orm:column name="OfficeCode" sql-type="nvarchar" nullable="true" length="200" scale="0" ado-type="UnicodeStringVariableLength" />
+        <orm:column name="Email" sql-type="nvarchar" nullable="true" length="200" scale="0" ado-type="UnicodeStringVariableLength" />
+        <orm:column name="Token" sql-type="nvarchar" nullable="true" length="200" scale="0" ado-type="UnicodeStringVariableLength" />
+        <orm:column name="SMSCode" sql-type="int" nullable="false" length="0" scale="0" has-default-value="true" ado-type="Int32" />
+        <orm:column name="SMSCodeCreatedTime" sql-type="datetime" nullable="false" length="0" scale="0" has-default-value="true" ado-type="DateTime" />
+        <orm:column name="Credit" sql-type="bigint" nullable="false" length="0" scale="0" has-default-value="true" ado-type="Int64" />
+        <orm:column name="LastCredit" sql-type="bigint" nullable="false" length="0" scale="0" has-default-value="true" ado-type="Int64" />
+        <orm:column name="BlockedCredit" sql-type="bigint" nullable="false" length="0" scale="0" has-default-value="true" ado-type="Int64" />
+        <orm:column name="AccountType" sql-type="tinyint" nullable="false" length="0" scale="0" has-default-value="true" ado-type="Byte" />
+      </orm:table>
+      <orm:table name="Regions">
+        <orm:column name="Type" sql-type="tinyint" nullable="false" length="0" scale="0" ado-type="Byte" />
+        <orm:column name="Title" sql-type="nvarchar" nullable="false" length="200" scale="0" ado-type="UnicodeStringVariableLength" />
+        <orm:column name="ParentID" sql-type="bigint" nullable="true" length="0" scale="0" ado-type="Int64" />
+        <orm:column name="ID" sql-type="bigint" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int64" />
+      </orm:table>
+      <orm:table name="PackSims">
+        <orm:column name="ID" sql-type="bigint" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int64" />
+        <orm:column name="SimID" sql-type="bigint" nullable="false" length="0" scale="0" ado-type="Int64" />
+        <orm:column name="PackageID" sql-type="bigint" nullable="false" length="0" scale="0" ado-type="Int64" />
+        <orm:index name="IX_PackageSims" unique="true">
+          <orm:columnMapping>
+            <orm:column name="SimID" sql-type="bigint" nullable="false" length="0" scale="0" ado-type="Int64" />
+          </orm:columnMapping>
+          <orm:columnMapping>
+            <orm:column name="PackageID" sql-type="bigint" nullable="false" length="0" scale="0" ado-type="Int64" />
+          </orm:columnMapping>
+        </orm:index>
+        <orm:index name="idx_PackageSims_SimID">
+          <orm:columnMapping>
+            <orm:column name="SimID" sql-type="bigint" nullable="false" length="0" scale="0" ado-type="Int64" />
+          </orm:columnMapping>
+        </orm:index>
+        <orm:index name="idx_PackageSims_PackageID">
+          <orm:columnMapping>
+            <orm:column name="PackageID" sql-type="bigint" nullable="false" length="0" scale="0" ado-type="Int64" />
+          </orm:columnMapping>
+        </orm:index>
+        <orm:constraint name="FK_PackSims_Sims" delete-action="cascade" destination-table="Sims">
+          <orm:column name="SimID" sql-type="bigint" nullable="false" length="0" scale="0" ado-type="Int64" />
+        </orm:constraint>
+        <orm:constraint name="FK_PackSims_Packs" delete-action="cascade" destination-table="Packs">
+          <orm:column name="PackageID" sql-type="bigint" nullable="false" length="0" scale="0" ado-type="Int64" />
+        </orm:constraint>
+      </orm:table>
+      <orm:table name="Packs">
+        <orm:column name="Title" sql-type="nvarchar" nullable="false" length="200" scale="0" ado-type="UnicodeStringVariableLength" />
+        <orm:column name="Price" sql-type="bigint" nullable="false" length="0" scale="0" ado-type="Int64" />
+        <orm:column name="ID" sql-type="bigint" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int64" />
+        <orm:column name="CreateTime" sql-type="datetime" nullable="false" length="0" scale="0" ado-type="DateTime" />
+        <orm:column name="Visible" sql-type="bit" nullable="false" length="0" scale="0" has-default-value="true" ado-type="Bit" />
+        <orm:column name="Code" sql-type="nvarchar" nullable="true" length="100" scale="0" has-default-value="true" ado-type="UnicodeStringVariableLength" />
+        <orm:column name="TypeID" sql-type="tinyint" nullable="false" length="0" scale="0" has-default-value="true" ado-type="Byte" />
+        <orm:column name="StatusID" sql-type="tinyint" nullable="false" length="0" scale="0" has-default-value="true" ado-type="Byte" />
+      </orm:table>
+      <orm:table name="Auctions">
+        <orm:column name="ID" sql-type="bigint" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int64" />
+        <orm:column name="StartTime" sql-type="datetime" nullable="false" length="0" scale="0" ado-type="DateTime" />
+        <orm:column name="FinishTime" sql-type="datetime" nullable="false" length="0" scale="0" ado-type="DateTime" />
+        <orm:column name="BasePrice" sql-type="bigint" nullable="false" length="0" scale="0" ado-type="Int64" />
+        <orm:column name="Title" sql-type="nvarchar" nullable="false" length="200" scale="0" ado-type="UnicodeStringVariableLength" />
+        <orm:column name="NotifyTime" sql-type="datetime" nullable="true" length="0" scale="0" ado-type="DateTime" />
+        <orm:column name="StatusID" sql-type="tinyint" nullable="false" length="0" scale="0" has-default-value="true" ado-type="Byte" />
+      </orm:table>
+      <orm:table name="AuctionBids">
+        <orm:column name="ID" sql-type="bigint" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int64" />
+        <orm:column name="AuctionID" sql-type="bigint" nullable="false" length="0" scale="0" ado-type="Int64" />
+        <orm:column name="ClientID" sql-type="bigint" nullable="false" length="0" scale="0" ado-type="Int64" />
+        <orm:column name="Time" sql-type="datetime" nullable="false" length="0" scale="0" has-default-value="true" ado-type="DateTime" />
+        <orm:column name="Price" sql-type="bigint" nullable="false" length="0" scale="0" ado-type="Int64" />
+        <orm:column name="IsWinner" sql-type="bit" nullable="false" length="0" scale="0" has-default-value="true" ado-type="Bit" />
+        <orm:constraint name="FK_AuctionBids_Clients" delete-action="cascade" destination-table="Clients">
+          <orm:column name="ClientID" sql-type="bigint" nullable="false" length="0" scale="0" ado-type="Int64" />
+        </orm:constraint>
+        <orm:constraint name="FK_AuctionBids_Auctions" delete-action="cascade" destination-table="Auctions">
+          <orm:column name="AuctionID" sql-type="bigint" nullable="false" length="0" scale="0" ado-type="Int64" />
+        </orm:constraint>
+      </orm:table>
+      <orm:table name="OrderItems">
+        <orm:column name="ID" sql-type="bigint" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int64" />
+        <orm:column name="OrderID" sql-type="bigint" nullable="false" length="0" scale="0" ado-type="Int64" />
+        <orm:column name="SimID" sql-type="bigint" nullable="true" length="0" scale="0" ado-type="Int64" />
+        <orm:column name="PackID" sql-type="bigint" nullable="true" length="0" scale="0" ado-type="Int64" />
+        <orm:column name="AuctionID" sql-type="bigint" nullable="true" length="0" scale="0" ado-type="Int64" />
+        <orm:column name="Price" sql-type="bigint" nullable="false" length="0" scale="0" has-default-value="true" ado-type="Int64" />
+        <orm:constraint name="FK_OrderItems_Sims" delete-action="cascade" destination-table="Sims">
+          <orm:column name="SimID" sql-type="bigint" nullable="true" length="0" scale="0" ado-type="Int64" />
+        </orm:constraint>
+        <orm:constraint name="FK_OrderItems_Packs" delete-action="cascade" destination-table="Packs">
+          <orm:column name="PackID" sql-type="bigint" nullable="true" length="0" scale="0" ado-type="Int64" />
+        </orm:constraint>
+        <orm:constraint name="FK_OrderItems_Orders" delete-action="cascade" destination-table="Orders">
+          <orm:column name="OrderID" sql-type="bigint" nullable="false" length="0" scale="0" ado-type="Int64" />
+        </orm:constraint>
+        <orm:constraint name="FK_OrderItems_Auctions" delete-action="cascade" destination-table="Auctions">
+          <orm:column name="AuctionID" sql-type="bigint" nullable="true" length="0" scale="0" ado-type="Int64" />
+        </orm:constraint>
+      </orm:table>
+      <orm:table name="AuctionSims">
+        <orm:column name="ID" sql-type="bigint" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int64" />
+        <orm:column name="SimID" sql-type="bigint" nullable="false" length="0" scale="0" ado-type="Int64" />
+        <orm:column name="AuctionID" sql-type="bigint" nullable="false" length="0" scale="0" ado-type="Int64" />
+        <orm:constraint name="FK_AuctionSims_Sims" delete-action="cascade" destination-table="Sims">
+          <orm:column name="SimID" sql-type="bigint" nullable="false" length="0" scale="0" ado-type="Int64" />
+        </orm:constraint>
+        <orm:constraint name="FK_AuctionSims_Auctions" delete-action="cascade" destination-table="Auctions">
+          <orm:column name="AuctionID" sql-type="bigint" nullable="false" length="0" scale="0" ado-type="Int64" />
+        </orm:constraint>
+      </orm:table>
+      <orm:table name="Payments">
+        <orm:column name="ID" sql-type="bigint" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int64" />
+        <orm:column name="SaleOrderID" sql-type="bigint" nullable="false" length="0" scale="0" ado-type="Int64" />
+        <orm:column name="Price" sql-type="bigint" nullable="false" length="0" scale="0" ado-type="Int64" />
+        <orm:column name="ResultCode" sql-type="varchar" nullable="true" length="50" scale="0" ado-type="StringVariableLength" />
+        <orm:column name="RefID" sql-type="varchar" nullable="true" length="50" scale="0" ado-type="StringVariableLength" />
+        <orm:column name="SaleRefID" sql-type="bigint" nullable="true" length="0" scale="0" ado-type="Int64" />
+        <orm:column name="Status" sql-type="tinyint" nullable="false" length="0" scale="0" ado-type="Byte" />
+        <orm:column name="CreateTime" sql-type="datetime" nullable="false" length="0" scale="0" ado-type="DateTime" />
+      </orm:table>
+      <orm:table name="CreditCharges">
+        <orm:column name="ID" sql-type="bigint" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int64" />
+        <orm:column name="ClientID" sql-type="bigint" nullable="false" length="0" scale="0" ado-type="Int64" />
+        <orm:column name="PaymentID" sql-type="bigint" nullable="false" length="0" scale="0" ado-type="Int64" />
+        <orm:constraint name="FK_CreditCharges_Payments" delete-action="dbdefaultrule" destination-table="Payments">
+          <orm:column name="PaymentID" sql-type="bigint" nullable="false" length="0" scale="0" ado-type="Int64" />
+        </orm:constraint>
+        <orm:constraint name="FK_CreditCharges_Clients" delete-action="dbdefaultrule" destination-table="Clients">
+          <orm:column name="ClientID" sql-type="bigint" nullable="false" length="0" scale="0" ado-type="Int64" />
+        </orm:constraint>
+      </orm:table>
+      <orm:table name="OrderReportView" view="true">
+        <orm:column name="SaleRefID" sql-type="bigint" nullable="true" length="0" scale="0" ado-type="Int64" />
+        <orm:column name="SaleOrderID" sql-type="bigint" nullable="true" length="0" scale="0" ado-type="Int64" />
+        <orm:column name="ResultCode" sql-type="varchar" nullable="true" length="50" scale="0" ado-type="StringVariableLength" />
+        <orm:column name="RefID" sql-type="varchar" nullable="true" length="50" scale="0" ado-type="StringVariableLength" />
+        <orm:column name="PaymentStatus" sql-type="tinyint" nullable="true" length="0" scale="0" ado-type="Byte" />
+        <orm:column name="OrderTime" sql-type="datetime" nullable="false" length="0" scale="0" ado-type="DateTime" />
+        <orm:column name="OrderStatus" sql-type="tinyint" nullable="false" length="0" scale="0" ado-type="Byte" />
+        <orm:column name="IsCredit" sql-type="bit" nullable="false" length="0" scale="0" ado-type="Bit" />
+        <orm:column name="ID" sql-type="bigint" nullable="false" length="0" scale="0" primary-key="true" ado-type="Int64" />
+        <orm:column name="ClientOfficeCode" sql-type="nvarchar" nullable="true" length="200" scale="0" ado-type="UnicodeStringVariableLength" />
+        <orm:column name="ClientNationalCode" sql-type="nchar" nullable="true" length="10" scale="0" ado-type="UnicodeStringFixedLength" />
+        <orm:column name="ClientMobile" sql-type="nvarchar" nullable="false" length="200" scale="0" ado-type="UnicodeStringVariableLength" />
+        <orm:column name="ClientFullname" sql-type="nvarchar" nullable="false" length="401" scale="0" ado-type="UnicodeStringVariableLength" />
+        <orm:column name="Price" sql-type="bigint" nullable="false" length="0" scale="0" ado-type="Int64" />
+        <orm:column name="PaymentTime" sql-type="datetime" nullable="true" length="0" scale="0" ado-type="DateTime" />
+        <orm:column name="PaymentID" sql-type="bigint" nullable="true" length="0" scale="0" ado-type="Int64" />
+      </orm:table>
+      <orm:table name="ClientOrderView" view="true">
+        <orm:column name="Total" sql-type="bigint" nullable="true" length="0" scale="0" ado-type="Int64" />
+        <orm:column name="NationalCode" sql-type="nchar" nullable="true" length="10" scale="0" ado-type="UnicodeStringFixedLength" />
+        <orm:column name="Name" sql-type="nvarchar" nullable="false" length="401" scale="0" ado-type="UnicodeStringVariableLength" />
+        <orm:column name="Mobile" sql-type="nvarchar" nullable="false" length="200" scale="0" ado-type="UnicodeStringVariableLength" />
+        <orm:column name="ID" sql-type="bigint" nullable="false" length="0" scale="0" primary-key="true" ado-type="Int64" />
+      </orm:table>
+    </orm:schema>
+    <orm:relational-naming-settings>
+      <orm:remove-leading-underscore>False</orm:remove-leading-underscore>
+      <orm:source-strategy>Property</orm:source-strategy>
+      <orm:remove-camel-case>False</orm:remove-camel-case>
+    </orm:relational-naming-settings>
+  </orm:orm>
+  <ModelSettings xmlns="">
+    <AppConfigConnectionPropertyName>EsuncoConnection</AppConfigConnectionPropertyName>
+    <AppConfigConnectionString>data source=.;initial catalog=Esunco;user id=ma;password=123</AppConfigConnectionString>
+    <InitialCatalog>Esunco</InitialCatalog>
+    <NamingSettings>
+      <ClassRules>
+        <AddSuffix>DataEntity</AddSuffix>
+        <CaseMode>PascalCase</CaseMode>
+        <PluralizationMode>Singularize</PluralizationMode>
+      </ClassRules>
+      <FieldRules>
+        <AddPrefix>_</AddPrefix>
+        <CaseMode>CamelCase</CaseMode>
+      </FieldRules>
+      <PropertyRules>
+        <CaseMode>PascalCase</CaseMode>
+      </PropertyRules>
+      <NavigationPropertyRules>
+        <AddSuffix>DataEntity</AddSuffix>
+        <RemoveSuffix>ID</RemoveSuffix>
+        <NavigationReferenceMode>Property</NavigationReferenceMode>
+      </NavigationPropertyRules>
+    </NamingSettings>
+    <CodeGenerationSettings>
+      <CustomTemplateFileName>OpenAccessTemplate\DefaultTemplateCS.tt</CustomTemplateFileName>
+      <UseCustomTemplate>true</UseCustomTemplate>
+      <MappingDefinitionType>Attributes</MappingDefinitionType>
+      <GenerateMultipleFiles>false</GenerateMultipleFiles>
+    </CodeGenerationSettings>
+    <SchemaUpdateSettings>
+      <DeploymentProject>Esunco.Data</DeploymentProject>
+    </SchemaUpdateSettings>
+    <BackendConfigurationSettings>
+      <BackendConfiguration>
+        <Backend>MsSql</Backend>
+        <ProviderName>System.Data.SqlClient</ProviderName>
+        <Logging>
+          <MetricStoreSnapshotInterval>0</MetricStoreSnapshotInterval>
+        </Logging>
+      </BackendConfiguration>
+    </BackendConfigurationSettings>
+  </ModelSettings>
+  <Types>
+    <DomainClass Id="85873cfa-a728-4e0d-aeb7-d34b33916e28" name="UserDataEntity" namespace="Esunco.Data" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" concurrencyMode="Changed" showNavigationCompartment="true" showImplementationCompartment="true" identityMechanismMember="ID">
+      <Property Id="23a8c8d6-9e57-4edb-b8c4-ae18ab562134" name="ID" type="Int64" label="ID : Int64" kind="Persistent" identity="true" fieldName="_iD" />
+      <Property Id="a9697c2a-a42d-420c-8fd7-cded4b1f39ac" name="Email" label="Email : String" kind="Persistent" fieldName="_email" />
+      <Property Id="6ebdb234-b54f-4d8d-a5f5-90ba302d1990" name="Enabled" type="Boolean" label="Enabled : Boolean" kind="Persistent" fieldName="_enabled" />
+      <Property Id="4298de2c-f496-4adb-86b2-e319d644966a" name="LastActivityTime" type="DateTime" label="LastActivityTime : DateTime" kind="Persistent" fieldName="_lastActivityTime" />
+      <Property Id="e7bca8ef-86fe-4a23-845e-33cf47d0bab9" name="Password" label="Password : String" kind="Persistent" fieldName="_password" />
+      <Property Id="bc95d695-5705-41d5-8fcd-e5586a558bab" name="PasswordSalt" label="PasswordSalt : String" kind="Persistent" fieldName="_passwordSalt" />
+      <Property Id="03f2af73-0e7e-4334-bbf0-97ea7599f1ab" name="RegisterTime" type="DateTime" label="RegisterTime : DateTime" kind="Persistent" fieldName="_registerTime" />
+      <Property Id="05839f68-9a7e-4fdb-bb52-5c1e17396c75" name="RoleID" type="Byte" label="RoleID : Byte" kind="Persistent" fieldName="_roleID" />
+      <Property Id="c50309d7-cf00-4422-a93b-d7a2e2e1c011" name="Username" label="Username : String" kind="Persistent" fieldName="_username" />
+    </DomainClass>
+    <DomainClass Id="a329c4c5-9865-45b7-963b-821260a103cf" name="SimDataEntity" namespace="Esunco.Data" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" concurrencyMode="Changed" showNavigationCompartment="true" showImplementationCompartment="true" identityMechanismMember="ID">
+      <Property Id="103ed7cc-3c81-4d67-afd0-718fcbca1abb" name="ID" type="Int64" label="ID : Int64" kind="Persistent" identity="true" fieldName="_iD" />
+      <Property Id="529d9f00-e9b9-42ae-8fc6-50d5894cefa5" name="ActivationCode" label="ActivationCode : String" kind="Persistent" fieldName="_activationCode" />
+      <Property Id="f3bec287-a98e-4eb5-b029-80c3a68a61e0" name="Number" type="Int64" label="Number : Int64" kind="Persistent" fieldName="_number" />
+      <Property Id="15d31cb8-71f2-4e64-a269-aeaa9f90c4b7" name="PaymentCode" label="PaymentCode : String" kind="Persistent" fieldName="_paymentCode" />
+      <Property Id="181b6d2b-6efe-4b23-82a8-e8f565d14b33" name="Price" type="Int64" label="Price : Int64" kind="Persistent" fieldName="_price" />
+      <Property Id="2fa7b57d-e938-4aa0-af66-9003891ee182" name="ReceiptCode" label="ReceiptCode : String" kind="Persistent" fieldName="_receiptCode" />
+      <Property Id="b59e4c39-6320-4278-bc88-25ccefef61bd" name="RegisterTime" type="DateTime" label="RegisterTime : DateTime" kind="Persistent" fieldName="_registerTime" />
+      <Property Id="6235ce67-8405-494e-9309-9460c07d2895" name="RondPrice" type="Int64" label="RondPrice : Int64" nullable="true" kind="Persistent" fieldName="_rondPrice" />
+      <Property Id="d1181249-5151-4c99-a9d9-5717d7e03222" name="StatusID" type="Byte" label="StatusID : Byte" kind="Persistent" fieldName="_statusID" />
+      <Property Id="be0bc54b-57f0-489f-b5bb-b19f07a77d24" name="TypeID" type="Byte" label="TypeID : Byte" kind="Persistent" fieldName="_typeID" />
+      <Property Id="834d876f-9811-4add-b06d-a60176dd1dbf" name="Display" label="Display : String" kind="Persistent" fieldName="_display" />
+      <Property Id="8ad6a0fb-bc78-4d05-a3bd-422a714c3cc5" name="Code" label="Code : String" kind="Persistent" fieldName="_code" />
+      <Property Id="46027de0-01b2-4e33-a97d-12b3f70791a7" name="TraceCode" label="TraceCode : String" kind="Persistent" fieldName="_traceCode" />
+      <Property Id="48a1c4d5-81db-4307-86d7-88d0ca5b2b1f" name="ExpireDate" type="DateTime" label="ExpireDate : DateTime" nullable="true" kind="Persistent" fieldName="_expireDate" />
+      <Property Id="e0cf6338-0e5b-4675-9e47-e2c7b9d01dd9" name="CreateDate" type="DateTime" label="CreateDate : DateTime" nullable="true" kind="Persistent" fieldName="_createDate" />
+      <Property Id="5a3e0689-7a0e-4898-bb45-6b52a31b2084" name="Visible" type="Boolean" label="Visible : Boolean" kind="Persistent" fieldName="_visible" />
+      <Property Id="7646020c-2019-4025-b6bf-f4b8d81a42b7" name="BuyPrice" type="Int64" label="BuyPrice : Int64" kind="Persistent" fieldName="_buyPrice" />
+      <navigationalProperties>
+        <classHasNavigationalProperties Id="1ab3a37a-fe75-4c4c-b523-10a16050f84c">
+          <NavigationalProperty Id="7d8a1dc3-cce0-49e9-b94a-529922183ee7" name="PackSimDataEntities" type="IList&lt;PackSimDataEntity&gt;" label="PackSimDataEntities : IList&lt;PackSimDataEntity&gt;" nullable="true" kind="Persistent" fieldName="_packSimDataEntities" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="68754c09-5106-47f2-967d-f174bf801fd5">
+          <NavigationalProperty Id="ed35be3e-3413-4ffe-9a3f-1b961540b985" name="OrderItemDataEntities" type="IList&lt;OrderItemDataEntity&gt;" label="OrderItemDataEntities : IList&lt;OrderItemDataEntity&gt;" nullable="true" kind="Persistent" fieldName="_orderItemDataEntities" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="a6928f06-32c5-4499-b48e-b2671db5186e">
+          <NavigationalProperty Id="d44fb395-73f7-4c77-bd8e-e971f77b485a" name="AuctionSimDataEntities" type="IList&lt;AuctionSimDataEntity&gt;" label="AuctionSimDataEntities : IList&lt;AuctionSimDataEntity&gt;" nullable="true" kind="Persistent" fieldName="_auctionSimDataEntities" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+      </navigationalProperties>
+    </DomainClass>
+    <DomainClass Id="b74691a5-e777-4214-b79f-c9dda38457d2" name="RegionDataEntity" namespace="Esunco.Data" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" concurrencyMode="Changed" showNavigationCompartment="true" showImplementationCompartment="true" identityMechanismMember="ID">
+      <Property Id="20bdb3c7-6f6e-4319-89d9-427efdce582a" name="ID" type="Int64" label="ID : Int64" kind="Persistent" identity="true" fieldName="_iD" />
+      <Property Id="313f45e5-61fc-4592-8b00-0ba576807795" name="ParentID" type="Int64" label="ParentID : Int64" nullable="true" kind="Persistent" fieldName="_parentID" />
+      <Property Id="12f9b289-99c6-47b9-a21b-9e1e5aed493a" name="Title" label="Title : String" kind="Persistent" fieldName="_title" />
+      <Property Id="568e79ab-2a48-4de9-92f6-882e18bd5dec" name="Type" type="Byte" label="Type : Byte" kind="Persistent" fieldName="_type" />
+    </DomainClass>
+    <DomainClass Id="863436b9-7eef-40ac-821e-1651081d8490" name="PackSimDataEntity" namespace="Esunco.Data" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" concurrencyMode="Changed" showNavigationCompartment="true" showImplementationCompartment="true" identityMechanismMember="ID">
+      <Property Id="f9e7d3d6-cc79-463c-80d5-5ab0b7ed1326" name="ID" type="Int64" label="ID : Int64" kind="Persistent" identity="true" fieldName="_iD" />
+      <Property Id="ee20f31f-efc0-485c-9c5d-d707547f0a91" name="PackageID" type="Int64" label="PackageID : Int64" kind="Persistent" fieldName="_packageID" />
+      <Property Id="a17b06c6-4fc6-4ad0-b7d4-7e6d915d8a3b" name="SimID" type="Int64" label="SimID : Int64" kind="Persistent" fieldName="_simID" />
+      <AssociationTargets>
+        <Association Id="c3bb04c0-7c7b-41a8-b830-6ed2520646d1" SourceMultiplicity="One" name="PackSimDataEntityHasSimDataEntity">
+          <DomainClassMoniker name="/EntityModel/SimDataEntity" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="7ee341d7-995c-4fde-acb1-f3d7c7359ffc">
+              <NavigationalPropertyMoniker name="/EntityModel/SimDataEntity/PackSimDataEntities" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="4a3f9c84-65ac-4578-8b45-93b4b2eae803">
+              <NavigationalPropertyMoniker name="/EntityModel/PackSimDataEntity/SimDataEntity" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
+        <Association Id="89bd0e53-74d0-44b9-82b4-95d956704187" SourceMultiplicity="One" name="PackSimDataEntityHasPackDataEntity">
+          <DomainClassMoniker name="/EntityModel/PackDataEntity" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="75c66c3d-5f66-4ed9-a98d-c9a323521ba7">
+              <NavigationalPropertyMoniker name="/EntityModel/PackDataEntity/PackSimDataEntities" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="a04aa255-e73f-45d4-94c4-787228dc2896">
+              <NavigationalPropertyMoniker name="/EntityModel/PackSimDataEntity/PackageDataEntity" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
+      </AssociationTargets>
+      <navigationalProperties>
+        <classHasNavigationalProperties Id="ef6b5491-b525-448a-a4da-52873215d34b">
+          <NavigationalProperty Id="2bf97c48-b011-4bd7-aac0-39b437e6b86b" name="SimDataEntity" type="SimDataEntity" label="SimDataEntity : SimDataEntity" nullable="true" kind="Persistent" fieldName="_simDataEntity" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="d5b1ffb5-f127-4925-b14f-7422c283efef">
+          <NavigationalProperty Id="aee43e2b-1ed2-408d-85e7-7c2f12d07d72" name="PackageDataEntity" type="PackDataEntity" label="PackageDataEntity : PackDataEntity" nullable="true" kind="Persistent" fieldName="_packageDataEntity" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+      </navigationalProperties>
+    </DomainClass>
+    <DomainClass Id="c2442067-2c46-4e21-874a-47011b3f0d21" name="PackDataEntity" namespace="Esunco.Data" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" concurrencyMode="Changed" showNavigationCompartment="true" showImplementationCompartment="true" identityMechanismMember="ID">
+      <Property Id="02fc6054-6f31-4776-9105-6a44cd1c0b9b" name="ID" type="Int64" label="ID : Int64" kind="Persistent" identity="true" fieldName="_iD" />
+      <Property Id="df6b814c-23f3-4923-af52-6d029c482fab" name="CreateTime" type="DateTime" label="CreateTime : DateTime" kind="Persistent" fieldName="_createTime" />
+      <Property Id="49414b1d-9787-453d-a3de-9d824af567fc" name="Price" type="Int64" label="Price : Int64" kind="Persistent" fieldName="_price" />
+      <Property Id="888dd8c4-9c76-4b34-9ec6-92a64c0ee9ca" name="Title" label="Title : String" kind="Persistent" fieldName="_title" />
+      <Property Id="00fde003-62dc-4fa4-8f09-fad21d890f5d" name="Visible" type="Boolean" label="Visible : Boolean" kind="Persistent" fieldName="_visible" />
+      <Property Id="ff95d256-50bf-467e-bba8-49eeeee5d7f6" name="Code" type="Int32" label="Code : Int32" kind="Persistent" fieldName="_code" />
+      <Property Id="aa7ccf09-ed1d-4f56-b917-1663f6a5808f" name="TypeID" type="Byte" label="TypeID : Byte" kind="Persistent" fieldName="_typeID" />
+      <Property Id="f330856c-e091-48b9-b08b-65190e17c66b" name="StatusID" type="Byte" label="StatusID : Byte" kind="Persistent" fieldName="_statusID" />
+      <navigationalProperties>
+        <classHasNavigationalProperties Id="c639173f-543e-43d1-a678-aa8bf2f4ca70">
+          <NavigationalProperty Id="e1b83ffe-a25a-4727-80ca-6a8fd2beed61" name="PackSimDataEntities" type="IList&lt;PackSimDataEntity&gt;" label="PackSimDataEntities : IList&lt;PackSimDataEntity&gt;" nullable="true" kind="Persistent" fieldName="_packSimDataEntities" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="48d6912d-d0ab-47a6-a0c0-74a3badd66e6">
+          <NavigationalProperty Id="787535d3-c3f5-4201-96fb-24d5ca720dac" name="OrderItemDataEntities" type="IList&lt;OrderItemDataEntity&gt;" label="OrderItemDataEntities : IList&lt;OrderItemDataEntity&gt;" nullable="true" kind="Persistent" fieldName="_orderItemDataEntities" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+      </navigationalProperties>
+    </DomainClass>
+    <DomainClass Id="34105f28-b715-4315-b155-59f52098c1f4" name="OrderDataEntity" namespace="Esunco.Data" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" concurrencyMode="Changed" showNavigationCompartment="true" showImplementationCompartment="true" identityMechanismMember="ID">
+      <Property Id="7f56fc17-21db-4f48-94c3-473f782040bd" name="ID" type="Int64" label="ID : Int64" kind="Persistent" identity="true" fieldName="_iD" />
+      <Property Id="7109d97b-431f-493d-a359-9013775cb7d5" name="ClientID" type="Int64" label="ClientID : Int64" kind="Persistent" fieldName="_clientID" />
+      <Property Id="d8336046-f2f3-409c-8278-b31fa7786220" name="PaymentID" type="Int64" label="PaymentID : Int64" nullable="true" kind="Persistent" fieldName="_paymentID" />
+      <Property Id="e8bfa137-eaa7-40f0-b363-ffb208bb93a5" name="Status" type="Byte" label="Status : Byte" kind="Persistent" fieldName="_status" />
+      <Property Id="168216ef-4c2b-42ca-a3e8-cf1b8cfff25a" name="IsCredit" type="Boolean" label="IsCredit : Boolean" kind="Persistent" fieldName="_isCredit" />
+      <Property Id="17057cdd-00a6-44d5-8833-3de0266661db" name="TotalPrice" type="Int64" label="TotalPrice : Int64" kind="Persistent" fieldName="_totalPrice" />
+      <Property Id="f85b2f95-079f-4b81-a3b5-810c4e136438" name="CreateTime" type="DateTime" label="CreateTime : DateTime" kind="Persistent" fieldName="_createTime" />
+      <Property Id="477c33e8-8414-40e6-8c9f-f4163753dcf2" name="FilePassword" label="FilePassword : String" kind="Persistent" fieldName="_filePassword" />
+      <Property Id="b959d3a2-4698-4fe1-b247-4660df9dd097" name="FileID" type="Guid" label="FileID : Guid" nullable="true" kind="Persistent" fieldName="_fileID" />
+      <AssociationTargets>
+        <Association Id="eadca8fc-8281-48e8-ab11-1e83c7a41799" SourceMultiplicity="One" name="OrderDataEntityHasClientDataEntity">
+          <DomainClassMoniker name="/EntityModel/ClientDataEntity" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="991feca0-e5c9-46f4-ada0-f12f329265c7">
+              <NavigationalPropertyMoniker name="/EntityModel/ClientDataEntity/OrderDataEntities" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="21858846-628f-49dd-91a2-0acd390c302e">
+              <NavigationalPropertyMoniker name="/EntityModel/OrderDataEntity/ClientDataEntity" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
+        <Association Id="0be605f5-4d35-4528-b0e6-c28b9094da52" SourceMultiplicity="One" name="OrderDataEntityHasPaymentDataEntity">
+          <DomainClassMoniker name="/EntityModel/PaymentDataEntity" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="4461587d-4971-4b22-93a6-4c8f524394fb">
+              <NavigationalPropertyMoniker name="/EntityModel/PaymentDataEntity/OrderDataEntities" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="b71edabb-4960-4c87-a404-1c47c4284b67">
+              <NavigationalPropertyMoniker name="/EntityModel/OrderDataEntity/PaymentDataEntity" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
+      </AssociationTargets>
+      <navigationalProperties>
+        <classHasNavigationalProperties Id="6e80932f-3529-454b-b4a5-8444487a61e4">
+          <NavigationalProperty Id="f1c60033-313b-4031-8af9-d10a2b531037" name="OrderItemDataEntities" type="IList&lt;OrderItemDataEntity&gt;" label="OrderItemDataEntities : IList&lt;OrderItemDataEntity&gt;" nullable="true" kind="Persistent" fieldName="_orderItemDataEntities" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="3bcbfa7f-5fba-4966-9979-7afbee65f9af">
+          <NavigationalProperty Id="ad784014-fb2a-417d-96b8-fd894d1ebeb4" name="ClientDataEntity" type="ClientDataEntity" label="ClientDataEntity : ClientDataEntity" nullable="true" kind="Persistent" fieldName="_clientDataEntity" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="e7406da9-1af3-4f6e-bac0-cbfcb97ce665">
+          <NavigationalProperty Id="cbeb75df-2098-493e-a3cc-c414fd2731cf" name="PaymentDataEntity" type="PaymentDataEntity" label="PaymentDataEntity : PaymentDataEntity" nullable="true" kind="Persistent" fieldName="_paymentDataEntity" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+      </navigationalProperties>
+    </DomainClass>
+    <DomainClass Id="5c2196d2-365f-47f0-9fd0-e5fb9f78a8e2" name="OrderItemDataEntity" namespace="Esunco.Data" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" concurrencyMode="Changed" showNavigationCompartment="true" showImplementationCompartment="true" identityMechanismMember="ID">
+      <Property Id="0f69b116-1941-4737-a484-231cb93fa6e2" name="ID" type="Int64" label="ID : Int64" kind="Persistent" identity="true" fieldName="_iD" />
+      <Property Id="81c55659-cd7f-48a3-a931-16ee94869f0c" name="AuctionID" type="Int64" label="AuctionID : Int64" nullable="true" kind="Persistent" fieldName="_auctionID" />
+      <Property Id="e86516cc-f0e6-4ce5-ad8c-77a132fb634e" name="OrderID" type="Int64" label="OrderID : Int64" kind="Persistent" fieldName="_orderID" />
+      <Property Id="efb0f43a-1aee-42dc-b740-ded8cb5771c6" name="PackID" type="Int64" label="PackID : Int64" nullable="true" kind="Persistent" fieldName="_packID" />
+      <Property Id="98c8cff3-e2d6-4df3-af14-597190e2315c" name="SimID" type="Int64" label="SimID : Int64" nullable="true" kind="Persistent" fieldName="_simID" />
+      <Property Id="fa9db30b-9561-4a52-bde5-d06b5b22db5f" name="Price" type="Int64" label="Price : Int64" kind="Persistent" fieldName="_price" />
+      <AssociationTargets>
+        <Association Id="37246ccb-c439-45c5-8d61-9ad78e6cf677" SourceMultiplicity="ZeroOne" name="OrderItemDataEntityHasSimDataEntity">
+          <DomainClassMoniker name="/EntityModel/SimDataEntity" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="37cc5666-5e4e-48cc-9a20-9a61d38528ca">
+              <NavigationalPropertyMoniker name="/EntityModel/SimDataEntity/OrderItemDataEntities" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="3ea7e321-84ec-4575-9a3b-0da1e65b2f99">
+              <NavigationalPropertyMoniker name="/EntityModel/OrderItemDataEntity/SimDataEntity" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
+        <Association Id="8039b2ef-bd2b-445b-9102-0398e5c0a0d7" SourceMultiplicity="ZeroOne" name="OrderItemDataEntityHasPackDataEntity">
+          <DomainClassMoniker name="/EntityModel/PackDataEntity" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="9e36d92c-5845-4932-a6b4-f6cd8ac8a659">
+              <NavigationalPropertyMoniker name="/EntityModel/PackDataEntity/OrderItemDataEntities" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="806a139b-4dec-4c37-b06c-8791bffae88a">
+              <NavigationalPropertyMoniker name="/EntityModel/OrderItemDataEntity/PackDataEntity" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
+        <Association Id="5ed8655a-790b-4885-a16d-3a2afa07697d" SourceMultiplicity="One" name="OrderItemDataEntityHasOrderDataEntity">
+          <DomainClassMoniker name="/EntityModel/OrderDataEntity" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="a43e22b4-2b92-4af6-9852-6a89a471b3d0">
+              <NavigationalPropertyMoniker name="/EntityModel/OrderDataEntity/OrderItemDataEntities" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="f5c7c75b-7fa8-496e-a299-4d07c7693166">
+              <NavigationalPropertyMoniker name="/EntityModel/OrderItemDataEntity/OrderDataEntity" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
+        <Association Id="c1c4d2bd-6f21-4719-b528-7b738732b600" SourceMultiplicity="ZeroOne" name="OrderItemDataEntityHasAuctionDataEntity">
+          <DomainClassMoniker name="/EntityModel/AuctionDataEntity" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="8c89ff30-06ba-4ce0-8b7b-1f92660a66e4">
+              <NavigationalPropertyMoniker name="/EntityModel/AuctionDataEntity/OrderItemDataEntities" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="71217dc3-f69a-4a73-9878-1aa0611b4816">
+              <NavigationalPropertyMoniker name="/EntityModel/OrderItemDataEntity/AuctionDataEntity" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
+      </AssociationTargets>
+      <navigationalProperties>
+        <classHasNavigationalProperties Id="b7b6f917-ed46-48c0-9b1e-d1f6c9da228a">
+          <NavigationalProperty Id="d863de59-a9c1-4888-836c-ee06d37d330b" name="SimDataEntity" type="SimDataEntity" label="SimDataEntity : SimDataEntity" nullable="true" kind="Persistent" fieldName="_simDataEntity" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="3dd7cce8-b3f7-46a1-994b-ab0b5e03dc07">
+          <NavigationalProperty Id="1dbfdab1-7aff-4d70-9002-b8c876413c26" name="PackDataEntity" type="PackDataEntity" label="PackDataEntity : PackDataEntity" nullable="true" kind="Persistent" fieldName="_packDataEntity" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="0638d4c5-26dc-43d9-a63f-9883f29fe91b">
+          <NavigationalProperty Id="a0a9bc1c-4e38-4365-bac9-66296b7b84a6" name="OrderDataEntity" type="OrderDataEntity" label="OrderDataEntity : OrderDataEntity" nullable="true" kind="Persistent" fieldName="_orderDataEntity" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="8e2145ac-3c45-4d3d-964f-34b9693ffe3a">
+          <NavigationalProperty Id="f084756d-ca8e-48ca-a8f7-94441b2426d6" name="AuctionDataEntity" type="AuctionDataEntity" label="AuctionDataEntity : AuctionDataEntity" nullable="true" kind="Persistent" fieldName="_auctionDataEntity" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+      </navigationalProperties>
+    </DomainClass>
+    <DomainClass Id="cfdd11a2-2580-451d-8887-d3ab925230a9" name="ClientDataEntity" namespace="Esunco.Data" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" concurrencyMode="Changed" showNavigationCompartment="true" showImplementationCompartment="true" identityMechanismMember="ID">
+      <Property Id="396321f9-4d11-45bf-b728-bf58cece992e" name="ID" type="Int64" label="ID : Int64" kind="Persistent" identity="true" fieldName="_iD" />
+      <Property Id="efe0be0a-87e9-4cd2-a655-541a42f176f7" name="Address" label="Address : String" kind="Persistent" fieldName="_address" />
+      <Property Id="4b5954c8-bde7-4acc-9860-529fc9f015ea" name="Blocked" type="Boolean" label="Blocked : Boolean" kind="Persistent" fieldName="_blocked" />
+      <Property Id="ce7987ba-2990-4d78-b6d0-98efa8c6e7b7" name="Email" label="Email : String" kind="Persistent" fieldName="_email" />
+      <Property Id="5aa9e25b-cda9-4dca-98a8-e7441e40b9f7" name="Firstname" label="Firstname : String" kind="Persistent" fieldName="_firstname" />
+      <Property Id="42f0e8e6-92a3-4e67-a305-eb5fd53f9b4a" name="Lastname" label="Lastname : String" kind="Persistent" fieldName="_lastname" />
+      <Property Id="dca9f865-8aee-476e-bb20-d81fb1900afd" name="Mobile" label="Mobile : String" kind="Persistent" fieldName="_mobile" />
+      <Property Id="8ea25e02-481c-4885-9cf8-70e7dcdc4523" name="NationalCode" label="NationalCode : String" kind="Persistent" fieldName="_nationalCode" />
+      <Property Id="5d9e4ff8-ada0-4efa-9025-ac8ce5107fcc" name="OfficeCode" label="OfficeCode : String" kind="Persistent" fieldName="_officeCode" />
+      <Property Id="0d276098-a7ca-42fc-a60a-9e8458024a11" name="Phone" label="Phone : String" kind="Persistent" fieldName="_phone" />
+      <Property Id="3893ed67-bdeb-47d6-b191-c741359def0f" name="PostalCode" label="PostalCode : String" kind="Persistent" fieldName="_postalCode" />
+      <Property Id="703bdca2-f636-43d5-a559-e2c7694b1db6" name="Token" label="Token : String" kind="Persistent" fieldName="_token" />
+      <Property Id="41f96437-c582-414b-85ba-9f8d01c1c8fc" name="SMSCode" type="Int32" label="SMSCode : Int32" kind="Persistent" fieldName="_sMSCode" />
+      <Property Id="5a74b0ac-5ab3-4a55-af7a-6663c929adec" name="SMSCodeCreatedTime" type="DateTime" label="SMSCodeCreatedTime : DateTime" kind="Persistent" fieldName="_sMSCodeCreatedTime" />
+      <Property Id="330325c7-6ecb-473c-a60d-5b0f68a8f448" name="Credit" type="Int64" label="Credit : Int64" kind="Persistent" fieldName="_credit" />
+      <Property Id="6221c864-a0bb-4b3b-ac82-cdf4243e1a23" name="LastCredit" type="Int64" label="LastCredit : Int64" kind="Persistent" fieldName="_lastCredit" />
+      <Property Id="8a165e90-d8c6-4c8b-bfa6-026b59f37656" name="BlockedCredit" type="Int64" label="BlockedCredit : Int64" kind="Persistent" fieldName="_blockedCredit" />
+      <Property Id="42dc9f70-b1c4-4d39-8913-1a06d097e5cf" name="AccountType" type="Byte" label="AccountType : Byte" kind="Persistent" fieldName="_accountType" />
+      <navigationalProperties>
+        <classHasNavigationalProperties Id="25d94ad8-e8d0-456e-b534-d75f21c4ff10">
+          <NavigationalProperty Id="b817fa60-631d-4890-8130-a9c5def8d1b9" name="OrderDataEntities" type="IList&lt;OrderDataEntity&gt;" label="OrderDataEntities : IList&lt;OrderDataEntity&gt;" nullable="true" kind="Persistent" fieldName="_orderDataEntities" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="554bfec6-7e3b-4774-a57b-efeda0eaa6a3">
+          <NavigationalProperty Id="3c618691-bba8-4d4d-951a-0bd47cb880be" name="AuctionBidDataEntities" type="IList&lt;AuctionBidDataEntity&gt;" label="AuctionBidDataEntities : IList&lt;AuctionBidDataEntity&gt;" nullable="true" kind="Persistent" fieldName="_auctionBidDataEntities" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="e6bc1cc8-aea4-4fad-9274-703c9f23e80f">
+          <NavigationalProperty Id="7d40745b-14b8-4d4a-98d6-8d3dd21bc1b4" name="CreditChargeDataEntities" type="IList&lt;CreditChargeDataEntity&gt;" label="CreditChargeDataEntities : IList&lt;CreditChargeDataEntity&gt;" nullable="true" kind="Persistent" fieldName="_creditChargeDataEntities" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+      </navigationalProperties>
+    </DomainClass>
+    <DomainClass Id="a10ea222-955b-43df-9a25-b535708f60dc" name="AuctionSimDataEntity" namespace="Esunco.Data" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" concurrencyMode="Changed" showNavigationCompartment="true" showImplementationCompartment="true" identityMechanismMember="ID">
+      <Property Id="c9665596-1cf1-487d-8669-410a7b44ecde" name="ID" type="Int64" label="ID : Int64" kind="Persistent" identity="true" fieldName="_iD" />
+      <Property Id="6eb985d0-9e73-408f-b5af-dab6e77dbd99" name="AuctionID" type="Int64" label="AuctionID : Int64" kind="Persistent" fieldName="_auctionID" />
+      <Property Id="2e4da2e2-6d1c-45e6-8879-27a0f1e5fd9d" name="SimID" type="Int64" label="SimID : Int64" kind="Persistent" fieldName="_simID" />
+      <AssociationTargets>
+        <Association Id="fbaa9214-efec-4b58-b14d-aa43e6b9f8d2" SourceMultiplicity="One" name="AuctionSimDataEntityHasSimDataEntity">
+          <DomainClassMoniker name="/EntityModel/SimDataEntity" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="355940db-0fae-47f8-8865-9365cad67c1e">
+              <NavigationalPropertyMoniker name="/EntityModel/SimDataEntity/AuctionSimDataEntities" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="4eff58a4-df56-46a2-9aa0-f046d42d7c0b">
+              <NavigationalPropertyMoniker name="/EntityModel/AuctionSimDataEntity/SimDataEntity" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
+        <Association Id="f5f5de81-2afd-491d-9b28-efd848f6fea1" SourceMultiplicity="One" name="AuctionSimDataEntityHasAuctionDataEntity">
+          <DomainClassMoniker name="/EntityModel/AuctionDataEntity" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="b772c7d2-8da7-4b64-a0e3-44f9a1d21caf">
+              <NavigationalPropertyMoniker name="/EntityModel/AuctionDataEntity/AuctionSimDataEntities" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="282ed644-6365-45b2-85d6-8db3c7891ac8">
+              <NavigationalPropertyMoniker name="/EntityModel/AuctionSimDataEntity/AuctionDataEntity" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
+      </AssociationTargets>
+      <navigationalProperties>
+        <classHasNavigationalProperties Id="6f12ced9-1726-43e3-8e68-f0c254d11cbe">
+          <NavigationalProperty Id="2ad20250-90d0-4439-83df-c0483251ce7a" name="SimDataEntity" type="SimDataEntity" label="SimDataEntity : SimDataEntity" nullable="true" kind="Persistent" fieldName="_simDataEntity" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="f628bfba-e9f0-4f91-9131-97a7b118c2f3">
+          <NavigationalProperty Id="b388a092-0016-4ed5-99bb-7394020912c8" name="AuctionDataEntity" type="AuctionDataEntity" label="AuctionDataEntity : AuctionDataEntity" nullable="true" kind="Persistent" fieldName="_auctionDataEntity" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+      </navigationalProperties>
+    </DomainClass>
+    <DomainClass Id="c4643f4b-e0f7-486c-af41-e5419f57b165" name="AuctionDataEntity" namespace="Esunco.Data" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" concurrencyMode="Changed" showNavigationCompartment="true" showImplementationCompartment="true" identityMechanismMember="ID">
+      <Property Id="67fa2259-0648-432b-8736-fe9f2c735d3d" name="ID" type="Int64" label="ID : Int64" kind="Persistent" identity="true" fieldName="_iD" />
+      <Property Id="7cc55174-9d5e-40a7-b059-ad3e16958312" name="BasePrice" type="Int64" label="BasePrice : Int64" kind="Persistent" fieldName="_basePrice" />
+      <Property Id="43a6db56-ffff-40ff-8d3b-580916fd498d" name="FinishTime" type="DateTime" label="FinishTime : DateTime" kind="Persistent" fieldName="_finishTime" />
+      <Property Id="5fbb96e2-4a72-44e2-93e6-8d53a81a8431" name="StartTime" type="DateTime" label="StartTime : DateTime" kind="Persistent" fieldName="_startTime" />
+      <Property Id="916b8d22-02c3-4289-bd4a-688e379a76d2" name="Title" label="Title : String" kind="Persistent" fieldName="_title" />
+      <Property Id="fc94b7c4-2212-44a0-9f56-5944f0534ecb" name="NotifyTime" type="DateTime" label="NotifyTime : DateTime" nullable="true" kind="Persistent" fieldName="_notifyTime" />
+      <Property Id="4c451875-f67c-4d6f-ae42-47cbf75c063b" name="StatusID" type="Byte" label="StatusID : Byte" kind="Persistent" fieldName="_statusID" />
+      <navigationalProperties>
+        <classHasNavigationalProperties Id="7abffbc1-b74a-4a7c-82ad-7ab86fb905ac">
+          <NavigationalProperty Id="50acd3bc-8b2c-4119-965a-c7bede0b7f3c" name="OrderItemDataEntities" type="IList&lt;OrderItemDataEntity&gt;" label="OrderItemDataEntities : IList&lt;OrderItemDataEntity&gt;" nullable="true" kind="Persistent" fieldName="_orderItemDataEntities" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="e1f1c752-42a7-46d3-963d-0cfd7e4cb994">
+          <NavigationalProperty Id="5d1e94e9-5d48-480c-ae01-50a5c721e387" name="AuctionSimDataEntities" type="IList&lt;AuctionSimDataEntity&gt;" label="AuctionSimDataEntities : IList&lt;AuctionSimDataEntity&gt;" nullable="true" kind="Persistent" fieldName="_auctionSimDataEntities" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="0ff1ff25-d966-422f-9411-d29fbd47ae25">
+          <NavigationalProperty Id="4af39411-5d6e-4c55-8637-9f84d45f7daa" name="AuctionBidDataEntities" type="IList&lt;AuctionBidDataEntity&gt;" label="AuctionBidDataEntities : IList&lt;AuctionBidDataEntity&gt;" nullable="true" kind="Persistent" fieldName="_auctionBidDataEntities" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+      </navigationalProperties>
+    </DomainClass>
+    <DomainClass Id="bd0eed27-08c6-41d5-b1c4-8e54a526c667" name="AuctionBidDataEntity" namespace="Esunco.Data" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" concurrencyMode="Changed" showNavigationCompartment="true" showImplementationCompartment="true" identityMechanismMember="ID">
+      <Property Id="defc08df-6665-4a9f-bc13-dcb97e29f627" name="ID" type="Int64" label="ID : Int64" kind="Persistent" identity="true" fieldName="_iD" />
+      <Property Id="49a263fa-1d9c-4e3c-aacd-c72fbb46a869" name="AuctionID" type="Int64" label="AuctionID : Int64" kind="Persistent" fieldName="_auctionID" />
+      <Property Id="6b467c51-a0d1-4962-a91e-ec3222c6d82d" name="ClientID" type="Int64" label="ClientID : Int64" kind="Persistent" fieldName="_clientID" />
+      <Property Id="8a1d63c4-1478-4270-8730-b6dcd7252d81" name="Price" type="Int64" label="Price : Int64" kind="Persistent" fieldName="_price" />
+      <Property Id="18bedc20-6e28-40ec-86e9-a4b3d7a7e53f" name="Time" type="DateTime" label="Time : DateTime" kind="Persistent" fieldName="_time" />
+      <Property Id="6d57263e-4a5d-4248-956d-b39555b4fad7" name="IsWinner" type="Boolean" label="IsWinner : Boolean" kind="Persistent" fieldName="_isWinner" />
+      <AssociationTargets>
+        <Association Id="d2fff570-817c-43ae-85e2-2ad1760b565c" SourceMultiplicity="One" name="AuctionBidDataEntityHasClientDataEntity">
+          <DomainClassMoniker name="/EntityModel/ClientDataEntity" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="44122db6-b313-4478-8e42-265cbaf2bfb3">
+              <NavigationalPropertyMoniker name="/EntityModel/ClientDataEntity/AuctionBidDataEntities" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="100a786f-32d6-4c49-8add-697e8c1f7c58">
+              <NavigationalPropertyMoniker name="/EntityModel/AuctionBidDataEntity/ClientDataEntity" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
+        <Association Id="94be2978-6d19-4836-8fe5-e5a956265dbb" SourceMultiplicity="One" name="AuctionBidDataEntityHasAuctionDataEntity">
+          <DomainClassMoniker name="/EntityModel/AuctionDataEntity" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="372b2fda-b16f-4916-93b0-7234d05fce92">
+              <NavigationalPropertyMoniker name="/EntityModel/AuctionDataEntity/AuctionBidDataEntities" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="7fbc2b8a-9471-4b6a-b716-a2def7a72f06">
+              <NavigationalPropertyMoniker name="/EntityModel/AuctionBidDataEntity/AuctionDataEntity" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
+      </AssociationTargets>
+      <navigationalProperties>
+        <classHasNavigationalProperties Id="c3702336-93e5-4d61-bdf6-42de7ff7d931">
+          <NavigationalProperty Id="bd3e5104-5dd8-495c-aa08-024f0f4defc5" name="ClientDataEntity" type="ClientDataEntity" label="ClientDataEntity : ClientDataEntity" nullable="true" kind="Persistent" fieldName="_clientDataEntity" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="9fac3286-f9dc-48f8-9f2a-9a5453eb8d62">
+          <NavigationalProperty Id="a3e89e0b-3868-493b-9b32-45c93ea7dd1c" name="AuctionDataEntity" type="AuctionDataEntity" label="AuctionDataEntity : AuctionDataEntity" nullable="true" kind="Persistent" fieldName="_auctionDataEntity" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+      </navigationalProperties>
+    </DomainClass>
+    <DomainClass Id="9270416f-c505-49df-b05f-388a43b77cd4" name="PaymentDataEntity" namespace="Esunco.Data" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" concurrencyMode="Changed" showNavigationCompartment="true" showImplementationCompartment="true" identityMechanismMember="ID">
+      <Property Id="774eaec9-1e83-4134-aeb0-aa6434457759" name="ID" type="Int64" label="ID : Int64" kind="Persistent" identity="true" fieldName="_iD" />
+      <Property Id="2714c4de-7a90-4858-a624-a3121c1a88ed" name="Price" type="Int64" label="Price : Int64" kind="Persistent" fieldName="_price" />
+      <Property Id="be572679-111c-459a-869e-8b3983049eea" name="RefID" label="RefID : String" kind="Persistent" fieldName="_refID" />
+      <Property Id="ced7fce0-c690-48d9-bd8e-a2459be0e38e" name="ResultCode" label="ResultCode : String" kind="Persistent" fieldName="_resultCode" />
+      <Property Id="c1b17e36-3a6f-4072-8f9b-7ac8c18a5c5c" name="SaleOrderID" type="Int64" label="SaleOrderID : Int64" kind="Persistent" fieldName="_saleOrderID" />
+      <Property Id="4ef2ea5f-3bba-41c4-8988-3adf168934ea" name="SaleRefID" type="Int64" label="SaleRefID : Int64" nullable="true" kind="Persistent" fieldName="_saleRefID" />
+      <Property Id="37a450b6-b467-4ca0-846d-34f0c0e1eb15" name="Status" type="Byte" label="Status : Byte" kind="Persistent" fieldName="_status" />
+      <Property Id="93aac8d2-20d7-4964-840a-223518e80083" name="CreateTime" type="DateTime" label="CreateTime : DateTime" kind="Persistent" fieldName="_createTime" />
+      <navigationalProperties>
+        <classHasNavigationalProperties Id="cd5fef08-d7f4-4a11-8ed7-8a19b36dd457">
+          <NavigationalProperty Id="56c7a74f-c229-4d20-aa7a-4e769cb9d1e6" name="OrderDataEntities" type="IList&lt;OrderDataEntity&gt;" label="OrderDataEntities : IList&lt;OrderDataEntity&gt;" nullable="true" kind="Persistent" fieldName="_orderDataEntities" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="4946b0ea-0609-487a-ab58-335b711636f1">
+          <NavigationalProperty Id="bc4056bc-511c-4923-93f4-654a752fb999" name="CreditChargeDataEntities" type="IList&lt;CreditChargeDataEntity&gt;" label="CreditChargeDataEntities : IList&lt;CreditChargeDataEntity&gt;" nullable="true" kind="Persistent" fieldName="_creditChargeDataEntities" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+      </navigationalProperties>
+    </DomainClass>
+    <DomainClass Id="42e5080b-c344-4e99-b13a-9ca48c3ddfb8" name="CreditChargeDataEntity" namespace="Esunco.Data" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" concurrencyMode="Changed" showNavigationCompartment="true" showImplementationCompartment="true" identityMechanismMember="ID">
+      <Property Id="dee5b0cd-3e9c-44e0-97cc-f6baf5f0f821" name="ID" type="Int64" label="ID : Int64" kind="Persistent" identity="true" fieldName="_iD" />
+      <Property Id="9dbef90b-0cb4-4edf-a4e8-fb8d3e8f1d8b" name="ClientID" type="Int64" label="ClientID : Int64" kind="Persistent" fieldName="_clientID" />
+      <Property Id="61ef3d40-5f89-4d8a-8163-f355c6f320d4" name="PaymentID" type="Int64" label="PaymentID : Int64" kind="Persistent" fieldName="_paymentID" />
+      <AssociationTargets>
+        <Association Id="15fb66c6-d577-4769-8a0f-8982a1ae3ca0" SourceMultiplicity="One" name="CreditChargeDataEntityHasPaymentDataEntity">
+          <DomainClassMoniker name="/EntityModel/PaymentDataEntity" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="5f0ded5a-3def-4c19-b605-059fe729fe6c">
+              <NavigationalPropertyMoniker name="/EntityModel/PaymentDataEntity/CreditChargeDataEntities" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="3f69086e-a6bb-4ca3-801a-c7e206f35a87">
+              <NavigationalPropertyMoniker name="/EntityModel/CreditChargeDataEntity/PaymentDataEntity" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
+        <Association Id="1f4e1011-22ae-40c4-bb3f-7169d8bf73d0" SourceMultiplicity="One" name="CreditChargeDataEntityHasClientDataEntity">
+          <DomainClassMoniker name="/EntityModel/ClientDataEntity" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="957de44e-99c8-4aa5-8fdf-4029fc7632bb">
+              <NavigationalPropertyMoniker name="/EntityModel/ClientDataEntity/CreditChargeDataEntities" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="3c7ce2b8-36d5-45b7-ac66-81375807dbec">
+              <NavigationalPropertyMoniker name="/EntityModel/CreditChargeDataEntity/ClientDataEntity" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
+      </AssociationTargets>
+      <navigationalProperties>
+        <classHasNavigationalProperties Id="4163466e-5b94-421a-bc5e-9555abfc5fe3">
+          <NavigationalProperty Id="53d6b3d8-b7fb-40df-8492-f7821bcc70e2" name="PaymentDataEntity" type="PaymentDataEntity" label="PaymentDataEntity : PaymentDataEntity" nullable="true" kind="Persistent" fieldName="_paymentDataEntity" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="48e29cc0-3274-4813-9906-b8f47aafb299">
+          <NavigationalProperty Id="1cc70602-94bf-49b6-bc3a-36ffca9fe4c9" name="ClientDataEntity" type="ClientDataEntity" label="ClientDataEntity : ClientDataEntity" nullable="true" kind="Persistent" fieldName="_clientDataEntity" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+      </navigationalProperties>
+    </DomainClass>
+    <DomainClass Id="762d87d1-21f0-4cbd-81c0-869124bc09c6" name="OrderReportViewDataEntity" namespace="Esunco.Data" showPropertiesCompartment="true" concurrencyMode="Changed" showNavigationCompartment="true" showImplementationCompartment="true">
+      <Property Id="fe33baae-2e00-4f44-9ca3-903159cc26d2" name="ClientFullname" label="ClientFullname : String" kind="Persistent" fieldName="_clientFullname" />
+      <Property Id="744963a3-a4bf-48c1-a0cd-51a856d1775b" name="ClientMobile" label="ClientMobile : String" kind="Persistent" fieldName="_clientMobile" />
+      <Property Id="2cb7378a-2032-45b7-84ae-329429619cb4" name="ClientNationalCode" label="ClientNationalCode : String" kind="Persistent" fieldName="_clientNationalCode" />
+      <Property Id="f2bac63a-5b01-4cde-a8a1-9a6fba10bbbe" name="ClientOfficeCode" label="ClientOfficeCode : String" kind="Persistent" fieldName="_clientOfficeCode" />
+      <Property Id="be24beef-8ceb-4cd0-b533-b8558c244446" name="ID" type="Int64" label="ID : Int64" kind="Persistent" identity="true" fieldName="_iD" />
+      <Property Id="ba048603-c38e-43df-8ae5-8bbb4b995f32" name="IsCredit" type="Boolean" label="IsCredit : Boolean" kind="Persistent" fieldName="_isCredit" />
+      <Property Id="58d94172-385b-4d88-bd07-4de5ebd6c8a2" name="OrderStatus" type="Byte" label="OrderStatus : Byte" kind="Persistent" fieldName="_orderStatus" />
+      <Property Id="7cce7caf-1c3f-4c7f-8efe-da6cb6534935" name="OrderTime" type="DateTime" label="OrderTime : DateTime" kind="Persistent" fieldName="_orderTime" />
+      <Property Id="cab0ce11-e106-4917-8ebf-809206a9dec9" name="PaymentStatus" type="Byte" label="PaymentStatus : Byte" nullable="true" kind="Persistent" fieldName="_paymentStatus" />
+      <Property Id="536fcadb-f3cb-4a69-847a-99eeedb58805" name="RefID" label="RefID : String" kind="Persistent" fieldName="_refID" />
+      <Property Id="edb4a31c-5816-4946-8579-3aea972647c3" name="ResultCode" label="ResultCode : String" kind="Persistent" fieldName="_resultCode" />
+      <Property Id="b52de1a3-132d-41d3-afb4-a20f34a6fd8f" name="SaleOrderID" type="Int64" label="SaleOrderID : Int64" nullable="true" kind="Persistent" fieldName="_saleOrderID" />
+      <Property Id="f1b7d92a-f543-4459-b3ac-cd20a3a88a25" name="SaleRefID" type="Int64" label="SaleRefID : Int64" nullable="true" kind="Persistent" fieldName="_saleRefID" />
+      <Property Id="12ea5df4-fcb2-49c0-89e0-e64769f0e9d3" name="Price" type="Int64" label="Price : Int64" kind="Persistent" fieldName="_price" />
+      <Property Id="b7c208fc-04c9-45ea-b658-4bd4656d66c9" name="PaymentTime" type="DateTime" label="PaymentTime : DateTime" nullable="true" kind="Persistent" fieldName="_paymentTime" />
+      <Property Id="5ac8641a-94f6-45b4-8657-5733a907ff80" name="PaymentID" type="Int64" label="PaymentID : Int64" nullable="true" kind="Persistent" fieldName="_paymentID" />
+    </DomainClass>
+    <DomainClass Id="f7e4ca0b-1c73-4aeb-86f7-3ae1fc988d9f" name="ClientOrderViewDataEntity" namespace="Esunco.Data" showPropertiesCompartment="true" concurrencyMode="Changed" showNavigationCompartment="true" showImplementationCompartment="true">
+      <Property Id="2e45cc78-a281-413b-a96e-02ab945ab63e" name="ID" type="Int64" label="ID : Int64" kind="Persistent" identity="true" fieldName="_iD" />
+      <Property Id="506b877b-8b53-4433-b563-408623261324" name="Mobile" label="Mobile : String" kind="Persistent" fieldName="_mobile" />
+      <Property Id="f3bcde35-fd94-483b-a945-8ce8e7617486" name="Name" label="Name : String" kind="Persistent" fieldName="_name" />
+      <Property Id="86edad0d-ef23-4ac7-9bab-ed726853ca2a" name="NationalCode" label="NationalCode : String" kind="Persistent" fieldName="_nationalCode" />
+      <Property Id="33371273-e776-48ca-b2aa-cac8bfe5248d" name="Total" type="Int64" label="Total : Int64" nullable="true" kind="Persistent" fieldName="_total" />
+    </DomainClass>
+  </Types>
+  <domainContext>
+    <domainModelHasDomainContext Id="987e7e4a-57f7-4907-8c44-7d3b5ecf9ab1">
+      <domainContainer name="EntityModel" namespace="Esunco.Data" showPropertiesCompartment="true">
+        <entitySetProperty name="UserDataEntities" namespace="Esunco.Data" type="UserDataEntity" label="UserDataEntities : IQueryable&lt;Esunco.Data.UserDataEntity&gt;" />
+        <entitySetProperty name="SimDataEntities" namespace="Esunco.Data" type="SimDataEntity" label="SimDataEntities : IQueryable&lt;Esunco.Data.SimDataEntity&gt;" />
+        <entitySetProperty name="RegionDataEntities" namespace="Esunco.Data" type="RegionDataEntity" label="RegionDataEntities : IQueryable&lt;Esunco.Data.RegionDataEntity&gt;" />
+        <entitySetProperty name="PackSimDataEntities" namespace="Esunco.Data" type="PackSimDataEntity" label="PackSimDataEntities : IQueryable&lt;Esunco.Data.PackSimDataEntity&gt;" />
+        <entitySetProperty name="PackDataEntities" namespace="Esunco.Data" type="PackDataEntity" label="PackDataEntities : IQueryable&lt;Esunco.Data.PackDataEntity&gt;" />
+        <entitySetProperty name="OrderDataEntities" namespace="Esunco.Data" type="OrderDataEntity" label="OrderDataEntities : IQueryable&lt;Esunco.Data.OrderDataEntity&gt;" />
+        <entitySetProperty name="OrderItemDataEntities" namespace="Esunco.Data" type="OrderItemDataEntity" label="OrderItemDataEntities : IQueryable&lt;Esunco.Data.OrderItemDataEntity&gt;" />
+        <entitySetProperty name="ClientDataEntities" namespace="Esunco.Data" type="ClientDataEntity" label="ClientDataEntities : IQueryable&lt;Esunco.Data.ClientDataEntity&gt;" />
+        <entitySetProperty name="AuctionSimDataEntities" namespace="Esunco.Data" type="AuctionSimDataEntity" label="AuctionSimDataEntities : IQueryable&lt;Esunco.Data.AuctionSimDataEntity&gt;" />
+        <entitySetProperty name="AuctionDataEntities" namespace="Esunco.Data" type="AuctionDataEntity" label="AuctionDataEntities : IQueryable&lt;Esunco.Data.AuctionDataEntity&gt;" />
+        <entitySetProperty name="AuctionBidDataEntities" namespace="Esunco.Data" type="AuctionBidDataEntity" label="AuctionBidDataEntities : IQueryable&lt;Esunco.Data.AuctionBidDataEntity&gt;" />
+        <entitySetProperty name="PaymentDataEntities" namespace="Esunco.Data" type="PaymentDataEntity" label="PaymentDataEntities : IQueryable&lt;Esunco.Data.PaymentDataEntity&gt;" />
+        <entitySetProperty name="CreditChargeDataEntities" namespace="Esunco.Data" type="CreditChargeDataEntity" label="CreditChargeDataEntities : IQueryable&lt;Esunco.Data.CreditChargeDataEntity&gt;" />
+        <entitySetProperty name="OrderReportViewDataEntities" namespace="Esunco.Data" type="OrderReportViewDataEntity" label="OrderReportViewDataEntities : IQueryable&lt;Esunco.Data.OrderReportViewDataEntity&gt;" />
+        <entitySetProperty name="ClientOrderViewDataEntities" namespace="Esunco.Data" type="ClientOrderViewDataEntity" label="ClientOrderViewDataEntities : IQueryable&lt;Esunco.Data.ClientOrderViewDataEntity&gt;" />
+      </domainContainer>
+    </domainModelHasDomainContext>
+  </domainContext>
+</DomainModel>

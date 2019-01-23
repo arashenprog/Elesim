@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+
+***********************************************************************************************
+website.publishproj
+
+WARNING: DO NOT MODIFY this file, it is used for the web publish process.
+
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+***********************************************************************************************
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.30319</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{e5eab1b8-7e9c-43f4-80b2-b7b1a21264c3}</ProjectGuid>
+    <SourceWebPhysicalPath>$(MSBuildThisFileDirectory)</SourceWebPhysicalPath>
+    <SourceWebVirtualPath>/Esunco.Web</SourceWebVirtualPath>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <SourceWebProject>http://localhost:4539</SourceWebProject>
+    <SourceWebMetabasePath>/IISExpress/7.5/LM/W3SVC/2/ROOT</SourceWebMetabasePath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <!-- for VS2010 we need to use 10.5 but for VS2012+ we should use VisualStudioVersion -->
+    <WebPublishTargetsVersion Condition=" '$(WebPublishTargetsVersion)' =='' and '$(VisualStudioVersion)' == 10.0 ">10.5</WebPublishTargetsVersion>
+    <WebPublishTargetsVersion Condition=" '$(WebPublishTargetsVersion)'=='' ">$(VisualStudioVersion)</WebPublishTargetsVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(WebPublishTargetsVersion)</VSToolsPath>
+    <_WebPublishTargetsPath Condition=" '$(_WebPublishTargetsPath)'=='' ">$(VSToolsPath)</_WebPublishTargetsPath>
+    <AssemblyFileVersion Condition="'$(AssemblyFileVersion)' == ''">1.0.0.0</AssemblyFileVersion>
+    <AssemblyVersion Condition="'$(AssemblyVersion)' == ''">1.0.0.0</AssemblyVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <AssemblyAttributes Include="AssemblyFileVersion">
+      <Value>$(AssemblyFileVersion)</Value>
+    </AssemblyAttributes>
+    <AssemblyAttributes Include="AssemblyVersion">
+      <Value>$(AssemblyVersion)</Value>
+    </AssemblyAttributes>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Common\AcoreX.DXUtil\AcoreX.DXUtil.csproj">
+      <Project>{D1D2D60F-4F11-499C-A6F3-D8E7692AB884}</Project>
+      <Name>AcoreX.DXUtil</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Common\AcoreX.TKUtil\AcoreX.TKUtil.csproj">
+      <Project>{05AFEDE2-EF30-40CB-8611-702DDE6B5576}</Project>
+      <Name>AcoreX.TKUtil</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Common\AcoreX.Web\AcoreX.Web.csproj">
+      <Project>{67F48027-9378-402E-AFD2-27862D56A15D}</Project>
+      <Name>AcoreX.Web</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Common\AcoreX\AcoreX.csproj">
+      <Project>{C11411D1-7FCE-42F3-A753-140B5D9A57D0}</Project>
+      <Name>AcoreX</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Esunco.BL\Esunco.Logics.csproj">
+      <Project>{B402464E-D4F0-4F2B-B9AE-9A557636CA2E}</Project>
+      <Name>Esunco.Logics</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Esunco.DL\Esunco.Data.csproj">
+      <Project>{4989EA75-65C5-498E-A792-1DEA46BBFA65}</Project>
+      <Name>Esunco.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Esunco.Models\Esunco.Models.csproj">
+      <Project>{9606F823-22E3-429D-8D24-9E65BE380185}</Project>
+      <Name>Esunco.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(_WebPublishTargetsPath)\Web\Microsoft.WebSite.Publishing.targets" />
+</Project>

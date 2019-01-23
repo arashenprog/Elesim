@@ -1,0 +1,83 @@
+﻿@using AcoreX.Helper;
+@using AcoreX.DateTimeCalendar
+
+@model Esunco.Models.ReceiptModel
+
+
+<div class="row">
+    <div class="col-xs-6 col-md-6">
+        <label>
+            تاریخ:
+        </label>
+        <span>@Model.Date.ToPersian().ToString("yy/MM/dd")</span>
+    </div>
+    <div class="col-xs-6 col-md-6">
+        <label>
+            ساعت:
+        </label>
+        <span>@Model.Date.ToString("HH:mm")</span>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-2">
+        <label>
+            شماره رسید:
+        </label>
+        <span>@Model.OrderID</span>
+    </div>
+
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <label>
+            عنوان:
+        </label>
+        <span>@Model.Title</span>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <label>
+            مبلغ دریافتی:
+        </label>
+        <span>@Model.Price.ToString("#,###") ريال</span>
+    </div>
+
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <label>
+            لینک دریافت فایل:
+        </label>
+        <a href="@Model.DownloadUrl" target="_blank" style="text-decoration:underline"><span class="ltr">اینجا را کلیک کنید</span></a>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <label>
+            نام و نام خانوادگی خریدار:
+        </label>
+        <span class="ltr">@Model.ClientName</span>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <label>
+            آدرس سایت و شماره پشتیبانی:
+        </label>
+        <span class="ltr">@Model.ElesimContact</span>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <p class="bs-callout bs-callout-warning">
+            لسیت سیم کارتهای خریداری شده به همراه اطلاعات فعال سازی به ایمیل شما ارسال گردیده است.
+        </p>
+    </div>
+</div>
+
+
+
+

@@ -1,0 +1,36 @@
+// Gradient Mixin
+@mixin gradient($start, $end) {
+	background-color: $start;
+	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=#{$start}, endColorstr=#{$end});
+	background-image: -moz-linear-gradient(center top, $start, $end);
+	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from($start), to($end));
+}
+
+// Border Raius Mixin
+@mixin border-radius($radius) {
+	border-radius: $radius;
+	-webkit-border-radius: $radius;
+	-moz-border-radius: $radius;
+}
+
+@mixin border-radius-corners($topleft, $topright, $bottomright, $bottomleft) {
+	border-top-left-radius: $topleft;
+	border-top-right-radius: $topright;
+	border-bottom-right-radius: $bottomright;
+	border-bottom-left-radius: $bottomleft;
+	-webkit-border-top-left-radius: $topleft;
+	-webkit-border-top-right-radius: $topright;
+	-webkit-border-bottom-right-radius: $bottomright;
+	-webkit-border-bottom-left-radius: $bottomleft;
+	-moz-border-radius-topleft: $topleft;
+	-moz-border-radius-topright: $topright;
+	-moz-border-radius-bottomright: $bottomright;
+	-moz-border-radius-bottomleft: $bottomleft;
+}
+
+// Box Shadows Mixin 
+@mixin box-shadow($left, $top, $radius, $color) {
+	box-shadow: $left $top $radius $color;
+	-webkit-box-shadow: $left $top $radius $color;
+	-moz-box-shadow: $left $top $radius $color;
+}

@@ -1,0 +1,339 @@
+@import "variable.scss";
+
+body {
+  background: $white;
+  font-family: $font-family-base;
+  height: 100%;
+  min-height: 100%;
+}
+.header-bar {
+  border-bottom: 1px solid $border-color;
+  .navbar {
+    background: $white !important;
+    padding: 0.5rem 0 !important;
+    .navbar-brand {
+      margin-right: 0 !important;
+      margin-left: 1rem;
+    }
+    .btn {
+      margin-right: 10px;
+    }
+  }
+}
+.slider-section {
+  padding: 10px 0;
+}
+.cat-wrapper {
+  background: $white;
+  height: 412px;
+  border: 1px solid $border-color;
+  @include border-radius($border-radius);
+}
+
+.cat-menu {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  > div {
+    border-bottom: 1px solid $border-color;
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    padding: 0 10px;
+    cursor: pointer;
+    align-items: center;
+    &:hover {
+      background: $border-color;
+      position: relative;
+    }
+    img {
+      width: 40px;
+      margin-left: 10px;
+    }
+    .fas {
+      display: flex;
+      flex: 1;
+      justify-content: flex-end;
+      color: $grey;
+    }
+    .cat-item-sub {
+      position: absolute;
+      display: none;
+      list-style: none;
+      background: $white;
+      padding: 10px;
+      margin: 0;
+      width: 200px;
+      z-index: 1;
+      border: 1px solid $border-color;
+      @include border-radius($border-radius);
+      border-radius: 4px;
+      li {
+        border-bottom: 1px solid $grey-light;
+        padding: 7px 0px;
+      }
+    }
+    &:hover .cat-item-sub {
+      right: 250px;
+      top: 0px;
+      display: block;
+    }
+  }
+}
+.hamrah-aval {
+  border-right: 5px solid $hamrah-aval;
+}
+.irancell {
+  border-right: 5px solid $irancell;
+}
+.rightel {
+  border-right: 5px solid $rightel;
+}
+.carousel-indicators {
+  padding: 0 !important;
+}
+.flex-row-left {
+  flex-direction: row-reverse;
+}
+hr {
+  border: none;
+  height: 2px;
+  background: $black;
+  width: 25%;
+  display: block;
+  text-align: right;
+  margin: 1rem 0;
+}
+.search-number {
+  background: url("../images/b1.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 10px 0;
+  min-height: 420px;
+  display: flex;
+  align-items: center;
+  .search-inputs {
+    text-align: center;
+  }
+  h3 {
+    color: $white;
+  }
+  p {
+    color: $white;
+  }
+
+  label {
+    display: inline-block;
+    margin: 5px 0;
+    color: $white;
+    font-size: 14px;
+  }
+  .form-group {
+    margin-bottom: 0 !important;
+  }
+  hr {
+    background: $white;
+  }
+}
+
+.result-table {
+  padding: 20px 0;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.footer {
+  background: $grey-light;
+  padding: 20px 0;
+  h5 {
+    color: $grey-medium;
+    font-weight: 300;
+  }
+  p {
+    color: $grey-medium;
+    font-weight: 300;
+    margin-top: 10px;
+  }
+  .enamad {
+    float: left;
+    width: 65px;
+  }
+}
+.download-application {
+  padding: 40px 0;
+  text-align: center;
+
+  img {
+    width: 280px;
+    margin: 43px 0px;
+  }
+}
+.footer-end {
+  line-height: 50px;
+  background: #eaeaea;
+  text-align: center;
+  font-weight: 300;
+  p {
+    margin: 0 !important;
+  }
+}
+.full-page {
+  background: $white;
+  height: 100vh;
+}
+.display-none {
+  display: none;
+}
+.sim-result {
+  td {
+    img {
+      width: 30px;
+    }
+  }
+}
+.full-background {
+  height: 100vh;
+  background-position: center !important;
+  background-size: 70% !important;
+  background-repeat: no-repeat !important;
+  border-right: 1px solid #ced4da;
+}
+.login-background {
+  background: url("../images/login.svg");
+  background-color: rgba(206, 212, 218, 0.25);
+}
+.register-background {
+  background: url("../images/register.svg");
+  background-color: rgba(206, 212, 218, 0.25);
+}
+.form-logo {
+  padding: 40px;
+
+  img {
+    width: 100px;
+    margin: 0 0 20px 0;
+  }
+  h5 {
+    color: $grey;
+    margin: 0 0 50px 0;
+    font-weight: normal;
+  }
+}
+.full-form {
+  background: $white;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0 40px;
+
+  label {
+    color: $grey;
+  }
+  .text-muted {
+  }
+}
+.card {
+  margin: 20px 0;
+  .card-title {
+    font-size: 16px;
+    font-weight: 400;
+  }
+  .card-text {
+    font-size: 14px;
+  }
+}
+.rtl {
+  .list-group {
+    padding-left: 0 !important;
+  }
+}
+.price {
+  color: gray;
+  font-weight: 400;
+  .old-price {
+    color: $green;
+  }
+  .current-price {
+    color: $red;
+    text-decoration: line-through;
+  }
+}
+.timer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 24px;
+  font-weight: 100;
+  span {
+    font-size: 18px;
+    font-weight: bold;
+  }
+  .counter {
+    font-size: 78px;
+    font-weight: 500;
+  }
+}
+.packages-container {
+  padding: 40px 0;
+  border-bottom: 1px solid $grey-soft;
+  .card-title {
+    margin: 0 !important;
+    text-align: center;
+    img {
+      width: 50px;
+    }
+  }
+  .list-group-item {
+    padding: 10px;
+  }
+  .package-price {
+    color: $green;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+  }
+}
+.mobile-nav {
+  background: #fff;
+  height: 48px;
+  border-bottom: 1px solid $grey-soft;
+  .drawer-toggle {
+    margin: 9px 5px 0px 0px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #ccc;
+  }
+  img {
+    margin: -4px 5px 0 0;
+  }
+  .drawer-menu {
+    margin: 25px 0px;
+  }
+  .drawer-menu-item {
+    border-bottom: 1px solid $grey-soft;
+  }
+}
+.product {
+  padding: 40px 0;
+
+  .title {
+    font-size: 25px;
+    font-weight: normal;
+    img {
+      width: 60px;
+    }
+  }
+  ul.list-group.list-group-flush li {
+    font-size: 14px;
+  }
+}
+.user-show {
+  background: #00c6ff;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #0072ff, #00c6ff);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #0072ff, #00c6ff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  color: $white;  
+  
+  margin: 20px 0;
+  padding: 40px 0;
+  @include border-radius(10px)
+}
