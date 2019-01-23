@@ -4,7 +4,9 @@
 *.suo
 *.user
 .vs
+.vscode
 
+node_modules
 bin
 obj
 packages
