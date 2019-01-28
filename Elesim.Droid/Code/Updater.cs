@@ -84,7 +84,7 @@ namespace Elesim.Droid.Code
         {
             context.RunOnUiThread(() =>
             {
-                var builder = new Android.Support.V7.App.AlertDialog.Builder(context);
+                var builder = new Android.Support.V7.App.AlertDialog.Builder(context, Resource.Style.AppTheme_Alert);
                 builder.SetMessage("نسخه جدید نرم افزار الِ سیم موجود است! بروزرسانی کنید.");
                 builder.SetPositiveButton("بروزرسانی", (s, ex) =>
                 {

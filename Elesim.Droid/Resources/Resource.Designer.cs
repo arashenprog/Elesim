@@ -8938,6 +8938,9 @@ namespace Elesim.Droid
 			// aapt resource value: 0x7f07018d
 			public const int AppTheme = 2131165581;
 			
+			// aapt resource value: 0x7f070194
+			public const int AppTheme_Alert = 2131165588;
+			
 			// aapt resource value: 0x7f070192
 			public const int AppTheme_AppBarOverlay = 2131165586;
 			
@@ -9433,6 +9436,9 @@ namespace Elesim.Droid
 			// aapt resource value: 0x7f070191
 			public const int LoginTheme = 2131165585;
 			
+			// aapt resource value: 0x7f070195
+			public const int NegativeButtonStyle = 2131165589;
+			
 			// aapt resource value: 0x7f07002d
 			public const int Platform_AppCompat = 2131165229;
 			
@@ -9474,6 +9480,9 @@ namespace Elesim.Droid
 			
 			// aapt resource value: 0x7f070031
 			public const int Platform_Widget_AppCompat_Spinner = 2131165233;
+			
+			// aapt resource value: 0x7f070196
+			public const int PositiveButtonStyle = 2131165590;
 			
 			// aapt resource value: 0x7f070189
 			public const int ProgressButton = 2131165577;

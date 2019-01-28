@@ -10,30 +10,30 @@ namespace Esunco.Services.Controllers
 {
     public class BankController : Controller
     {
-        [Route("Payment/Account/Charge")]
-        [HttpPost]
-        public ActionResult Charge(PaymentCreditModel model)
-        {
-            using (var ctx = new ServiceContext())
-            {
-                var result = ctx.RegisterCreditPayment(model);
-                return View("Index", result);
-            }
-        }
+        //[Route("Payment/Account/Charge")]
+        //[HttpPost]
+        //public ActionResult Charge(PaymentCreditModel model)
+        //{
+        //    using (var ctx = new ServiceContext())
+        //    {
+        //        var result = ctx.RegisterCreditPayment(model);
+        //        return View("Index", result);
+        //    }
+        //}
+
+        //[HttpPost]
+        //[Route("Payment/Order")]
+        //public ActionResult Order(PaymentOrderModel model)
+        //{
+        //    using (var ctx = new ServiceContext())
+        //    {
+        //        var result = ctx.RegisterOrderPayment(model);
+        //        return View("Index", result);
+        //    }
+        //}
 
         [HttpGet]
-        [Route("Payment/Order")]
-        public ActionResult Order(PaymentOrderModel model)
-        {
-            using (var ctx = new ServiceContext())
-            {
-                var result = ctx.RegisterOrderPayment(model);
-                return View("Index", result);
-            }
-        }
-
-        [HttpGet]
-        [Route("Payment/Account/Charge/Callback")]
+        [Route("Payment/Account/Charge/Verify")]
         public ActionResult AccountPaymentCallback(long id, string authority, string status)
         {
             using (var ctx = new ServiceContext())
@@ -41,7 +41,6 @@ namespace Esunco.Services.Controllers
                 var model = new PaymentCallbackModel { SaleOrderId = id, ResCode = status, RefId = authority };
                 try
                 {
-
                     ctx.VerifyCreditPayment(model);
                     ViewBag.Result = true;
                     ViewBag.Message = "پرداخت با موفقیت انجام شد";
@@ -56,12 +55,13 @@ namespace Esunco.Services.Controllers
             }
         }
 
-        [HttpPost]
-        [Route("Payment/Order/Callback")]
-        public ActionResult PaymentOrderCallback(PaymentCallbackModel model)
+        [HttpGet]
+        [Route("Payment/Order/Verify")]
+        public ActionResult PaymentOrderCallback(long id, string authority, string status)
         {
             using (var ctx = new ServiceContext())
             {
+                var model = new PaymentCallbackModel { SaleOrderId = id, ResCode = status, RefId = authority };
                 try
                 {
                     ctx.VerifyOrderPayment(model);

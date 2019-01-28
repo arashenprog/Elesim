@@ -1,19 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="ir.esunco.elesim" android:versionCode="120" android:versionName="1.20" android:installLocation="auto">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="ir.esunco.elesim" android:versionCode="120" android:versionName="1.20" android:installLocation="preferExternal">
 	<uses-sdk android:minSdkVersion="17" />
 	<uses-permission android:name="android.permission.INTERNET" />
 	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 	<uses-permission android:name="android.permission.READ_SMS" />
 	<uses-permission android:name="android.permission.RECEIVE_SMS" />
 	<application android:theme="@style/AppTheme" android:largeHeap="true" android:supportsRtl="true" android:icon="@drawable/ic_launcher" android:label="اِلِ سیم">
-    <category android:name="android.intent.category.BROWSABLE" />
-    <data
-        android:host="api.elesim.ir"
-        android:path="launch"
-        android:scheme="https" />
-    <data
-        android:host="api.elesim.ir"
-        android:path="launch"
-        android:scheme="http" />
-  </application>
+		<category android:name="android.intent.category.BROWSABLE" />
+    
+		<data android:host="api.elesim.ir" android:path="launch" android:scheme="https" />
+		<data android:host="api.elesim.ir" android:path="launch" android:scheme="http" />
+		<data android:scheme="elesim" />
+	</application>
 </manifest>

@@ -462,6 +462,8 @@ namespace Esunco.Logics.Contexts
                 }
             }
         }
+    
+        #region Zarinpal
 
         public PaymentResultModel RegisterOrderPayment(PaymentOrderModel request)
         {
@@ -553,33 +555,23 @@ namespace Esunco.Logics.Contexts
                     payment.Price = order.OrderItemDataEntities.Sum(c => c.Price) - auctionPrice;
                     UnitOfWork.SaveChanges();
                     //
-                    var wsClient = new PaymentService.PaymentGatewayClient();
-                    var payRequest = wsClient.bpPayRequest(
-                        Settings.PAYMENT_TERMINAL_ID,
-                        Settings.PAYMENT_USERNAME,
-                        Settings.PAYMENT_PASSWORD,
-                        payment.SaleOrderID,
-                        payment.Price,
-                        DateTime.Now.ToString("yyyyMMdd"),
-                        DateTime.Now.ToString("HHmmss"),
-                        string.Empty,
-                        String.Format(Settings.PAYMENT_ORDER_CALLBACK, order.ID),
-                        0);
-
-                    if (String.IsNullOrWhiteSpace(payRequest) || payRequest.Split(',').Length < 2)
+                    var wsClient = new Zarinpal.PaymentGatewayImplementationServicePortTypeClient();
+                    string payRequest = null;
+                    var res = wsClient.PaymentRequest(Settings.PAYMENT_USERNAME, (int)(payment.Price/10), "اِلِ سیم", client.Email, client.Mobile, String.Format(Settings.PAYMENT_ORDER_CALLBACK, payment.ID), out payRequest);
+                    payment.ResultCode = String.Format("{0},{1}", res, payRequest);
+                    if (res != 100)
                     {
                         payment.Status = (byte)PaymentStatus.Failed;
-                        payment.ResultCode = payRequest;
                         UnitOfWork.SaveChanges();
                         throw new HandledException("خطا در اتصال به درگاه بانک");
                     }
                     else
                     {
-                        payment.ResultCode = payRequest;
-                        payment.RefID = payRequest.Split(',')[1];
+
+                        payment.RefID = payRequest;
                         payment.Status = (byte)PaymentStatus.Verified;
                         UnitOfWork.SaveChanges();
-                        return new PaymentResultModel() { PaymentUrl = Settings.PAYMENT_BANK_URL, PaymentID = payment.RefID, OrderID = order.ID };
+                        return new PaymentResultModel() { PaymentUrl = String.Format(Settings.PAYMENT_BANK_URL, payment.RefID), PaymentID = payment.RefID, OrderID = order.ID };
                     }
                 }
                 catch (Exception ex)
@@ -598,7 +590,7 @@ namespace Esunco.Logics.Contexts
             {
                 var payment = repPayment.Items.First(c => c.RefID == callback.RefId);
                 var order = payment.OrderDataEntities.First();
-                if (callback.ResCode != "0")
+                if (callback.ResCode != "OK")
                 {
                     payment.Status = (byte)PaymentStatus.Failed;
                     payment.ResultCode = callback.ResCode;
@@ -607,76 +599,47 @@ namespace Esunco.Logics.Contexts
                     throw new HandledException("پرداخت ناموفق");
                 }
                 payment.SaleOrderID = callback.SaleOrderId;
-                payment.SaleRefID = callback.SaleReferenceId;
                 UnitOfWork.SaveChanges();
-                var wsClient = new PaymentService.PaymentGatewayClient();
-                var payVerify = wsClient.bpVerifyRequest(
-                    Settings.PAYMENT_TERMINAL_ID,
-                    Settings.PAYMENT_USERNAME,
-                    Settings.PAYMENT_PASSWORD,
-                    payment.SaleOrderID,
-                    callback.SaleOrderId,
-                    payment.SaleRefID.Value
-                    );
-                if (payVerify == "0")
+                var wsClient = new Zarinpal.PaymentGatewayImplementationServicePortTypeClient();
+                long refID;
+                var res = wsClient.PaymentVerification(Settings.PAYMENT_USERNAME, callback.RefId, (int)(payment.Price / 10), out refID);
+                payment.SaleRefID = refID;
+                payment.ResultCode = res.ToString();
+                if (res == 100)
                 {
-                    payment.Status = (byte)PaymentStatus.Verified;
-                    UnitOfWork.SaveChanges();
-                    var paySettle = wsClient.bpSettleRequest(
-                         Settings.PAYMENT_TERMINAL_ID,
-                         Settings.PAYMENT_USERNAME,
-                         Settings.PAYMENT_PASSWORD,
-                         payment.SaleOrderID,
-                         callback.SaleOrderId,
-                         payment.SaleRefID.Value
-                        );
-
-                    if (paySettle == "0")
+                    payment.Status = (byte)PaymentStatus.Settled;
+                    order.Status = (byte)OrderStatus.Paid;
+                    order.FileID = Guid.NewGuid();
+                    order.FilePassword = AcoreX.Security.Token.GenerateKeyPass().ToString();
+                    foreach (var item in order.OrderItemDataEntities)
                     {
-                        payment.Status = (byte)PaymentStatus.Settled;
-                        payment.ResultCode = paySettle;
-                        order.Status = (byte)OrderStatus.Paid;
-                        order.FileID = Guid.NewGuid();
-                        order.FilePassword = AcoreX.Security.Token.GenerateKeyPass().ToString();
-                        foreach (var item in order.OrderItemDataEntities)
+                        if (item.SimID.HasValue)
+                            item.SimDataEntity.StatusID = (byte)SimPackStatus.Sold;
+
+                        if (item.PackID.HasValue)
                         {
-                            if (item.SimID.HasValue)
-                                item.SimDataEntity.StatusID = (byte)SimPackStatus.Sold;
-
-                            if (item.PackID.HasValue)
+                            foreach (PackSimDataEntity packSim in item.PackDataEntity.PackSimDataEntities)
                             {
-                                //item.PackDataEntity.StatusID = (byte)SimPackStatus.Sold;
-                                foreach (PackSimDataEntity packSim in item.PackDataEntity.PackSimDataEntities)
-                                {
-                                    packSim.SimDataEntity.StatusID = (byte)SimPackStatus.Sold;
-                                }
-                            }
-
-                            if (item.AuctionID.HasValue)
-                            {
-                                item.AuctionDataEntity.StatusID = (byte)AuctionStatus.Sold;
-                                foreach (AuctionSimDataEntity auctSim in item.AuctionDataEntity.AuctionSimDataEntities)
-                                {
-                                    auctSim.SimDataEntity.StatusID = (byte)SimPackStatus.Sold;
-                                }
-                                order.ClientDataEntity.BlockedCredit -= item.AuctionDataEntity.BasePrice;
+                                packSim.SimDataEntity.StatusID = (byte)SimPackStatus.Sold;
                             }
                         }
-                        UnitOfWork.SaveChanges();
-                        SendPackDetails(order);
+
+                        if (item.AuctionID.HasValue)
+                        {
+                            item.AuctionDataEntity.StatusID = (byte)AuctionStatus.Sold;
+                            foreach (AuctionSimDataEntity auctSim in item.AuctionDataEntity.AuctionSimDataEntities)
+                            {
+                                auctSim.SimDataEntity.StatusID = (byte)SimPackStatus.Sold;
+                            }
+                            order.ClientDataEntity.BlockedCredit -= item.AuctionDataEntity.BasePrice;
+                        }
                     }
-                    else
-                    {
-                        payment.Status = (byte)PaymentStatus.Failed;
-                        RollbackOrderStatus(order);
-                        UnitOfWork.SaveChanges();
-                        throw new HandledException("خطا در واریز وجه");
-                    }
+                    UnitOfWork.SaveChanges();
+                    SendPackDetails(order);
                 }
                 else
                 {
                     payment.Status = (byte)PaymentStatus.Failed;
-                    payment.ResultCode = payVerify;
                     RollbackOrderStatus(order);
                     UnitOfWork.SaveChanges();
                     throw new HandledException("خطا در تاییدیه پرداخت");
@@ -684,7 +647,9 @@ namespace Esunco.Logics.Contexts
             }
         }
 
+        #endregion
 
+        #region Credit
 
         public PaymentResultModel RegisterCreditPayment(PaymentCreditModel request)
         {
@@ -716,7 +681,7 @@ namespace Esunco.Logics.Contexts
                     //
                     var wsClient = new Zarinpal.PaymentGatewayImplementationServicePortTypeClient();
                     string payRequest = null;
-                    var res = wsClient.PaymentRequest(Settings.PAYMENT_USERNAME, (int)payment.Price, "اِلِ سیم", client.Email, client.Mobile, String.Format(Settings.PAYMENT_ACCOUNT_CALLBACK, payment.ID), out payRequest);
+                    var res = wsClient.PaymentRequest(Settings.PAYMENT_USERNAME, (int)(payment.Price / 10), "اِلِ سیم", client.Email, client.Mobile, String.Format(Settings.PAYMENT_ACCOUNT_CALLBACK, payment.ID), out payRequest);
 
                     if (res != 100)
                     {
@@ -747,6 +712,7 @@ namespace Esunco.Logics.Contexts
         {
             using (var repPayment = new Repository<PaymentDataEntity>(UnitOfWork))
             {
+                Logger.WriteLog("Callback API: {0}-{1}", callback.ResCode, callback.RefId);
                 var payment = repPayment.Items.First(c => c.RefID == callback.RefId);
                 var credit = payment.CreditChargeDataEntities.First();
                 if (callback.ResCode != "OK")
@@ -760,7 +726,7 @@ namespace Esunco.Logics.Contexts
                 UnitOfWork.SaveChanges();
                 var wsClient = new Zarinpal.PaymentGatewayImplementationServicePortTypeClient();
                 long refID;
-                var res = wsClient.PaymentVerification(Settings.PAYMENT_USERNAME, callback.RefId, (int)payment.Price, out refID);
+                var res = wsClient.PaymentVerification(Settings.PAYMENT_USERNAME, callback.RefId, (int)(payment.Price / 10), out refID);
                 payment.SaleRefID = refID;
                 payment.ResultCode = res.ToString();
                 if (res == 100)
@@ -779,6 +745,7 @@ namespace Esunco.Logics.Contexts
             }
         }
 
+        #endregion
 
         public PaymentStatus GetPaymentStatus(string token, string paymentId)
         {

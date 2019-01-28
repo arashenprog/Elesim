@@ -22,6 +22,9 @@ using System.Web;
 namespace Elesim.Droid.Code.UI
 {
     [Activity(Label = "NavigationDrawer", Theme = "@style/AppTheme.NoActionBar")]
+    [IntentFilter(new[] { Intent.ActionView },
+    Categories = new[] { Intent.CategoryDefault, Intent.CategoryBrowsable },
+    DataScheme = "elesim")]
     public class MainActivity : BaseActivity
     {
 
@@ -197,7 +200,7 @@ namespace Elesim.Droid.Code.UI
             if (CheckLogin())
             {
                 LayoutInflater inflater = this.LayoutInflater;
-                var builder = new Android.App.AlertDialog.Builder(this);
+                var builder = new Android.App.AlertDialog.Builder(this, Resource.Style.AppTheme_Alert);
                 View view = inflater.Inflate(Resource.Layout.layout_credit, null);
                 builder.SetView(view);
                 Android.App.AlertDialog dialog = builder.Create();
@@ -222,8 +225,6 @@ namespace Elesim.Droid.Code.UI
                         }
                         var result = Facade.ChargeAccount(amount);
 
-
-
                         var html = String.Format(@"<html>
                                         <body onLoad=""document.getElementById('form').submit()"">
                                             <form id=""form"" target =""_self"" method =""POST"" action = ""{0}"" >
@@ -233,20 +234,12 @@ namespace Elesim.Droid.Code.UI
                                       </body>
                                     </html >", Facade.BaseUrl, Facade.Client.Mobile, amount);
 
-
-
-                        
-                        //i.SetComponent(new ComponentName("com.android.browser", "com.android.browser.BrowserActivity"));
-                        //i.SetAction(Intent.ActionView);
                         String dataUri = "data:text/html," + System.Net.WebUtility.UrlEncode(html).Replace("\\+", "%20");
-                        //i.SetData(Android.Net.Uri.Parse(dataUri));
-                        Intent i = new Intent(Intent.ActionView, Android.Net.Uri.Parse(dataUri));
-                        StartActivity(i);
+                        Intent intent = new Intent(Intent.ActionView, Android.Net.Uri.Parse(dataUri));
+                        intent.AddFlags(ActivityFlags.NewTask);
+                        StartActivity(intent);
 
-                        //var intent = new Android.Content.Intent(this, typeof(BankGatewayActivity));
-                        //intent.PutExtra("PaymentID", result.PaymentID);
-                        //intent.PutExtra("PaymentUrl", result.PaymentUrl);
-                        //RunOnUiThread(() => StartActivityForResult(intent, 10));
+
                     });
                 };
                 dialog.Show();

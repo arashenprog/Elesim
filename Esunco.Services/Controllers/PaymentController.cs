@@ -47,30 +47,7 @@ namespace Esunco.Services.Controllers
             }
         }
 
-
-        [HttpPost]
-        [HttpGet]
-        [Route("Order/Payment/Callback")]
-        public JsonResult OrderPaymentCallback([FromBody]PaymentCallbackModel model)
-        {
-            using (var ctx = new ServiceContext())
-            {
-                ctx.VerifyOrderPayment(model);
-                return new JsonResult(true);
-            }
-        }
-
-        [HttpPost]
-        [HttpGet]
-        [Route("Account/Payment/Callback")]
-        public JsonResult AccountPaymentCallback([FromBody]PaymentCallbackModel model)
-        {
-            using (var ctx = new ServiceContext())
-            {
-                ctx.VerifyCreditPayment(model);
-                return new JsonResult(true);
-            }
-        }
+ 
 
 
         [HttpPost]
@@ -83,5 +60,8 @@ namespace Esunco.Services.Controllers
                 return new JsonResult<PaymentStatus>(result);
             }
         }
+
+
+
     }
 }

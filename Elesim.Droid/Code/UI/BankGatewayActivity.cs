@@ -92,7 +92,7 @@ namespace Elesim.Droid.Code.UI
 
         public override void OnBackPressed()
         {
-            var builder = new Android.App.AlertDialog.Builder(this);
+            var builder = new Android.App.AlertDialog.Builder(this, Resource.Style.AppTheme_Alert);
             builder.SetMessage("مطمئنید میخواهید صفحه پرداخت را در حین عملیات ترک کنید؟");
             builder.SetPositiveButton("بله", (s, ex) =>
             {

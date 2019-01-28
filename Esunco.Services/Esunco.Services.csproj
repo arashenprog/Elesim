@@ -191,8 +191,8 @@
     <Content Include="Content\js\theme.js" />
     <Content Include="Global.asax" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
-    <None Include="Views\Bank\Index.cshtml" />
-    <None Include="Views\Bank\Callback.cshtml" />
+    <Content Include="Views\Bank\Index.cshtml" />
+    <Content Include="Views\Bank\Callback.cshtml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>

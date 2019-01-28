@@ -55,7 +55,7 @@ namespace Elesim.Droid.Code.UI
         {
             if (!Facade.IsLogin)
             {
-                var builder = new Android.Support.V7.App.AlertDialog.Builder(this);
+                var builder = new Android.Support.V7.App.AlertDialog.Builder(this, Resource.Style.AppTheme_Alert);
                 builder.SetMessage("لطفا ابتدا به حساب کاربری خود وارد شوید.");
                 builder.SetPositiveButton("ورود/ ثبت نام", (s, ex) =>
                 {
@@ -73,7 +73,7 @@ namespace Elesim.Droid.Code.UI
         {
             if (!Facade.Client.IsCompleted)
             {
-                var builder = new Android.Support.V7.App.AlertDialog.Builder(this);
+                var builder = new Android.Support.V7.App.AlertDialog.Builder(this, Resource.Style.AppTheme_Alert);
                 builder.SetMessage("لطفا مشخصات خود را تکمیل کنید.");
                 builder.SetPositiveButton("تکمیل مشخصات", (s, ex) =>
                 {
@@ -91,7 +91,7 @@ namespace Elesim.Droid.Code.UI
         {
             if (String.IsNullOrWhiteSpace(Facade.Client.Email))
             {
-                var builder = new Android.Support.V7.App.AlertDialog.Builder(this);
+                var builder = new Android.Support.V7.App.AlertDialog.Builder(this, Resource.Style.AppTheme_Alert);
                 builder.SetMessage("لطفا ایمیل خود را در قسمت مشخصات کاربری وارد کنید.");
                 builder.SetPositiveButton("تکمیل مشخصات", (s, ex) =>
                 {
@@ -118,7 +118,7 @@ namespace Elesim.Droid.Code.UI
                 }
                 finally
                 {
-                    var builder = new Android.Support.V7.App.AlertDialog.Builder(this);
+                    var builder = new Android.Support.V7.App.AlertDialog.Builder(this, Resource.Style.AppTheme_Alert);
                     builder.SetMessage("امکان خرید پک صرفا برای اشخاص حقوقی (دفاتر خدمات ارتباطی؛دفاتر ict روستایی؛نقاط فروش مجاز همراه اول؛فروشگاه های زنجیره ای همراه اول) امکان پذیر میباشد. لطفا با پشتیبانی تماس بگیرید.");
                     if (Facade.Info != null)
                     {
@@ -148,7 +148,7 @@ namespace Elesim.Droid.Code.UI
         {
             if (CheckLogin())
             {
-                var builder = new Android.Support.V7.App.AlertDialog.Builder(this);
+                var builder = new Android.Support.V7.App.AlertDialog.Builder(this, Resource.Style.AppTheme_Alert);
                 builder.SetMessage("این گزینه از سبد خرید حذف شود؟");
                 builder.SetPositiveButton("بله", (s, ex) =>
                 {
@@ -172,7 +172,7 @@ namespace Elesim.Droid.Code.UI
 
         public void ClearCart(Action action)
         {
-            var builder = new Android.Support.V7.App.AlertDialog.Builder(this);
+            var builder = new Android.Support.V7.App.AlertDialog.Builder(this, Resource.Style.AppTheme_Alert);
             builder.SetMessage("سبد خرید خالی شود؟");
             builder.SetPositiveButton("بله", (s, ex) =>
             {
@@ -233,7 +233,7 @@ namespace Elesim.Droid.Code.UI
             if (CheckLogin() && CheckProfile())
             {
                 LayoutInflater inflater = LayoutInflater;
-                var builder = new Android.App.AlertDialog.Builder(this);
+                var builder = new Android.App.AlertDialog.Builder(this, Resource.Style.AppTheme_Alert);
                 View view = inflater.Inflate(Resource.Layout.layout_payment, null);
                 builder.SetView(view);
                 Android.App.AlertDialog dialog = builder.Create();
@@ -269,10 +269,10 @@ namespace Elesim.Droid.Code.UI
                         Facade.Cart.Clear();
                         Facade.Cart.Add(model);
                         var result = Facade.CheckCart();
-                        var intent = new Intent(this, typeof(BankGatewayActivity));
-                        intent.PutExtra("PaymentID", result.PaymentID);
-                        intent.PutExtra("PaymentUrl", result.PaymentUrl);
-                        StartActivityForResult(intent, 5);
+                        var uri = Android.Net.Uri.Parse(result.PaymentUrl);
+                        var intent = new Intent(Intent.ActionView, uri);
+                        intent.AddFlags(ActivityFlags.NewTask);
+                        StartActivity(intent);
                     });
                 };
                 try
@@ -291,24 +291,24 @@ namespace Elesim.Droid.Code.UI
         }
 
 
-        protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
-        {
-            if (requestCode == 5)
-            {
-                if (resultCode == Android.App.Result.Ok)
-                {
-                    ShowPaymentSucceed();
-                    var id = data.GetLongExtra("ID", 0);
-                    Intent intent = new Intent(this, typeof(OrderDetailActivity));
-                    intent.PutExtra("ID", id);
-                    StartActivity(intent);
-                }
-                else
-                {
-                    ShowPaymentFailed();
-                }
-            }
-        }
+        //protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
+        //{
+        //    if (requestCode == 5)
+        //    {
+        //        if (resultCode == Android.App.Result.Ok)
+        //        {
+        //            ShowPaymentSucceed();
+        //            var id = data.GetLongExtra("ID", 0);
+        //            Intent intent = new Intent(this, typeof(OrderDetailActivity));
+        //            intent.PutExtra("ID", id);
+        //            StartActivity(intent);
+        //        }
+        //        else
+        //        {
+        //            ShowPaymentFailed();
+        //        }
+        //    }
+        //}
 
         #endregion
     }

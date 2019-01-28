@@ -1,4 +1,5 @@
-﻿using Esunco.Models;
+﻿using AcoreX.Diagnostics;
+using Esunco.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,7 @@ namespace Esunco.Services.Helpers
     {
         public override void OnException(HttpActionExecutedContext context)
         {
+            Logger.WriteLog(context.Exception);
             var message = context.Exception.Message;
             var handled = context.Exception is AcoreX.Utility.HandledException || context.Exception is AcoreX.Utility.ExceptionHandler.BaseException;
             if (!handled)

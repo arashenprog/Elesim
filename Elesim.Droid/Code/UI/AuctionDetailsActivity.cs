@@ -91,7 +91,7 @@ namespace Elesim.Droid.Code.UI
                     Toast.MakeText(this, "مبلغ اعتبار حساب شما از قیمت پایه کمتر است.", ToastLength.Long).Show();
                     return;
                 }
-                var builder = new Android.App.AlertDialog.Builder(this);
+                var builder = new Android.App.AlertDialog.Builder(this, Resource.Style.AppTheme_Alert);
                 View view = LayoutInflater.Inflate(Resource.Layout.layout_bid, null);
                 builder.SetView(view);
                 Android.App.AlertDialog dialog = builder.Create();
