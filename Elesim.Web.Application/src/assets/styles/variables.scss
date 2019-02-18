@@ -1,0 +1,72 @@
+$grey: #7a7378;
+$grey-light: lighten($grey, 50%);
+$grey-dark: darken($grey, 50%);
+$grey-medium: #757575;
+$grey-soft: #eeeeee;
+
+$green: #43a047;
+$red: #f44336;
+
+$border-radius: 4px;
+$border-color: #eee;
+
+$white: #fff;
+$black: #000;
+
+$hamrah-aval: #54c5d0;
+$irancell: #ffcb08;
+$rightel: #9b2776;
+
+$font-family-base: IRANSansNum;
+
+$xs: 5px;
+$sm: 10px;
+$lg: 15px;
+$xl: 20px;
+
+.d-hide {
+  display: none;
+}
+.ltr {
+  direction: ltr !important;
+  display: inline-flex;
+}
+
+.mr-xs {
+  margin: $xs;
+}
+
+.mr-sm {
+  margin: $sm;
+}
+
+.mr-lg {
+  margin: $lg;
+}
+
+.mr-xl {
+  margin: $xl;
+}
+.pl0 {
+  padding-left: 0 !important;
+}
+.pr0 {
+  padding-right: 0 !important;
+}
+.yellow {
+  color: $irancell;
+}
+.text-center {
+  text-align: center !important;
+}
+.lg-font{
+  font-size: 20px;
+}
+.phone-number-input{
+  text-align: center !important;
+
+  font-size: 20px !important;
+}
+.flex-row-left {
+  flex-direction: row-reverse !important;
+}

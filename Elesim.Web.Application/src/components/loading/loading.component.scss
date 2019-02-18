@@ -1,0 +1,14 @@
+.loading-box {
+    display: flex;
+    width: 200px;
+    height: 100px;
+    margin: auto;
+    background: #fff;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    border-radius: 4px;
+    color: #b5b5b5;
+    box-shadow: 0px 0px 6px 0px #c5c5c5;
+}

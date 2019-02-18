@@ -1,0 +1,11 @@
+@import "../../assets/styles/variables.scss";
+.result-page{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    h1{
+        color: $grey;
+    }
+}
