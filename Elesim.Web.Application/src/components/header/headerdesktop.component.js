@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 import Api from "../../services/api";
 import { withRouter } from "react-router";
 
-const FormItem = Form.Item;
 const RadioGroup = Radio.Group;
 const ButtonGroup = Button.Group;
 class HeaderDesktopComponent extends Component {

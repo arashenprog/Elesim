@@ -15,7 +15,6 @@ class HeaderMobileComponent extends PureComponent {
   componentWillMount() {
     // Api.getLocalStorage("User").then(res => {
     //   this.setState({ userToken: res.Token })
-
     // })
   }
   render() {
@@ -52,41 +51,37 @@ class HeaderMobileComponent extends PureComponent {
           closable={false}
           onClose={this.onClose.bind(this)}
           visible={this.state.drawerVisible}
-          className="drawer-menu">
+          className="drawer-menu"
+        >
           <Menu
             theme="light"
             mode="vertical-right"
+            onSelect={this.onClickMenu}
             style={{ lineHeight: "64px" }}
           >
-            {this.state.userToken === "" ? (<div>
-              <Menu.Item key="1">
-                <Link to="/login">
+            {this.state.userToken === "" ? (
+              <>
+                <Menu.Item key="1" className="ant-menu-item">
                   <Icon type="unlock" style={styles.icons} /> ورود به حساب
-              </Link>
-              </Menu.Item>
-              <Menu.Item key="2">
-                <Link to="/register">
+                </Menu.Item>
+                <Menu.Item key="2" className="ant-menu-item">
                   <Icon type="plus-square" style={styles.icons} /> عضویت در اِلِ
                   سـیم
-              </Link>
-              </Menu.Item>
-            </div>) : (<div>
-              <Menu.Item key="1">
-                <Link to="/profile">
+                </Menu.Item>
+              </>
+            ) : (
+              <>
+                <Menu.Item key="1">
                   <Icon type="user" style={styles.icons} />
                   حساب کاربری
-              </Link>
-              </Menu.Item>
-            </div>)}
+                </Menu.Item>
+              </>
+            )}
             <Menu.Item key="6">
               <Icon type="mobile" style={styles.icons} /> اپلیکیشن اِلِ سیم
             </Menu.Item>
           </Menu>
-          <Menu
-            theme="light"
-            mode="inline"
-            style={{ lineHeight: "64px" }}
-          >
+          <Menu theme="light" mode="inline" style={{ lineHeight: "64px" }}>
             <SubMenu
               key="hamrahEtebari"
               title={
@@ -207,6 +202,9 @@ class HeaderMobileComponent extends PureComponent {
   onClose() {
     this.setState({ drawerVisible: false });
   }
+  onClickMenu = (item,key,selected) => {
+    console.log(item,key,selected);
+  };
 }
 const styles = {
   icons: {
