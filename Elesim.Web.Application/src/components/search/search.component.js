@@ -138,6 +138,7 @@ export class SearchComponent extends Component {
                     <Icon type="minus" />
                   </div>
                 </div>
+                <div className="mr-sm d-block d-sm-none"></div>
                 <div className="col-sm-1 col-xs-4">
                   <Input
                     ref={input => {
@@ -157,6 +158,8 @@ export class SearchComponent extends Component {
                     }
                   />
                 </div>
+                <div className="mr-sm d-block d-sm-none"></div>
+
                 <div className="col-sm-1 col-xs-4">
                   <Input
                     ref={input => {
@@ -175,6 +178,8 @@ export class SearchComponent extends Component {
                     }
                   />
                 </div>
+                <div className="mr-sm d-block d-sm-none"></div>
+
                 <div className="col-sm-1 col-xs-4">
                   <Input
                     ref={input => {
@@ -193,11 +198,15 @@ export class SearchComponent extends Component {
                     }
                   />
                 </div>
+                <div className="mr-sm d-block d-sm-none"></div>
+
                 <div className="col-sm-1 col-xs-12 d-none d-sm-block ">
                   <div className="phone-number-input">
                     <Icon type="minus" />
                   </div>
                 </div>
+                <div className="mr-sm d-block d-sm-none"></div>
+
                 <div className="col-sm-1 col-xs-12">
                   <Input
                     ref={input => {
@@ -215,6 +224,8 @@ export class SearchComponent extends Component {
                     }
                   />
                 </div>
+                <div className="mr-sm d-block d-sm-none"></div>
+
                 <div className="col-sm-1 col-xs-12">
                   <Input
                     ref={input => {
@@ -232,11 +243,15 @@ export class SearchComponent extends Component {
                     }
                   />
                 </div>
+                <div className="mr-sm d-block d-sm-none"></div>
+
                 <div className="col-sm-1 col-xs-12 d-none d-sm-block">
                   <div className="phone-number-input">
                     <Icon type="minus" />
                   </div>
                 </div>
+                <div className="mr-sm d-block d-sm-none"></div>
+
                 <div className="col-sm-1 col-xs-12">
                   <Input
                     ref={input => {
@@ -254,6 +269,8 @@ export class SearchComponent extends Component {
                     }
                   />
                 </div>
+                <div className="mr-sm d-block d-sm-none"></div>
+
                 <div className="col-sm-1 col-xs-12">
                   <Input
                     ref={input => {
@@ -270,7 +287,7 @@ export class SearchComponent extends Component {
                   />
                 </div>
               </div>
-              <div className="mr-sm d-none d-sm-block" />
+              <div className="mr-sm d-block d-sm-none" />
               <div className="row">
                 <div className="col-sm-3 col-xs-12">
                   <Select
@@ -288,6 +305,7 @@ export class SearchComponent extends Component {
                     <Option value="">مهم نیست</Option>
                   </Select>
                 </div>
+                <div className="mr-sm d-block d-sm-none" />
                 <div className="col-sm-3 col-xs-12">
                   <Select
                     showSearch
@@ -304,6 +322,7 @@ export class SearchComponent extends Component {
                     <Option value="not">مهم نیست</Option>
                   </Select>
                 </div>
+                <div className="mr-sm d-block d-sm-none" />
                 <div className="col-sm-3 col-xs-12">
                   <Select
                     showSearch
@@ -321,6 +340,7 @@ export class SearchComponent extends Component {
                     <Option value="not">مهم نیست</Option>
                   </Select>
                 </div>
+                <div className="mr-sm d-block d-sm-none" />
                 <div className="col-sm-3 col-xs-12">
                   <Slider
                     range
