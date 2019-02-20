@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Radio, Menu, Icon, Button, Input, Form, Modal } from "antd";
+import { Radio, Menu, Icon, Button, Input, Modal } from "antd";
 
 import { Link } from "react-router-dom";
 import Api from "../../services/api";
