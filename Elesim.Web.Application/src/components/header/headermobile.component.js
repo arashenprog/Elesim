@@ -1,6 +1,7 @@
 import React, { PureComponent } from "react";
 import { Menu, Drawer, Icon } from "antd";
 import { Link } from "react-router-dom";
+import { withRouter } from 'react-router-dom'
 const SubMenu = Menu.SubMenu;
 const MenuItemGroup = Menu.ItemGroup;
 
@@ -56,28 +57,28 @@ class HeaderMobileComponent extends PureComponent {
           <Menu
             theme="light"
             mode="vertical-right"
-            onSelect={this.onClickMenu}
+            onClick={this.onClickMenu}
             style={{ lineHeight: "64px" }}
           >
             {this.state.userToken === "" ? (
               <>
-                <Menu.Item key="1" className="ant-menu-item">
+                <Menu.Item key="1" className="ant-menu-item" onClick={() => { this.props.history.push("/login") }}>
                   <Icon type="unlock" style={styles.icons} /> ورود به حساب
                 </Menu.Item>
-                <Menu.Item key="2" className="ant-menu-item">
+                <Menu.Item key="2" className="ant-menu-item" onClick={() => { this.props.history.push("/register") }}>
                   <Icon type="plus-square" style={styles.icons} /> عضویت در اِلِ
                   سـیم
                 </Menu.Item>
               </>
             ) : (
-              <>
-                <Menu.Item key="1">
-                  <Icon type="user" style={styles.icons} />
-                  حساب کاربری
+                <>
+                  <Menu.Item key="1" onClick={() => { this.props.history.push("/profile") }}>
+                    <Icon type="user" style={styles.icons} />
+                    حساب کاربری
                 </Menu.Item>
-              </>
-            )}
-            <Menu.Item key="6">
+                </>
+              )}
+            <Menu.Item key="6" onClick={() => { this.props.history.push("/application") }}>
               <Icon type="mobile" style={styles.icons} /> اپلیکیشن اِلِ سیم
             </Menu.Item>
           </Menu>
@@ -202,8 +203,8 @@ class HeaderMobileComponent extends PureComponent {
   onClose() {
     this.setState({ drawerVisible: false });
   }
-  onClickMenu = (item,key,selected) => {
-    console.log(item,key,selected);
+  onClickMenu = (item, key, selected) => {
+    console.log(item, key, selected);
   };
 }
 const styles = {
@@ -211,4 +212,4 @@ const styles = {
     fontSize: 18
   }
 };
-export default HeaderMobileComponent;
+export default withRouter(HeaderMobileComponent);
