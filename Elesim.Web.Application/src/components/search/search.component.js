@@ -103,7 +103,7 @@ export class SearchComponent extends Component {
                 <div className="col-sm-2 col-xs-12">
                   <Select
                     showSearch
-                    style={{ width: "100%", fontSize: 20 }}
+                    style={{ width: "100%"}}
                     placeholder="912"
                     optionFilterProp="children"
                     value={this.state.preCode}
@@ -139,6 +139,7 @@ export class SearchComponent extends Component {
                   </div>
                 </div>
                 <div className="mr-sm d-block d-sm-none"></div>
+                
                 <div className="col-sm-1 col-xs-4">
                   <Input
                     ref={input => {
@@ -288,6 +289,8 @@ export class SearchComponent extends Component {
                 </div>
               </div>
               <div className="mr-sm d-block d-sm-none" />
+              <div className="mr-sm d-block d-sm-block"></div>
+
               <div className="row">
                 <div className="col-sm-3 col-xs-12">
                   <Select
@@ -469,6 +472,7 @@ export class SearchComponent extends Component {
           <React.Fragment>
             {this.state.data.length >= 1 ? <div>
               <Card
+                id="search-result"
                 title={
                   <div className="panel-header">
                     نتایج جستجو

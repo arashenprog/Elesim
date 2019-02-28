@@ -153,6 +153,9 @@ class LoginPage extends Component {
                 />
               </Link>
               <h5>ورود به حساب کاربری</h5>
+              <Button className="d-block d-sm-none" type="primary" ghost={true} icon="right" size="default" onClick={()=>{
+                this.props.history.push("/")
+              }}>بازگشت</Button>
             </div>
             <div className="full-form">{this._renderForm()}</div>
           </Col>

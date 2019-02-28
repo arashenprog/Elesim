@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Card, Button, Modal, Icon } from 'antd';
 import Api from '../../services/api';
 import { Separate } from '../../components/separator/separator';
-import Loading from "../../components/loading/loading.component"
+import Loading from "../../components/loading/loading.component";
 import {withRouter} from 'react-router-dom'
 
 const { Meta } = Card;
@@ -50,15 +50,17 @@ class ProductPage extends Component {
                                             </header>
                                             <ul>
                                                 <li>
-                                                    شماره :   &nbsp;  <span className="ltr">
+                                                    <span>شماره :  </span>
+                                                    <span className="ltr">
                                                         {this.state.product.Number}
                                                     </span>
                                                 </li>
                                                 <li>
-                                                    پیش شماره : {this.state.product.Code}
+                                                    
+                                                    <span>پیش شماره : </span><span>{this.state.product.Code}</span>
                                                 </li>
                                                 <li>
-                                                    قیمت : {this.state.price}
+                                                    <span>قیمت : </span><span>{this.state.price} تومان</span>
                                                 </li>
 
                                             </ul>
@@ -85,7 +87,9 @@ class ProductPage extends Component {
                                                 description="شماره تماس : 09135424277"
                                             />
                                             <div className="mr-lg" />
+                                            <a href="tel:09135424277">
                                             <Button type="dashed" block>تماس با فروشنده</Button>
+                                            </a>
                                         </Card>
                                     </div>
                                 </div>

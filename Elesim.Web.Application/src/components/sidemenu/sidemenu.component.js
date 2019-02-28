@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Menu } from "antd";
-import {Redirect} from 'react-router-dom'
+import {Redirect} from 'react-router-dom';
 const SubMenu = Menu.SubMenu;
 const MenuItemGroup = Menu.ItemGroup;
 
@@ -13,7 +13,7 @@ export class SideMenu extends Component {
     }
   }
   render() {
-    let Numbers = ["912", "911", "913", "919", "910"]
+    let Numbers = ["912", "911", "913", "919", "910"];
     if (this.state.redirect) {
       const { preCode, num4, num5, num6, num7, num8, num9, num10 } = this.state;
       return <Redirect push to={`search/${(preCode ? preCode : "***") + (num4 ? num4 : "*") + (num5 ? num5 : "*") + (num6 ? num6 : "*") + (num7 ? num7 : "*") + (num8 ? num8 : "*") + (num9 ? num9 : "*") + (num10 ? num10 : "*")}`} />;

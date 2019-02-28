@@ -35,13 +35,10 @@ class registerPage extends Component {
           if (!res.data.Succeed) {
             this.openNotificationWithIcon("error", "خطا", res.data.Messages[0]);
           }
-
         });
       }
       this.setState({ buttonLoading: true });
-
     });
-
   };
   openNotificationWithIcon = (type, title, message) => {
     notification.config({
@@ -70,6 +67,18 @@ class registerPage extends Component {
                 />
               </Link>
               <h5>ایجاد حساب کاربری</h5>
+              <Button
+                className="d-block d-sm-none"
+                type="primary"
+                ghost={true}
+                icon="right"
+                size="default"
+                onClick={() => {
+                  this.props.history.push("/");
+                }}
+              >
+                بازگشت
+              </Button>
             </div>
             <div className="full-form">
               <Form onSubmit={this.handleSubmit}>
@@ -109,7 +118,6 @@ class registerPage extends Component {
                         ]
                       })(
                         <Input
-
                           size="large"
                           placeholder="نام خانوادگی"
                           prefix={
@@ -135,7 +143,6 @@ class registerPage extends Component {
                         ]
                       })(
                         <Input
-
                           size="large"
                           placeholder="کد ملی"
                           prefix={
@@ -173,7 +180,7 @@ class registerPage extends Component {
                   </Col>
                 </Row>
                 <Row type="flex" gutter={12}>
-                  <Col span={12}>
+                  <Col span={24}>
                     <FormItem>
                       {getFieldDecorator("address")(
                         <Input
@@ -189,7 +196,9 @@ class registerPage extends Component {
                       )}
                     </FormItem>
                   </Col>
-                  <Col span={12}>
+                </Row>
+                <Row type="flex" gutter={12}>
+                  <Col span={24}>
                     <FormItem>
                       {getFieldDecorator("postalCode")(
                         <Input
@@ -206,13 +215,8 @@ class registerPage extends Component {
                     </FormItem>
                   </Col>
                 </Row>
-                <FormItem >
-                  <Button
-                    type="primary"
-                    size="large"
-                    htmlType="submit"
-                    block
-                  >
+                <FormItem>
+                  <Button type="primary" size="large" htmlType="submit" block>
                     ثبت نام
                   </Button>
 
@@ -238,7 +242,6 @@ class registerPage extends Component {
       </div>
     );
   }
-
 }
 const RegisterForm = Form.create()(registerPage);
 

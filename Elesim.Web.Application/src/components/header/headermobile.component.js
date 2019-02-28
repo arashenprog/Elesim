@@ -1,7 +1,9 @@
 import React, { PureComponent } from "react";
 import { Menu, Drawer, Icon } from "antd";
 import { Link } from "react-router-dom";
-import { withRouter } from 'react-router-dom'
+import { withRouter } from "react-router-dom";
+import { Redirect } from "react-router-dom";
+
 const SubMenu = Menu.SubMenu;
 const MenuItemGroup = Menu.ItemGroup;
 
@@ -19,6 +21,23 @@ class HeaderMobileComponent extends PureComponent {
     // })
   }
   render() {
+    let Numbers = ["912", "911", "913", "919", "910"];
+    if (this.state.redirect) {
+      const { preCode, num4, num5, num6, num7, num8, num9, num10 } = this.state;
+      return (
+        <Redirect
+          push
+          to={`search/${(preCode ? preCode : "***") +
+            (num4 ? num4 : "*") +
+            (num5 ? num5 : "*") +
+            (num6 ? num6 : "*") +
+            (num7 ? num7 : "*") +
+            (num8 ? num8 : "*") +
+            (num9 ? num9 : "*") +
+            (num10 ? num10 : "*")}`}
+        />
+      );
+    }
     return (
       <div className="d-block d-sm-none">
         <div className="nav-menu-mobile">
@@ -62,27 +81,55 @@ class HeaderMobileComponent extends PureComponent {
           >
             {this.state.userToken === "" ? (
               <>
-                <Menu.Item key="1" className="ant-menu-item" onClick={() => { this.props.history.push("/login") }}>
+                <Menu.Item
+                  key="1"
+                  className="ant-menu-item"
+                  onClick={() => {
+                    this.props.history.push("/login");
+                  }}
+                >
                   <Icon type="unlock" style={styles.icons} /> ورود به حساب
                 </Menu.Item>
-                <Menu.Item key="2" className="ant-menu-item" onClick={() => { this.props.history.push("/register") }}>
+                <Menu.Item
+                  key="2"
+                  className="ant-menu-item"
+                  onClick={() => {
+                    this.props.history.push("/register");
+                  }}
+                >
                   <Icon type="plus-square" style={styles.icons} /> عضویت در اِلِ
                   سـیم
                 </Menu.Item>
               </>
             ) : (
-                <>
-                  <Menu.Item key="1" onClick={() => { this.props.history.push("/profile") }}>
-                    <Icon type="user" style={styles.icons} />
-                    حساب کاربری
+              <>
+                <Menu.Item
+                  key="1"
+                  onClick={() => {
+                    this.props.history.push("/profile");
+                  }}
+                >
+                  <Icon type="user" style={styles.icons} />
+                  حساب کاربری
                 </Menu.Item>
-                </>
-              )}
-            <Menu.Item key="6" onClick={() => { this.props.history.push("/application") }}>
+              </>
+            )}
+            <Menu.Item
+              key="6"
+              onClick={() => {
+                this.props.history.push("/application");
+              }}
+            >
               <Icon type="mobile" style={styles.icons} /> اپلیکیشن اِلِ سیم
             </Menu.Item>
           </Menu>
-          <Menu theme="light" mode="inline" style={{ lineHeight: "64px" }}>
+
+          <Menu
+            theme="light"
+            mode="inline"
+            style={{ lineHeight: "64px" }}
+            onClick={this.onMenuHandelClick}
+          >
             <SubMenu
               key="hamrahEtebari"
               title={
@@ -97,8 +144,9 @@ class HeaderMobileComponent extends PureComponent {
               }
             >
               <MenuItemGroup key="g1" title="پیش شماره ها">
-                <Menu.Item key="1">0912</Menu.Item>
-                <Menu.Item key="2">0910</Menu.Item>
+                {Numbers.map(num => {
+                  return <Menu.Item key={num}>{num}</Menu.Item>;
+                })}
               </MenuItemGroup>
             </SubMenu>
             <SubMenu
@@ -115,8 +163,9 @@ class HeaderMobileComponent extends PureComponent {
               }
             >
               <MenuItemGroup key="g2" title="پیش شماره ها">
-                <Menu.Item key="3">0912</Menu.Item>
-                <Menu.Item key="4">0910</Menu.Item>
+                {Numbers.map(num => {
+                  return <Menu.Item key={num}>{num}</Menu.Item>;
+                })}
               </MenuItemGroup>
             </SubMenu>
             <SubMenu
@@ -205,6 +254,14 @@ class HeaderMobileComponent extends PureComponent {
   }
   onClickMenu = (item, key, selected) => {
     console.log(item, key, selected);
+  };
+  onMenuHandelClick = e => {
+    console.log(e.key);
+    this.props.history.push(`/search/${e.key}*******`);
+    this.onClose();
+    let searchbox = document.getElementById("search-result")
+    searchbox.scrollIntoView();
+    
   };
 }
 const styles = {
