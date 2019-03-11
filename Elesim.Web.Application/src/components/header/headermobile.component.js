@@ -86,6 +86,7 @@ class HeaderMobileComponent extends PureComponent {
                   className="ant-menu-item"
                   onClick={() => {
                     this.props.history.push("/login");
+                    this.onClose()
                   }}
                 >
                   <Icon type="unlock" style={styles.icons} /> ورود به حساب
@@ -95,6 +96,7 @@ class HeaderMobileComponent extends PureComponent {
                   className="ant-menu-item"
                   onClick={() => {
                     this.props.history.push("/register");
+                    this.onClose()
                   }}
                 >
                   <Icon type="plus-square" style={styles.icons} /> عضویت در اِلِ
@@ -107,6 +109,7 @@ class HeaderMobileComponent extends PureComponent {
                   key="1"
                   onClick={() => {
                     this.props.history.push("/profile");
+                    this.onClose()
                   }}
                 >
                   <Icon type="user" style={styles.icons} />
@@ -118,6 +121,7 @@ class HeaderMobileComponent extends PureComponent {
               key="6"
               onClick={() => {
                 this.props.history.push("/application");
+                this.onClose()
               }}
             >
               <Icon type="mobile" style={styles.icons} /> اپلیکیشن اِلِ سیم

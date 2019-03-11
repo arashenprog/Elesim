@@ -1,3 +1,8 @@
+::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  font-size: 14px;
+}
+
 .ant-message .anticon {
   margin-left: 8px !important;
   margin-right: 0px !important;
@@ -186,7 +191,8 @@
   float: right !important;
   padding-left: 20px !important;
 }
-.ant-form-explain, .ant-form-extra {
+.ant-form-explain,
+.ant-form-extra {
   margin: 2px 0 !important;
 }
 
@@ -195,16 +201,18 @@
   left: 0 !important;
   padding-left: 16px !important;
 }
-.ant-skeleton-title{
+.ant-skeleton-title {
   width: 80% !important;
 }
-.ant-skeleton-with-avatar .ant-skeleton-content .ant-skeleton-title + .ant-skeleton-paragraph {
+.ant-skeleton-with-avatar
+  .ant-skeleton-content
+  .ant-skeleton-title
+  + .ant-skeleton-paragraph {
   padding: 0 !important;
 }
 .ant-modal-close {
   right: inherit !important;
   left: 0 !important;
-
 }
 .ant-modal-title {
   text-align: right !important;
@@ -218,19 +226,21 @@
   flex-direction: row-reverse !important;
   button {
     margin-left: 10px;
+  }
 }
-}
-.ant-input-group > .ant-input:last-child, .ant-input-group-addon:last-child {
+.ant-input-group > .ant-input:last-child,
+.ant-input-group-addon:last-child {
   border-bottom-right-radius: 0;
   border-top-right-radius: 0;
 }
-.ant-input-group > .ant-input:first-child, .ant-input-group-addon:first-child {
+.ant-input-group > .ant-input:first-child,
+.ant-input-group-addon:first-child {
   border-bottom-left-radius: 0;
   border-top-left-radius: 0;
 }
 .ant-input-group-addon:last-child {
   border-left: 1px solid #dadada;
-  border-right:0px !important;
+  border-right: 0px !important;
   border-top-left-radius: 4px;
   border-bottom-left-radius: 4px;
 }

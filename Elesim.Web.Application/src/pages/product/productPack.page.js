@@ -76,7 +76,7 @@ class ProductPage extends Component {
                         }
                       />
                       <div className="mr-lg" />
-                      <Button type="primary" block>
+                      <Button type="primary" className="green-button" block>
                         خرید
                       </Button>
                     </Card>

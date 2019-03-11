@@ -74,7 +74,7 @@ class ProductPage extends Component {
                                                 title={"قیمت : " + this.state.price + " تومان"}
                                             />
                                             <div className="mr-lg" />
-                                            <Button type="primary" block onClick={this.onBuyButtonClick}>خرید</Button>
+                                            <Button type="primary" className="green-button" block onClick={this.onBuyButtonClick}>خرید</Button>
                                         </Card>
                                         <div className="mr-lg" />
 
