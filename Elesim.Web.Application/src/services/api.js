@@ -83,7 +83,7 @@ export default class Api {
     return Service.post("Shop/Sim/Search", searchFields)
   }
   static SearchPack(searchFields){
-    return Service.post("Shop/Sim/Pack",searchFields)
+    return Service.post("Shop/Pack/Search",searchFields)
   }
   static UpdateProfile(userinfo) {
     return Service.post("Account/Save", userinfo)

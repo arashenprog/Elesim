@@ -44,6 +44,7 @@ export class SearchComponent extends Component {
       packPriceMin: "",
       loading: false,
       redirectSim: false,
+      redirectPack: false,
       selectedProduct: {},
       payModal: false
     };
@@ -54,20 +55,21 @@ export class SearchComponent extends Component {
   }
 
   componentWillMount() {
-    let _recivedData = this.props.searched;
-    if (_recivedData !== undefined) {
-      let { PreCode, Num4, Num5, Num6, Num7, Num8, Num9, Num10 } = _recivedData;
-      this.setState({
-        preCode: PreCode,
-        num4: Num4,
-        num5: Num5,
-        num6: Num6,
-        num7: Num7,
-        num8: Num8,
-        num9: Num9,
-        num10: Num10
-      });
-      if (window.location.href.indexOf("search") > -1) {
+      let windowUrl = window.location.href;
+      if (!windowUrl.includes("pack")) {
+        let _recivedData = this.props.searched;
+        if (_recivedData !== undefined) {
+          let { PreCode, Num4, Num5, Num6, Num7, Num8, Num9, Num10 } = _recivedData;
+          this.setState({
+            preCode: PreCode,
+            num4: Num4,
+            num5: Num5,
+            num6: Num6,
+            num7: Num7,
+            num8: Num8,
+            num9: Num9,
+            num10: Num10
+          });
         this.setState({ loading: true });
         Api.SearchSim(_recivedData)
           .then(res => {
@@ -98,7 +100,9 @@ export class SearchComponent extends Component {
     if (this.state.redirectSim) {
       return <Redirect to={`/sim/${this.state.selectedProduct.ID}`} />;
     }
-
+    if(this.state.redirectPack){
+      return <Redirect to={`search/pack`}></Redirect>
+    }
     return (
       <div>
         <Card
@@ -111,13 +115,13 @@ export class SearchComponent extends Component {
             </div>
           }
         >
-          <Tabs>
-            <TabList>
-              <Tab>سیم کارت</Tab>
-              <Tab>پکیج</Tab>
+          <Tabs >
+            <TabList defaultChecked="2">
+              <Tab key="1">سیم کارت</Tab>
+              <Tab key="2">پکیج</Tab>
             </TabList>
 
-            <TabPanel>
+            <TabPanel key="1">
               <div className="row flex-row-left">
                 <div className="col-sm-2 col-xs-12">
                   <Select
@@ -371,7 +375,7 @@ export class SearchComponent extends Component {
                 </div>
               </div>
             </TabPanel>
-            <TabPanel>
+            <TabPanel key="2">
               <div className="row">
                 <div className="col-sm-3 col-xs-12">
                   <Select
@@ -666,23 +670,39 @@ export class SearchComponent extends Component {
       this.setState({ redirect: true, loading: false });
     }
   };
-
-  onSimPriceChange = value => {
-    this.setState({ simPriceMin: value[0], simPriceMax: value[1] });
-  };
-
   onSearchPackageClick = () => {
     this.setState({ loading: true });
 
     let searchItem = {
       lastloadedid: 0
     };
-    Api.SearchPack(searchItem)
+    if (window.location.href.indexOf("search") > -1) {
+      Api.SearchPack(searchItem)
       .then(res => {
         this.setState({ data: res.data.Result, loading: false });
+        console.log(res)
       })
       .catch(err => console.log(err));
+
+    } else {
+      Api.SearchPack(searchItem)
+      .then(res => {
+        this.setState({ data: res.data.Result });
+        console.log(res)
+      })
+      .catch(err => console.log(err));
+
+      this.setState({ redirectPack: true, loading: false });
+    }
+   
+
+      
   };
+  onSimPriceChange = value => {
+    this.setState({ simPriceMin: value[0], simPriceMax: value[1] });
+  };
+
+ 
   onPackPriceChange = value => {
     this.setState({ packPriceMin: value[0], packPriceMax: value[1] });
   };

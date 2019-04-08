@@ -87,7 +87,7 @@ class ProductPage extends Component {
                       cover={
                         <img
                           alt="example"
-                          src="https://via.placeholder.com/250x250"
+                          src={require("../../assets/images/elesim-seller.png")}
                         />
                       }
                     >

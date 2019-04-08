@@ -37,18 +37,15 @@ export class ProfilePage extends Component {
         Phone: this.state.user.Phone,
         address: this.state.user.Address,
         postalCode: this.state.user.PostalCode,
-        email: this.state.user.Email
+        email: this.state.user.Email,
       });
-      console.log(this.state.user)
 
 
     }).catch(err => { console.log(err) });
 
     let token = Api.getLocalStorage("Token");
-    console.log(token)
     Api.GetPaymentHistory(token).then(res => {
       this.setState({ paymentHistory: res.data.Result })
-      console.log(res)
     }).catch(err => { console.log(err) })
 
 
@@ -77,17 +74,21 @@ export class ProfilePage extends Component {
           Lastname: values.lastName,
           NationalCode: values.nationalCode,
           Phone: values.phoneNumber,
-          PostalCode: values.postalCode,
           Address: values.address,
-          Email: values.email
+          PostalCode: values.postalCode,
+          Email: values.email,
+          Mobile: values.mobile,
+          Token: this.state.user.Token
         };
         console.log("user info", userInformation)
         Api.UpdateProfile(userInformation).then(res => {
           this.setState({ buttonLoading: false });
-          console.log(res);
           if (!res.data.Succeed) {
             this.openNotificationWithIcon("error", "خطا", res.data.Messages[0]);
           }
+          this.openNotificationWithIcon("success", "عملیات موفق", "بروزرسانی اطلاعات با موفقیت انجام شد");
+          Api.setLocalStorage("User", res.data.Result);
+          
 
         });
       }

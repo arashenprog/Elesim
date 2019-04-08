@@ -6,7 +6,7 @@ import "./slider.component.scss"
 import slide1 from "../../assets/images/slide1.png"
 import slide2 from "../../assets/images/slide2.png"
 
-const styles = { height: 355, width: "100%" };
+const styles = { width: "100%" };
 export class Slider extends Component {
   slideNext = () => {
     this.slider.slideNext();
@@ -23,20 +23,20 @@ export class Slider extends Component {
       <div className="slider">
         <RBCarousel
               animation={true}
-              autoplay={true}
+              autoplay={false}
               slideshowSpeed={2000}
               onSelect={this.onSelect}
               ref={r => (this.slider = r)}
               version={4}
             >
-              <div style={{ height: 400 }}>
+              <div>
                 <img
                   style={{ ...styles }}
                   src={slide1}
                   alt=""
                 />
               </div>
-              <div style={{ height: 400 }}>
+              <div>
                 <img
                    style={{ ...styles }}
                   src={slide2}

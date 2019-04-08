@@ -50,7 +50,7 @@ class ProductPage extends Component {
                                             </header>
                                             <ul>
                                                 <li>
-                                                    <span>شماره :  </span>
+                                                    <span> شماره :  </span>
                                                     <span className="ltr">
                                                         {this.state.product.Number}
                                                     </span>
@@ -80,7 +80,7 @@ class ProductPage extends Component {
 
                                         <Card
                                             hoverable
-                                            cover={<img alt="example" src="https://via.placeholder.com/250x250" />}
+                                            cover={<img alt="example" src={require("../../assets/images/elesim-seller.png")} />}
                                         >
                                             <Meta
                                                 title="فروشنده : ال سیم"
