@@ -20,7 +20,16 @@ export class DataBoxComponent extends Component {
     };
     this.onCardSimClick = this.onCardSimClick.bind(this);
   }
-  componentDidMount() {}
+  componentDidMount() {
+    let simFav = localStorage.getItem("sim-fav");
+    if (simFav === null || simFav === undefined) {
+      Api.setLocalStorage("sim-fav", []);
+    }
+    let packFav = localStorage.getItem("pack-fav");
+    if (packFav === null || packFav === undefined) {
+      Api.setLocalStorage("pack-fav", []);
+    }
+  }
   render() {
     let _selectedProduct = this.state.selectedProduct;
 
@@ -121,22 +130,26 @@ export class DataBoxComponent extends Component {
               </List.Item>
             )}
           />
-          <div
-            style={{
-              textAlign: "center",
-              marginTop: 12,
-              height: 32,
-              lineHeight: "32px"
-            }}
-          >
-            <Button
-              type="primary"
-              loading={this.props.loadingbt}
-              onClick={this.props.onMoreClick}
+          {this.props.loadingbt ? (
+            <div
+              style={{
+                textAlign: "center",
+                marginTop: 12,
+                height: 32,
+                lineHeight: "32px"
+              }}
             >
-              {this.props.moreText}
-            </Button>
-          </div>
+              <Button
+                type="primary"
+                loading={this.props.loadingbt}
+                onClick={this.props.onMoreClick}
+              >
+                {this.props.moreText}
+              </Button>
+            </div>
+          ) : (
+            ""
+          )}
         </Card>
         <Modal
           ref={this.PayModal}
@@ -237,10 +250,13 @@ export class DataBoxComponent extends Component {
   onStarClick(item) {
     let simFav = [];
     let packFav = [];
+
+    
     let isSim = _.hasIn(item, "Number");
     if (isSim) {
       let simFavLocal = Api.getLocalStorage("sim-fav");
-      if (simFavLocal.length) {
+
+      if (simFavLocal === null) {
         simFav.push(item);
         Api.setLocalStorage("sim-fav", simFav);
       } else {
@@ -249,9 +265,32 @@ export class DataBoxComponent extends Component {
           let lastData = Api.getLocalStorage("sim-fav");
           lastData.push(item);
           Api.setLocalStorage("sim-fav", lastData);
+        } else {
+          let selectedItem = item;
+          let _simFav = Api.getLocalStorage("sim-fav")
+          // _.remove(_simFav,(n)=>{
+          //   console.log(n)
+          //   console.log("selectedItem",selectedItem)
+
+          // })
+          let remove =_.filter(_simFav,{"Number":item.Number})
+          console.log(remove)
         }
       }
     } else {
+      let packFavLocal = Api.getLocalStorage("pack-fav");
+
+      if (packFavLocal === null) {
+        packFav.push(item);
+        Api.setLocalStorage("pack-fav", packFav);
+      } else {
+        let isExist = _.some(packFavLocal, item);
+        if (!isExist) {
+          let lastData = Api.getLocalStorage("pack-fav");
+          lastData.push(item);
+          Api.setLocalStorage("pack-fav", lastData);
+        }
+      }
     }
   }
 }

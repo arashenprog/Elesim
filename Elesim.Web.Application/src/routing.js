@@ -18,6 +18,7 @@ import hisory from "./history";
 import ContactPage from "./pages/contact/contact.page";
 import ApplicationPage from "./pages/application/application.page";
 import ResultPage from "./pages/result/result.page";
+import FavoritesPage from "./pages/favorites/favorites.page";
 
 
 class Routing extends Component {
@@ -34,8 +35,11 @@ class Routing extends Component {
               <HomeRouting exact path="/pack/:id" component={ProductPackPage} />
               <HomeRouting exact path="/search/:code" component={SearchPage} />
               <HomeRouting exact path="/profile" component={ProfilePage} />
+              <HomeRouting exact path="/favorites" component={FavoritesPage} />
+
               <NoneRouting exact path="/login" component={LoginPage} />
               <NoneRouting exact path="/register" component={RegisterPage} />
+
             </Switch>
           </Router>
       </LocaleProvider>

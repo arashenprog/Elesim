@@ -33,6 +33,9 @@ class HeaderDesktopComponent extends Component {
       case "3":
         this.props.history.push("/contact");
         break;
+        case "4":
+        this.props.history.push("/favorites");
+        break;
       default:
         break;
     }
@@ -85,6 +88,10 @@ class HeaderDesktopComponent extends Component {
                   <Menu.Item key="1">
                     <Icon type="home" style={styles.icons} />
                     &nbsp; صفحه نخست
+                  </Menu.Item>
+                  <Menu.Item key="4">
+                    <Icon type="star" style={styles.icons} />
+                    &nbsp; نشان شده ها
                   </Menu.Item>
                   <Menu.Item key="2">
                     <Icon type="mobile" style={styles.icons} />

@@ -117,6 +117,15 @@ class HeaderMobileComponent extends PureComponent {
                 </Menu.Item>
               </>
             )}
+              <Menu.Item
+              key="7"
+              onClick={() => {
+                this.props.history.push("/favorites");
+                this.onClose()
+              }}
+            >
+              <Icon type="star" style={styles.icons} /> نشان شده ها
+            </Menu.Item>
             <Menu.Item
               key="6"
               onClick={() => {
