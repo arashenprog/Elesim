@@ -10,7 +10,7 @@
     "moment-jalaali": "^0.8.3",
     "node-sass": "^4.10.0",
     "query-string": "^6.2.0",
-    "react": "^16.6.3",
+    "react": "^16.8.6",
     "react-bootstrap-carousel": "^3.4.1",
     "react-device-detect": "^1.6.2",
     "react-dom": "^16.6.3",
