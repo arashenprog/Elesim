@@ -16,7 +16,9 @@ export class DataBoxComponent extends Component {
       selectedProduct: {},
       redirectSim: false,
       redirectPack: false,
-      inFavList:false
+      inFavList: false,
+      simFill: false,
+      packFill: false
     };
     this.onCardSimClick = this.onCardSimClick.bind(this);
   }
@@ -29,11 +31,8 @@ export class DataBoxComponent extends Component {
     if (packFav === null || packFav === undefined) {
       Api.setLocalStorage("pack-fav", []);
     }
-
   }
   render() {
-  
-    
     let _selectedProduct = this.state.selectedProduct;
 
     if (this.state.redirectSim) {
@@ -64,11 +63,9 @@ export class DataBoxComponent extends Component {
             }}
             dataSource={this.props.dataSource}
             renderItem={item => (
-              
               <List.Item>
                 <Card
-                  actions={
-                    [
+                  actions={[
                     <Icon
                       type="shopping-cart"
                       style={{ fontSize: 16 }}
@@ -77,13 +74,12 @@ export class DataBoxComponent extends Component {
                       }}
                     />,
                     <Icon
-                      theme={this.state.inFavList ? "filled" : "outlined"}
+                      theme={this.checkStar(item)}
                       twoToneColor="#FF6F00"
                       type="star"
                       style={{ fontSize: 16 }}
-                      onClick={() => {
-                        this.onStarClick(item);
-                        this.fillStar(item)
+                      onClick={e => {
+                        this.onStarClick(e, item);
                       }}
                     />
                   ]}
@@ -253,11 +249,11 @@ export class DataBoxComponent extends Component {
       this.props.history.push("/login");
     }
   };
-  onStarClick(item) {
-    
+  onStarClick(e, item) {
+    this.checkStar(item);
     let simFav = [];
     let packFav = [];
-
+    console.log("eeeee", e);
     let isSim = _.hasIn(item, "Number");
     if (isSim) {
       let simFavLocal = Api.getLocalStorage("sim-fav");
@@ -274,9 +270,8 @@ export class DataBoxComponent extends Component {
         } else {
           let selectedItem = item;
           let _simFav = Api.getLocalStorage("sim-fav");
-          let rejected = _.reject(_simFav,selectedItem)
-          Api.setLocalStorage("sim-fav",rejected)
-         
+          let rejected = _.reject(_simFav, selectedItem);
+          Api.setLocalStorage("sim-fav", rejected);
         }
       }
     } else {
@@ -291,31 +286,31 @@ export class DataBoxComponent extends Component {
           let lastData = Api.getLocalStorage("pack-fav");
           lastData.push(item);
           Api.setLocalStorage("pack-fav", lastData);
-        }
-        else{
-            let selectedItem = item;
-            let _packFav = Api.getLocalStorage("pack-fav");
-            let rejected = _.reject(_packFav,selectedItem)
-            Api.setLocalStorage("pack-fav",rejected)
-           
+        } else {
+          let selectedItem = item;
+          let _packFav = Api.getLocalStorage("pack-fav");
+          let rejected = _.reject(_packFav, selectedItem);
+          Api.setLocalStorage("pack-fav", rejected);
         }
       }
     }
   }
-  fillStar(item){
-    
-    let simFav = Api.getLocalStorage("sim-fav");
-    let packFav = Api.getLocalStorage("pack-fav");
+  checkStar(item) {
+    let simFavLocal = Api.getLocalStorage("sim-fav");
+    let packFavLocal = Api.getLocalStorage("pack-fav");
 
-    let isExistSim = _.some(simFav, item);
-    let isExistFav = _.some(packFav, item);
+    let isExistSim = _.some(simFavLocal, item);
+    let isExistPack = _.some(packFavLocal, item);
 
-    if(isExistSim){
-      this.setState({inFavList:true})
+    if (isExistSim) {
+
+      return "filled";
     }
-    if(isExistFav){
-      this.setState({inFavList:true})
+    if (isExistPack) {
+
+      return "filled";
     }
+    return "outlined";
   }
 }
 
