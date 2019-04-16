@@ -72,7 +72,7 @@ export class DataBoxComponent extends Component {
                       }}
                     />,
                     <Icon
-                      theme="filled"
+                      theme={this.checkStar(item)}
                       twoToneColor="#FF6F00"
                       type="star"
                       style={{ fontSize: 16 }}
@@ -251,7 +251,6 @@ export class DataBoxComponent extends Component {
     let simFav = [];
     let packFav = [];
 
-    
     let isSim = _.hasIn(item, "Number");
     if (isSim) {
       let simFavLocal = Api.getLocalStorage("sim-fav");
@@ -267,14 +266,14 @@ export class DataBoxComponent extends Component {
           Api.setLocalStorage("sim-fav", lastData);
         } else {
           let selectedItem = item;
-          let _simFav = Api.getLocalStorage("sim-fav")
+          let _simFav = Api.getLocalStorage("sim-fav");
           // _.remove(_simFav,(n)=>{
           //   console.log(n)
           //   console.log("selectedItem",selectedItem)
 
           // })
-          let remove =_.filter(_simFav,{"Number":item.Number})
-          console.log(remove)
+          let remove = _.filter(_simFav, { Number: item.Number });
+          console.log(remove);
         }
       }
     } else {
@@ -292,6 +291,23 @@ export class DataBoxComponent extends Component {
         }
       }
     }
+  }
+  checkStar(item) {
+    let simFavLocal = Api.getLocalStorage("sim-fav");
+    let packFavLocal = Api.getLocalStorage("pack-fav");
+
+    let isExistSim = _.some(simFavLocal, item);
+    let isExistPack = _.some(packFavLocal, item);
+
+    if (isExistSim) {
+      return "filled";
+    }
+    if (isExistPack) {
+      return "filled";
+    }
+    return "outlined";
+
+
   }
 }
 
