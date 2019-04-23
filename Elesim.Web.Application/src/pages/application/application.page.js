@@ -27,7 +27,13 @@ export class ApplicationPage extends Component {
           </div>
         </div>
         <div className="mr-lg" />
-        <Button type="primary" size="large">
+        <Button
+          type="primary"
+          size="large"
+          onClick={() => {
+            window.open("http://elesim.ir/download/elesim.apk", "_blank");
+          }}
+        >
           دریافت اپلیکیشن اندروید اِلِ ســیم
         </Button>
       </div>
